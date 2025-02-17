@@ -1,0 +1,168 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model SubReddit {
+  id       Int      @id @default(autoincrement())
+  userId   String?
+  orgId    String?
+  name     String
+  keywords String[] @default([])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isActive Boolean  @default(true)
+  lastIngested DateTime?
+
+  @@unique([userId, name])
+  @@unique([orgId, name])
+}
+
+model Preferences {
+  id                         Int       @id @default(autoincrement())
+  userId                     String?    @unique(map: "Preferences_userId_unique")
+  orgId                      String?
+  ingestionSchedule          String?
+  ingestionActive            Boolean   @default(false)
+  triggerCategorization      Boolean   @default(false)
+  emails                     String[] @default([])
+  issueThreshold             Int       @default(0)
+  timeWindow                 Int       @default(24)
+  enabled                    Boolean   @default(true)
+  lastNotified               DateTime?
+  volumeThresholdMultiplier  Float     @default(1.5)
+  sentimentThreshold         Float     @default(0)
+  commentGrowthThreshold     Float     @default(2.0)
+  createdAt                  DateTime  @default(now())
+  updatedAt                  DateTime  @default(now()) @updatedAt
+
+  @@unique([userId])
+  @@unique([orgId])
+}
+
+model RedditPost {
+  id                    String          @id
+  title                 String
+  content               String
+  author                String
+  createdUtc            BigInt
+  score                 Int
+  numComments           Int
+  lastUpdated           BigInt
+  needsProcessing       Boolean         @default(true)
+  processingPriority    Int             @default(0)
+  sentimentScore        Float?
+  sentimentCategory     String?
+  category              String?
+  product               String?
+  sameIssuesCount       Int?            @default(0)
+  sameDeviceCount       Int?            @default(0)
+  solutionsCount        Int?            @default(0)
+  updateIssueMention    Int?            @default(0)
+  updateResolvedMention Int?            @default(0)
+  authorProfilePhoto    String?
+  imageUrl              String?
+  permalink            String?
+  orgId                 String?
+  thumbnail             String?
+  userId                String?
+  comments              RedditComment[]
+  labels                String[]  @default([])
+
+  @@index([userId])
+  @@index([orgId])
+}
+
+model RedditComment {
+  id              String          @id
+  postId          String
+  parentCommentId String?
+  author          String
+  content         String
+  createdUtc      BigInt
+  score           Int
+  lastUpdated     BigInt
+  parentComment   RedditComment?  @relation("CommentReplies", fields: [parentCommentId], references: [id])
+  replies         RedditComment[] @relation("CommentReplies")
+  post            RedditPost      @relation(fields: [postId], references: [id])
+  labels              String[]  @default([])
+
+  @@index([postId])
+}
+
+model FeedbackCategory {
+  id          Int      @id @default(autoincrement())
+  userId      String?
+  orgId       String?
+  name        String
+  description String?
+  keywords    String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, name])
+  @@unique([orgId, name])
+}
+
+model ProductCategory {
+  id          Int      @id @default(autoincrement())
+  userId      String?
+  orgId       String?
+  name        String
+  description String?
+  keywords    String[]
+  versions    String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, name])
+  @@unique([orgId, name])
+}
+
+model NotificationHistory {
+  id           Int      @id @default(autoincrement())
+  userId       String?
+  orgId        String?
+  postIds      String[] // Related post IDs
+  category     String
+  product      String?
+  issueCount   Int
+  sentAt       DateTime @default(now())
+  emailsSentTo String[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  @@index([userId])
+  @@index([orgId])
+  @@index([sentAt])
+}
+
+model WindowMetrics {
+  id                    Int      @id @default(autoincrement())
+  userId                String?
+  orgId                 String?
+  timestamp             DateTime @default(now())
+  totalPosts            Int
+  totalComments         Int
+  totalUpvotes          Int
+  topTrendingPosts      Json     // JSON array of top trending posts with upvotes and comments
+  categoryTrends        Json     // JSON object of category trends
+  sentimentAnalysis     Json     // JSON object for sentiment analysis results
+  sameIssuesCount       Int      // Total count of posts with the same issues
+  sameDeviceCount       Int      // Total count of posts with the same device mentions
+  solutionsCount        Int      // Total count of solutions provided
+  updateIssueMention    Int      // Count of issue mentions after updates
+  updateResolvedMention Int      // Count of resolution mentions after updates
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @default(now()) @updatedAt
+
+  @@index([userId])
+  @@index([orgId])
+  @@index([timestamp])
+}

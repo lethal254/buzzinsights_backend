@@ -1,0 +1,39 @@
+{"isOrg":false,"level":"info","message":"Started notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:00:06.998Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733387400000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:07:13.801Z"}
+{"averageSentiment":0,"commentGrowthRate":0,"isOrg":false,"issueCount":0,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:07:20.486Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733389200000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:20:34.979Z"}
+{"averageSentiment":0,"commentGrowthRate":0,"isOrg":false,"issueCount":0,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:20:41.720Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733391000000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:24:41.403Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":1,"timestamp":"2024-12-05T08:24:47.030Z"}
+{"isOrg":false,"level":"info","message":"Started notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:26:07.623Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733387400000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:26:20.478Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":0,"timestamp":"2024-12-05T08:26:24.504Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733389200000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:29:44.036Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":0,"timestamp":"2024-12-05T08:29:49.596Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733391000000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:31:23.122Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":0,"timestamp":"2024-12-05T08:31:29.847Z"}
+{"isOrg":false,"level":"info","message":"Started notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:32:34.831Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733389200000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:32:46.085Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":1,"timestamp":"2024-12-05T08:32:51.252Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733391000000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:39:35.321Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":1,"timestamp":"2024-12-05T08:39:42.192Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733392800000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:41:54.414Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":1,"timestamp":"2024-12-05T08:42:01.332Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733394600000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:44:45.548Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":1,"timestamp":"2024-12-05T08:44:52.436Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733396400000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:45:49.327Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":1,"timestamp":"2024-12-05T08:45:54.601Z"}
+{"isOrg":false,"jobId":"repeat:2a42e26b523e73da41c42d5094e25fe8:1733398200000","level":"info","message":"Processing notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T08:47:10.392Z"}
+{"isOrg":false,"level":"info","message":"No posts found in either window, skipping notification","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timeWindow":1,"timestamp":"2024-12-05T08:47:15.853Z"}
+{"averageSentiment":0,"commentGrowthRate":32,"isOrg":false,"issueCount":10,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T09:27:50.806Z"}
+{"isOrg":false,"level":"info","message":"Started notification job","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T09:31:50.717Z"}
+{"averageSentiment":0,"commentGrowthRate":155,"isOrg":false,"issueCount":27,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T09:32:39.152Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:08:23.517Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:10:57.621Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:15:12.470Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:18:45.270Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:24:50.325Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:33:55.922Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:36:59.176Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:43:00.076Z"}
+{"averageSentiment":0,"commentGrowthRate":139,"isOrg":false,"issueCount":26,"level":"info","message":"Notification sent","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-05T10:46:42.256Z"}

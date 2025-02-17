@@ -1,0 +1,115 @@
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T17:47:16.619Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T17:48:33.136Z"}
+{"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739210400000","level":"info","message":"Starting job","nextExpectedRun":"2025-02-10T18:49:47.855Z","startedAt":"2025-02-10T17:49:47.855Z","timestamp":"2025-02-10T17:49:47.856Z","type":"pineconeIngestion"}
+{"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739210400000","level":"info","message":"Job completed","timestamp":"2025-02-10T17:52:03.256Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T18:09:58.181Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T18:10:19.813Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T18:11:40.585Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T18:16:40.575Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T18:16:57.695Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T18:17:58.931Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T18:21:50.471Z"}
+{"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739214000000","level":"info","message":"Starting job","nextExpectedRun":"2025-02-10T20:00:00.059Z","startedAt":"2025-02-10T19:00:00.059Z","timestamp":"2025-02-10T19:00:00.059Z","type":"pineconeIngestion"}
+{"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739214000000","level":"info","message":"Job completed","timestamp":"2025-02-10T19:02:29.034Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T19:08:27.100Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T19:09:31.458Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T19:16:06.874Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T19:17:56.365Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T19:21:49.664Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T19:22:18.635Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T19:22:32.251Z"}
+{"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739217600000","level":"info","message":"Starting job","nextExpectedRun":"2025-02-10T21:00:00.050Z","startedAt":"2025-02-10T20:00:00.050Z","timestamp":"2025-02-10T20:00:00.050Z","type":"pineconeIngestion"}
+{"error":{},"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739217600000","level":"error","message":"Error processing job","timestamp":"2025-02-10T20:00:00.051Z"}
+{"error":{},"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739217600000","level":"error","message":"Job failed","timestamp":"2025-02-10T20:00:00.066Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T20:02:19.140Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T20:02:51.677Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T20:03:06.302Z"}
+{"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739221200000","level":"info","message":"Starting job","nextExpectedRun":"2025-02-10T22:00:00.119Z","startedAt":"2025-02-10T21:00:00.119Z","timestamp":"2025-02-10T21:00:00.119Z","type":"pineconeIngestion"}
+{"error":{},"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739221200000","level":"error","message":"Error processing job","timestamp":"2025-02-10T21:00:00.120Z"}
+{"error":{},"jobId":"repeat:96aa9f55744d07cafe695be223291047:1739221200000","level":"error","message":"Job failed","timestamp":"2025-02-10T21:00:00.128Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T21:20:02.813Z"}
+{"level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T21:20:16.900Z","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:20:16.901Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":1,"taskType":"pineconeIngestion","timestamp":"2025-02-10T21:21:14.701Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T21:49:12.545Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7bf","level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T21:49:21.046Z","targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bf","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:49:21.046Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":0,"targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bf","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:49:21.054Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7bf","level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T21:49:33.869Z","targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bf","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:49:33.870Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":1,"targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bf","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:49:33.875Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7bg","level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T21:49:44.964Z","targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bg","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:49:44.964Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":0,"targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bg","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:49:44.968Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":0,"taskType":"pineconeIngestion","timestamp":"2025-02-10T21:50:07.374Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":0,"taskType":"pineconeIngestion","timestamp":"2025-02-10T21:50:26.194Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":0,"taskType":"pineconeIngestion","timestamp":"2025-02-10T21:50:40.554Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T21:53:09.884Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":2,"taskType":"pineconeIngestion","timestamp":"2025-02-10T21:53:22.214Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7bg","level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T21:53:36.529Z","targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bg","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:53:36.529Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":0,"targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bg","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:53:36.547Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7bh","level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T21:53:41.531Z","targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bh","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:53:41.531Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":1,"targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bh","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:53:41.538Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7bn","level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T21:54:01.232Z","targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bn","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:54:01.232Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":1,"targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bn","taskType":"pineconeIngestion","timestamp":"2025-02-10T21:54:01.242Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T21:58:10.276Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7bn","level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T22:00:12.349Z","targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bn","taskType":"pineconeIngestion","timestamp":"2025-02-10T22:00:12.349Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":0,"targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bn","taskType":"pineconeIngestion","timestamp":"2025-02-10T22:00:12.355Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7bo","level":"info","message":"Scheduling task","scheduledAt":"2025-02-10T22:00:37.482Z","targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bo","taskType":"pineconeIngestion","timestamp":"2025-02-10T22:00:37.483Z"}
+{"level":"info","message":"Canceled tasks","removedJobs":1,"targetId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bo","taskType":"pineconeIngestion","timestamp":"2025-02-10T22:00:37.493Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T22:03:32.287Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T22:07:53.843Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T22:12:17.828Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T22:14:52.378Z"}
+{"jobId":"pineconeIngestion-user_2r4voBpJ5OauMpeAZvsNvEsU7b1-","level":"info","message":"Processing job","nextExpectedRun":"2025-02-10T23:15:13.917Z","timestamp":"2025-02-10T22:15:13.917Z","type":"pineconeIngestion"}
+{"jobId":"pineconeIngestion--user_2r4voBpJ5OauMpeAZvsNvEsU7b1","level":"info","message":"Processing job","nextExpectedRun":"2025-02-10T23:15:48.506Z","timestamp":"2025-02-10T22:15:48.506Z","type":"pineconeIngestion"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T22:24:12.090Z"}
+{"jobId":"pineconeIngestion--user_2r4voBpJ5OauMpeAZvsNvEsU7b1","level":"info","message":"Processing job","nextExpectedRun":"2025-02-10T23:24:54.654Z","timestamp":"2025-02-10T22:24:54.654Z","type":"pineconeIngestion"}
+{"jobId":"pineconeIngestion--user_2r4voBpJ5OauMpeAZvsNvEsU7b1","level":"info","message":"Job completed","queueKey":"pinecone-ingestion--user_2r4voBpJ5OauMpeAZvsNvEsU7b1","timestamp":"2025-02-10T22:27:29.359Z"}
+{"level":"info","message":"Pinecone Ingestion Service initialized. Jobs scheduled to run every hour.","timestamp":"2025-02-10T22:30:51.581Z"}
+{"level":"info","message":"Creating new dynamic queue","queueKey":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7b1","timestamp":"2025-02-10T22:40:21.006Z"}
+{"jobName":"pinecone-ingestion-job--user_2r4voBpJ5OauMpeAZvsNvEsU7b1","level":"info","message":"Scheduled task","testInterval":3600000,"timestamp":"2025-02-10T22:40:21.024Z"}
+{"key":"pinecone-ingestion-job:pinecone-ingestion-job--user_2r4voBpJ5OauMpeAZvsNvEsU7b1::3600000","level":"info","message":"Removed existing repeatable job","timestamp":"2025-02-10T22:40:50.696Z"}
+{"jobName":"pinecone-ingestion-job--user_2r4voBpJ5OauMpeAZvsNvEsU7b1","level":"info","message":"Scheduled task","testInterval":3600000,"timestamp":"2025-02-10T22:40:50.701Z"}
+{"key":"pinecone-ingestion-job:pinecone-ingestion-job--user_2r4voBpJ5OauMpeAZvsNvEsU7b1::3600000","level":"info","message":"Removed existing repeatable job","timestamp":"2025-02-10T22:42:09.669Z"}
+{"jobName":"pinecone-ingestion-job--user_2r4voBpJ5OauMpeAZvsNvEsU7b1","level":"info","message":"Scheduled task","testInterval":3600000,"timestamp":"2025-02-10T22:42:09.671Z"}
+{"interval":3600000,"level":"info","message":"Scheduled pinecone ingestion","payload":{"userId":"user_2r4voBpJ5OauMpeAZvsNvEsU7b1"},"timestamp":"2025-02-10T22:49:33.260Z"}
+{"key":"pinecone-ingestion:pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7b1::3600000","level":"info","message":"Removed existing repeatable pinecone ingestion job","timestamp":"2025-02-10T22:49:50.159Z"}
+{"interval":3600000,"level":"info","message":"Scheduled pinecone ingestion","payload":{"userId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bo"},"timestamp":"2025-02-10T22:49:50.162Z"}
+{"level":"info","message":"Removed existing repeatable pinecone ingestion job","timestamp":"2025-02-10T22:52:41.307Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bo"}
+{"interval":3600000,"level":"info","message":"Scheduled pinecone ingestion","payload":{"userId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bo"},"timestamp":"2025-02-10T22:52:41.315Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bo"}
+{"interval":3600000,"level":"info","message":"Scheduled pinecone ingestion","payload":{"userId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bi"},"timestamp":"2025-02-10T22:52:48.476Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bi"}
+{"level":"info","message":"Cancelled repeatable pinecone ingestion job","timestamp":"2025-02-10T22:55:45.682Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bi"}
+{"level":"info","message":"Cancelled repeatable pinecone ingestion job","timestamp":"2025-02-10T22:55:52.954Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bo"}
+{"interval":3600000,"level":"info","message":"Scheduled pinecone ingestion","payload":{"userId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bf"},"timestamp":"2025-02-11T05:53:19.662Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bf"}
+{"level":"info","message":"Removed existing repeatable pinecone ingestion job","timestamp":"2025-02-11T06:00:22.107Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bf"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"userId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bf"},"timestamp":"2025-02-11T06:00:22.110Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bf"}
+{"jobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bf","level":"info","message":"Processing pinecone ingestion job","timestamp":"2025-02-11T06:00:22.115Z"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"userId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bf"},"timestamp":"2025-02-11T06:15:28.146Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bf"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"userId":"user_2r4voBpJ5OauMpeAZvsNvEsU7bf"},"timestamp":"2025-02-11T06:19:07.824Z","uniqueJobId":"pinecone-ingestion-no-org-user_2r4voBpJ5OauMpeAZvsNvEsU7bf"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-11T06:27:46.747Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"jobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user","level":"info","message":"Processing pinecone ingestion job","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-11T06:27:46.752Z"}
+{"jobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user","level":"info","message":"Processing pinecone ingestion job","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-11T06:32:24.177Z"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-11T06:48:04.907Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"duration":"1078528ms","jobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user","level":"info","message":"Pinecone ingestion completed successfully","timestamp":"2025-02-11T06:50:27.708Z"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-11T07:12:21.857Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-12T08:52:59.636Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-12T09:20:28.994Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"jobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user","level":"info","message":"Processing pinecone ingestion job","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-12T09:20:28.998Z"}
+{"duration":"11755ms","jobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user","level":"info","message":"Pinecone ingestion completed successfully","timestamp":"2025-02-12T09:20:45.761Z"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-12T09:52:15.547Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-12T09:54:11.031Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-12T13:05:00.993Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-12T16:01:56.795Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-14T13:33:55.449Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-14T14:06:35.533Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-14T15:02:54.469Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-14T16:02:25.058Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-16T07:59:55.687Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-16T10:00:18.051Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-16T14:00:19.916Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-16T18:00:16.779Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-16T21:12:04.751Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-16T22:14:50.619Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-17T01:04:27.887Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-17T05:31:30.687Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-17T05:58:46.610Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-17T07:57:39.440Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-17T08:20:12.705Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-17T11:00:40.856Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}

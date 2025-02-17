@@ -1,0 +1,866 @@
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-04T20:17:41.005Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-04T20:17:59.932Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-04T20:18:14.026Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-04T20:28:43.185Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-04T20:38:14.165Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T07:51:49.822Z"}
+{"jobId":"1","level":"info","message":"Processing email job","subject":"Alert: Overall Volume Spike","timestamp":"2024-12-05T08:07:19.262Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"1","level":"info","message":"Email sent successfully","messageId":"<195add20-7353-e185-f773-2938bb4f425f@gmail.com>","response":"250 2.0.0 OK  1733386042 4fb4d7f45d1cf-5d14b607b8csm483369a12.36 - gsmtp","timestamp":"2024-12-05T08:07:21.293Z"}
+{"attempts":0,"jobId":"1","level":"info","message":"Email job completed","timestamp":"2024-12-05T08:07:21.294Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:11:06.884Z"}
+{"jobId":"2","level":"info","message":"Processing email job","subject":"Alert: Overall Volume Spike","timestamp":"2024-12-05T08:20:40.455Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"2","level":"info","message":"Email sent successfully","messageId":"<37705dfc-1f10-c539-6a0e-e06345d3b005@gmail.com>","response":"250 2.0.0 OK  1733386843 a640c23a62f3a-aa625e4db59sm59786766b.27 - gsmtp","timestamp":"2024-12-05T08:20:42.500Z"}
+{"attempts":0,"jobId":"2","level":"info","message":"Email job completed","timestamp":"2024-12-05T08:20:42.501Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:22:29.308Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:24:25.352Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:27:52.848Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:29:32.558Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:31:14.826Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:35:32.042Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:39:26.157Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:41:38.594Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:44:29.851Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:47:03.277Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:52:26.724Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T08:54:28.981Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:05:31.156Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:07:23.560Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:08:31.544Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:09:42.606Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:12:32.271Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:13:44.068Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:16:21.457Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:18:54.648Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:20:09.067Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:22:38.811Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:22:54.354Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:26:53.699Z"}
+{"jobId":"3","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report","timestamp":"2024-12-05T09:27:49.561Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"3","level":"info","message":"Email sent successfully","messageId":"<84e76054-7e2e-2c68-17a9-71e23d32e4d4@gmail.com>","response":"250 2.0.0 OK  1733390872 a640c23a62f3a-aa62601f489sm65622666b.106 - gsmtp","timestamp":"2024-12-05T09:27:51.543Z"}
+{"attempts":0,"jobId":"3","level":"info","message":"Email job completed","timestamp":"2024-12-05T09:27:51.545Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:30:26.843Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T09:30:41.520Z"}
+{"jobId":"4","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report","timestamp":"2024-12-05T09:32:37.938Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"4","level":"info","message":"Email sent successfully","messageId":"<2443213e-08aa-21d0-ff36-299b73199b55@gmail.com>","response":"250 2.0.0 OK  1733391160 a640c23a62f3a-aa625ea28c4sm66139066b.79 - gsmtp","timestamp":"2024-12-05T09:32:39.977Z"}
+{"attempts":0,"jobId":"4","level":"info","message":"Email job completed","timestamp":"2024-12-05T09:32:39.979Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:07:15.533Z"}
+{"jobId":"5","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:08:22.272Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"5","level":"info","message":"Email sent successfully","messageId":"<a3110f18-cdba-7dae-803d-53b8f669deb7@gmail.com>","response":"250 2.0.0 OK  1733393305 4fb4d7f45d1cf-5d14b608b7dsm592641a12.45 - gsmtp","timestamp":"2024-12-05T10:08:24.336Z"}
+{"attempts":0,"jobId":"5","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:08:24.338Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:09:51.468Z"}
+{"jobId":"6","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:10:56.390Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"6","level":"info","message":"Email sent successfully","messageId":"<71a397db-a1b6-f12f-3df7-dbcbfd0d2723@gmail.com>","response":"250 2.0.0 OK  1733393459 4fb4d7f45d1cf-5d14c7aa8d6sm583442a12.77 - gsmtp","timestamp":"2024-12-05T10:10:58.630Z"}
+{"attempts":0,"jobId":"6","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:10:58.631Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:13:55.571Z"}
+{"jobId":"7","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:15:11.140Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"7","level":"info","message":"Email sent successfully","messageId":"<35943db7-66a5-d6f3-a361-438d9b7d322a@gmail.com>","response":"250 2.0.0 OK  1733393714 a640c23a62f3a-aa62601b5fesm70082266b.117 - gsmtp","timestamp":"2024-12-05T10:15:13.289Z"}
+{"attempts":0,"jobId":"7","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:15:13.291Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:17:31.977Z"}
+{"jobId":"8","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:18:44.057Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"8","level":"info","message":"Email sent successfully","messageId":"<92d3a4f8-8d18-c64b-0fad-1d3f39c97b4a@gmail.com>","response":"250 2.0.0 OK  1733393927 a640c23a62f3a-aa625e58ddesm72322866b.40 - gsmtp","timestamp":"2024-12-05T10:18:46.245Z"}
+{"attempts":0,"jobId":"8","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:18:46.247Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:24:07.749Z"}
+{"jobId":"9","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:24:49.118Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"9","level":"info","message":"Email sent successfully","messageId":"<2b9524f9-cefe-a9ff-fce8-c4afc8c333a9@gmail.com>","response":"250 2.0.0 OK  1733394292 a640c23a62f3a-aa625e972c1sm71065866b.76 - gsmtp","timestamp":"2024-12-05T10:24:51.292Z"}
+{"attempts":0,"jobId":"9","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:24:51.294Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:33:07.281Z"}
+{"jobId":"10","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:33:54.700Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"10","level":"info","message":"Email sent successfully","messageId":"<9d795fa9-8c77-4a25-aacf-a8bea668ee63@gmail.com>","response":"250 2.0.0 OK  1733394837 4fb4d7f45d1cf-5d14c7aa9c9sm615019a12.81 - gsmtp","timestamp":"2024-12-05T10:33:56.912Z"}
+{"attempts":0,"jobId":"10","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:33:56.915Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:36:09.078Z"}
+{"jobId":"11","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:36:57.974Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"11","level":"info","message":"Email sent successfully","messageId":"<3e667514-1e4b-8dcf-209d-652400cccabb@gmail.com>","response":"250 2.0.0 OK  1733395020 4fb4d7f45d1cf-5d149a25cdcsm626335a12.9 - gsmtp","timestamp":"2024-12-05T10:37:00.006Z"}
+{"attempts":0,"jobId":"11","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:37:00.009Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:41:42.421Z"}
+{"jobId":"12","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:42:58.864Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"12","level":"info","message":"Email sent successfully","messageId":"<60d1e55e-a5dd-3337-80ba-4c5642c33b42@gmail.com>","response":"250 2.0.0 OK  1733395381 a640c23a62f3a-aa62601b571sm73097266b.114 - gsmtp","timestamp":"2024-12-05T10:43:01.091Z"}
+{"attempts":0,"jobId":"12","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:43:01.093Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:45:37.540Z"}
+{"jobId":"13","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T10:46:40.970Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"13","level":"info","message":"Email sent successfully","messageId":"<234094b5-41e2-f2c8-190a-5cbd20b7bad3@gmail.com>","response":"250 2.0.0 OK  1733395603 4fb4d7f45d1cf-5d14b608b7dsm627481a12.45 - gsmtp","timestamp":"2024-12-05T10:46:42.969Z"}
+{"attempts":0,"jobId":"13","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:46:42.971Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T10:49:43.477Z"}
+{"jobId":"14","level":"info","message":"Processing email job","subject":"Social Eye Insights - 12/5/2024","timestamp":"2024-12-05T10:51:29.753Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"14","level":"info","message":"Email sent successfully","messageId":"<3463360f-da7b-f309-b659-fbccf73ec903@gmail.com>","response":"250 2.0.0 OK  1733395892 a640c23a62f3a-aa625e4da51sm75307766b.37 - gsmtp","timestamp":"2024-12-05T10:51:31.834Z"}
+{"attempts":0,"jobId":"14","level":"info","message":"Email job completed","timestamp":"2024-12-05T10:51:31.835Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T12:29:37.995Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T12:32:00.183Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T12:32:01.055Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T12:41:45.584Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T12:41:46.047Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T12:42:43.977Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T12:45:37.400Z"}
+{"jobId":"15","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:00:45.814Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"15","level":"info","message":"Email sent successfully","messageId":"<187e7ddf-5c4b-523a-85d6-602ddd1302fe@gmail.com>","response":"250 2.0.0 OK  1733403649 5b1f17b1804b1-434d5281229sm60242395e9.26 - gsmtp","timestamp":"2024-12-05T13:00:48.095Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:01:46.588Z"}
+{"jobId":"16","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:03:38.044Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"16","level":"info","message":"Email sent successfully","messageId":"<cf86471b-d1c1-66f5-f830-0bb6ac1269b1@gmail.com>","response":"250 2.0.0 OK  1733403821 5b1f17b1804b1-434d52c0be4sm60136065e9.28 - gsmtp","timestamp":"2024-12-05T13:03:40.449Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:05:57.613Z"}
+{"jobId":"17","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:06:11.394Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"17","level":"info","message":"Email sent successfully","messageId":"<4654776b-f048-331a-e394-42ec12d16547@gmail.com>","response":"250 2.0.0 OK  1733403974 5b1f17b1804b1-434d43b8557sm46130885e9.1 - gsmtp","timestamp":"2024-12-05T13:06:13.375Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:08:29.894Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:10:46.653Z"}
+{"jobId":"18","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:10:55.778Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"18","level":"info","message":"Email sent successfully","messageId":"<21b4e58f-10ae-0580-ef9d-9bbbc0cf250f@gmail.com>","response":"250 2.0.0 OK  1733404258 5b1f17b1804b1-434da119a96sm23859945e9.40 - gsmtp","timestamp":"2024-12-05T13:10:57.806Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:12:41.958Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:13:08.444Z"}
+{"jobId":"19","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:13:15.149Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"19","level":"info","message":"Email sent successfully","messageId":"<475eb183-8602-8cd3-2ebf-abc5f4e6f8c4@gmail.com>","response":"250 2.0.0 OK  1733404398 5b1f17b1804b1-434d52cc2fdsm59699235e9.42 - gsmtp","timestamp":"2024-12-05T13:13:17.034Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:16:21.254Z"}
+{"jobId":"20","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:16:34.195Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"20","level":"info","message":"Email sent successfully","messageId":"<a18daa54-5017-3d3c-01f2-3269fa08d23b@gmail.com>","response":"250 2.0.0 OK  1733404597 a640c23a62f3a-aa62608d32bsm90637966b.147 - gsmtp","timestamp":"2024-12-05T13:16:36.255Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:20:34.319Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:23:39.047Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:28:58.947Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:32:51.123Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:37:14.970Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:41:44.983Z"}
+{"jobId":"21","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:42:30.326Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"21","level":"info","message":"Email sent successfully","messageId":"<d5f7689c-65ef-0310-1774-21c6da0dd3bb@gmail.com>","response":"250 2.0.0 OK  1733406153 a640c23a62f3a-aa625e5c76fsm94103566b.8 - gsmtp","timestamp":"2024-12-05T13:42:32.337Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:48:14.800Z"}
+{"jobId":"22","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:52:35.059Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"22","level":"info","message":"Email sent successfully","messageId":"<5df95a0e-772a-ffa1-215d-b26c7f42d4f1@gmail.com>","response":"250 2.0.0 OK  1733406758 4fb4d7f45d1cf-5d149a49dc6sm805478a12.31 - gsmtp","timestamp":"2024-12-05T13:52:37.080Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T13:55:44.972Z"}
+{"jobId":"23","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T13:56:45.411Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"23","level":"info","message":"Email sent successfully","messageId":"<6a5d5282-a7db-becc-c5cd-7623bb9a801b@gmail.com>","response":"250 2.0.0 OK  1733407008 4fb4d7f45d1cf-5d14b609454sm807619a12.43 - gsmtp","timestamp":"2024-12-05T13:56:47.649Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T14:05:08.946Z"}
+{"jobId":"24","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T14:08:27.220Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"24","level":"info","message":"Email sent successfully","messageId":"<95e8d08e-cfa4-90f8-c953-88fa75b8ccab@gmail.com>","response":"250 2.0.0 OK  1733407710 a640c23a62f3a-aa62601b3edsm96458666b.100 - gsmtp","timestamp":"2024-12-05T14:08:29.427Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T14:11:11.506Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T14:13:07.892Z"}
+{"jobId":"25","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T14:13:57.036Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"25","level":"info","message":"Email sent successfully","messageId":"<7b9f4f06-e286-3c52-f012-dbe5eb8a05ee@gmail.com>","response":"250 2.0.0 OK  1733408040 ffacd0b85a97d-38621909748sm2010761f8f.67 - gsmtp","timestamp":"2024-12-05T14:13:59.332Z"}
+{"jobId":"26","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T14:14:54.232Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"26","level":"info","message":"Email sent successfully","messageId":"<2c0ecd85-dc95-6aa1-bacd-437991fef35e@gmail.com>","response":"250 2.0.0 OK  1733408097 5b1f17b1804b1-434da0d6b70sm24904165e9.15 - gsmtp","timestamp":"2024-12-05T14:14:56.606Z"}
+{"jobId":"27","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T14:15:00.172Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"27","level":"info","message":"Email sent successfully","messageId":"<25f2672d-5777-32e0-f06d-eb1ff0a2fbda@gmail.com>","response":"250 2.0.0 OK  1733408103 5b1f17b1804b1-434da0d6b70sm24906965e9.15 - gsmtp","timestamp":"2024-12-05T14:15:02.577Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T14:23:17.969Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T14:27:23.435Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T14:32:52.410Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T14:57:51.682Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T15:44:43.360Z"}
+{"jobId":"28","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T15:46:19.685Z","to":[]}
+{"error":"No recipients defined","jobId":"28","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T15:46:20.657Z","to":[]}
+{"jobId":"28","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T15:46:21.669Z","to":[]}
+{"error":"No recipients defined","jobId":"28","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T15:46:22.632Z","to":[]}
+{"jobId":"28","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T15:46:25.639Z","to":[]}
+{"error":"No recipients defined","jobId":"28","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T15:46:26.758Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T15:55:20.168Z"}
+{"jobId":"29","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T15:58:51.538Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"29","level":"info","message":"Email sent successfully","messageId":"<9f89138d-3240-81f4-d56a-9296f8800848@gmail.com>","response":"250 2.0.0 OK  1733414335 ffacd0b85a97d-386221a607csm2235939f8f.103 - gsmtp","timestamp":"2024-12-05T15:58:53.664Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:06:18.044Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:09:30.025Z"}
+{"jobId":"30","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:09:56.005Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"30","level":"info","message":"Email sent successfully","messageId":"<7a0ae0dc-0dd8-dd80-273f-e102e6bfec45@gmail.com>","response":"250 2.0.0 OK  1733415000 ffacd0b85a97d-3861ecf3cd1sm2276274f8f.11 - gsmtp","timestamp":"2024-12-05T16:09:58.193Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:12:42.799Z"}
+{"jobId":"31","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:12:56.388Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"31","level":"info","message":"Email sent successfully","messageId":"<80f4a285-d7f1-4db0-85a2-a602d4c9ed53@gmail.com>","response":"250 2.0.0 OK  1733415180 ffacd0b85a97d-38622761548sm2281710f8f.110 - gsmtp","timestamp":"2024-12-05T16:12:58.452Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:15:49.286Z"}
+{"jobId":"32","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:16:06.969Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"32","level":"info","message":"Email sent successfully","messageId":"<f336d500-93f3-c8e2-1e69-d5af8dea0700@gmail.com>","response":"250 2.0.0 OK  1733415371 ffacd0b85a97d-3861ecf446esm2287210f8f.20 - gsmtp","timestamp":"2024-12-05T16:16:09.229Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:17:43.558Z"}
+{"jobId":"33","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:18:02.865Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"33","level":"info","message":"Email sent successfully","messageId":"<ae4e562e-3622-554f-66f6-f78c8875292e@gmail.com>","response":"250 2.0.0 OK  1733415487 ffacd0b85a97d-3861f59ceb6sm2357222f8f.42 - gsmtp","timestamp":"2024-12-05T16:18:05.190Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:19:24.056Z"}
+{"jobId":"34","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:19:40.550Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"34","level":"info","message":"Email sent successfully","messageId":"<8900c6d4-1240-2bdf-525a-f22fffc86fe5@gmail.com>","response":"250 2.0.0 OK  1733415584 5b1f17b1804b1-434da0dab9esm28182405e9.22 - gsmtp","timestamp":"2024-12-05T16:19:42.638Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:21:52.430Z"}
+{"jobId":"35","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:22:41.690Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"35","level":"info","message":"Email sent successfully","messageId":"<b95bb0e5-1478-f9a1-0bdb-b1c885c5d7cc@gmail.com>","response":"250 2.0.0 OK  1733415766 5b1f17b1804b1-434d526b375sm66700715e9.9 - gsmtp","timestamp":"2024-12-05T16:22:43.847Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:24:29.965Z"}
+{"jobId":"36","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:24:59.539Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"36","level":"info","message":"Email sent successfully","messageId":"<e87e0dc1-436f-7138-3ff6-2458e11acc19@gmail.com>","response":"250 2.0.0 OK  1733415903 ffacd0b85a97d-386219098d3sm2394025f8f.70 - gsmtp","timestamp":"2024-12-05T16:25:01.661Z"}
+{"jobId":"37","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:26:21.656Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"37","level":"info","message":"Email sent successfully","messageId":"<b6bb1ffd-0a2d-3533-3b55-ec63a85853bc@gmail.com>","response":"250 2.0.0 OK  1733415985 5b1f17b1804b1-434da0d2698sm28498735e9.8 - gsmtp","timestamp":"2024-12-05T16:26:23.789Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:28:21.162Z"}
+{"jobId":"38","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:28:43.070Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"38","level":"info","message":"Email sent successfully","messageId":"<e8803f7f-1f15-75b0-8aee-d66041b55264@gmail.com>","response":"250 2.0.0 OK  1733416127 5b1f17b1804b1-434d527eeedsm64744695e9.19 - gsmtp","timestamp":"2024-12-05T16:28:45.213Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:29:55.539Z"}
+{"jobId":"39","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:30:19.117Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"39","level":"info","message":"Email sent successfully","messageId":"<05800077-3310-cac0-2aaa-752c612881b3@gmail.com>","response":"250 2.0.0 OK  1733416223 5b1f17b1804b1-434da0d6961sm28468115e9.12 - gsmtp","timestamp":"2024-12-05T16:30:21.376Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:31:24.455Z"}
+{"jobId":"40","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:31:40.869Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"40","level":"info","message":"Email sent successfully","messageId":"<6a3582ee-cdaa-0521-de50-4e4df1a13f62@gmail.com>","response":"250 2.0.0 OK  1733416305 5b1f17b1804b1-434d52c12a4sm66525695e9.30 - gsmtp","timestamp":"2024-12-05T16:31:43.120Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T16:32:46.210Z"}
+{"jobId":"41","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T16:33:11.906Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"41","level":"info","message":"Email sent successfully","messageId":"<539ce689-c5e1-3a04-1f21-255b5c05b4e9@gmail.com>","response":"250 2.0.0 OK  1733416396 5b1f17b1804b1-434d52805aasm64717435e9.22 - gsmtp","timestamp":"2024-12-05T16:33:13.951Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:24:24.898Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:29:27.191Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:32:48.877Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:33:52.733Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:34:38.792Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:36:00.795Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:38:42.795Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:39:25.162Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:40:21.308Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:45:36.187Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:49:47.034Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:55:42.130Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T17:59:20.223Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T18:17:19.768Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T18:17:31.721Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T19:20:57.436Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T19:29:06.891Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T19:34:29.137Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T19:39:31.319Z"}
+{"jobId":"42","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/5/2024","timestamp":"2024-12-05T20:30:06.214Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"42","level":"info","message":"Email sent successfully","messageId":"<de8ba4b4-1fa7-8c2e-a4a7-d9fddb7c7043@gmail.com>","response":"250 2.0.0 OK  1733430610 ffacd0b85a97d-3861fc51451sm2882314f8f.47 - gsmtp","timestamp":"2024-12-05T20:30:08.363Z"}
+{"jobId":"43","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-05T21:00:06.214Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"43","level":"info","message":"Email sent successfully","messageId":"<5d0f41ff-546b-8ba2-574f-07912919a5bb@gmail.com>","response":"250 2.0.0 OK  1733432410 ffacd0b85a97d-3862190964fsm2834847f8f.65 - gsmtp","timestamp":"2024-12-05T21:00:08.398Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T21:19:02.235Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T21:19:31.899Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T21:45:53.577Z"}
+{"jobId":"44","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-05T21:45:59.589Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"44","level":"info","message":"Email sent successfully","messageId":"<bd38c177-8680-cf8d-a8cf-7615983b0f6e@gmail.com>","response":"250 2.0.0 OK  1733435165 ffacd0b85a97d-3861fd46cd3sm2937900f8f.55 - gsmtp","timestamp":"2024-12-05T21:46:01.845Z"}
+{"jobId":"45","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-05T22:00:06.863Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"45","level":"info","message":"Email sent successfully","messageId":"<8acb7ccb-c619-94c4-8f36-307f8492a964@gmail.com>","response":"250 2.0.0 OK  1733436012 ffacd0b85a97d-38622761548sm2990543f8f.110 - gsmtp","timestamp":"2024-12-05T22:00:09.079Z"}
+{"jobId":"46","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-05T22:30:06.420Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"46","level":"info","message":"Email sent successfully","messageId":"<fa7b9e7d-5797-a6d7-9792-d24472958532@gmail.com>","response":"250 2.0.0 OK  1733437812 5b1f17b1804b1-434d5280120sm73180515e9.20 - gsmtp","timestamp":"2024-12-05T22:30:08.704Z"}
+{"jobId":"47","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-05T23:00:06.390Z","to":["benardogutu65@gmail.com","dopelixy2@gmail.com"]}
+{"jobId":"47","level":"info","message":"Email sent successfully","messageId":"<8ee41d47-1d42-cda0-4135-cf43899de93a@gmail.com>","response":"250 2.0.0 OK  1733439612 ffacd0b85a97d-3861f59cc6fsm3071489f8f.34 - gsmtp","timestamp":"2024-12-05T23:00:08.710Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T23:07:47.505Z"}
+{"jobId":"48","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-05T23:12:06.549Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"48","level":"info","message":"Email sent successfully","messageId":"<bea8e188-a930-071e-565f-cd96e57268fb@gmail.com>","response":"250 2.0.0 OK  1733440332 5b1f17b1804b1-434d52c0cfdsm77780235e9.33 - gsmtp","timestamp":"2024-12-05T23:12:08.703Z"}
+{"jobId":"49","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-05T23:16:03.497Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"49","level":"info","message":"Email sent successfully","messageId":"<ac7662b3-31bd-cbc7-cb45-6e13e33d7fe9@gmail.com>","response":"250 2.0.0 OK  1733440568 ffacd0b85a97d-3861ecf4395sm3110684f8f.10 - gsmtp","timestamp":"2024-12-05T23:16:05.578Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-05T23:18:13.156Z"}
+{"jobId":"50","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T00:00:06.619Z","to":[]}
+{"error":"No recipients defined","jobId":"50","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T00:00:07.631Z","to":[]}
+{"jobId":"50","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T00:00:08.652Z","to":[]}
+{"error":"No recipients defined","jobId":"50","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T00:00:09.588Z","to":[]}
+{"jobId":"50","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T00:00:12.591Z","to":[]}
+{"error":"No recipients defined","jobId":"50","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T00:00:13.529Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-06T03:42:55.558Z"}
+{"jobId":"51","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T03:44:44.981Z","to":[]}
+{"error":"No recipients defined","jobId":"51","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T03:44:45.951Z","to":[]}
+{"jobId":"51","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T03:44:46.969Z","to":[]}
+{"error":"No recipients defined","jobId":"51","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T03:44:47.916Z","to":[]}
+{"jobId":"51","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T03:44:50.929Z","to":[]}
+{"error":"No recipients defined","jobId":"51","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T03:44:51.888Z","to":[]}
+{"jobId":"52","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T03:48:05.536Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"52","level":"info","message":"Email sent successfully","messageId":"<4490e479-c545-fa2e-a1ee-cc8bb5fe5d5e@gmail.com>","response":"250 2.0.0 OK  1733456891 5b1f17b1804b1-434da0dac17sm43398375e9.23 - gsmtp","timestamp":"2024-12-06T03:48:07.627Z"}
+{"jobId":"53","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T08:00:05.881Z","to":["alex.waya@gmail.com"]}
+{"jobId":"53","level":"info","message":"Email sent successfully","messageId":"<11e5d5f4-f40e-a83b-2c38-99c3d21b39c4@gmail.com>","response":"250 2.0.0 OK  1733472014 ffacd0b85a97d-386219095d3sm4031720f8f.71 - gsmtp","timestamp":"2024-12-06T08:00:14.577Z"}
+{"jobId":"54","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T09:00:06.247Z","to":["alex.waya@gmail.com"]}
+{"jobId":"54","level":"info","message":"Email sent successfully","messageId":"<3627d8ab-0d24-14a8-3c42-7543a3a60359@gmail.com>","response":"250 2.0.0 OK  1733475613 ffacd0b85a97d-3861fc514fcsm4124414f8f.48 - gsmtp","timestamp":"2024-12-06T09:00:13.855Z"}
+{"jobId":"55","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T10:00:05.699Z","to":["alex.waya@gmail.com"]}
+{"jobId":"55","level":"info","message":"Email sent successfully","messageId":"<ae34c074-2d05-35c2-07ee-ce0e63d19627@gmail.com>","response":"250 2.0.0 OK  1733479214 ffacd0b85a97d-3861ecf4008sm4147336f8f.22 - gsmtp","timestamp":"2024-12-06T10:00:14.179Z"}
+{"jobId":"56","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T11:00:05.757Z","to":["alex.waya@gmail.com"]}
+{"jobId":"56","level":"info","message":"Email sent successfully","messageId":"<72df8ea4-f872-dc7f-b178-6788c5d203b2@gmail.com>","response":"250 2.0.0 OK  1733482813 5b1f17b1804b1-434da0d6b38sm53712135e9.17 - gsmtp","timestamp":"2024-12-06T11:00:13.001Z"}
+{"jobId":"57","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T12:00:06.621Z","to":["alex.waya@gmail.com"]}
+{"jobId":"57","level":"info","message":"Email sent successfully","messageId":"<861021cc-3289-ac58-d5a6-4cae401d54b5@gmail.com>","response":"250 2.0.0 OK  1733486414 ffacd0b85a97d-386221a4ae9sm4323689f8f.98 - gsmtp","timestamp":"2024-12-06T12:00:14.543Z"}
+{"jobId":"58","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T13:00:05.396Z","to":["alex.waya@gmail.com"]}
+{"jobId":"58","level":"info","message":"Email sent successfully","messageId":"<fa0ed171-0e3c-edb3-b8f3-ddfc0308651f@gmail.com>","response":"250 2.0.0 OK  1733490012 ffacd0b85a97d-3861ecf3ee4sm4605257f8f.6 - gsmtp","timestamp":"2024-12-06T13:00:12.754Z"}
+{"jobId":"59","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T15:00:05.962Z","to":["alex.waya@gmail.com"]}
+{"jobId":"59","level":"info","message":"Email sent successfully","messageId":"<e36b0c06-a1dc-0855-a5fe-079e4c17ce79@gmail.com>","response":"250 2.0.0 OK  1733497213 5b1f17b1804b1-434d52cbf57sm94198005e9.39 - gsmtp","timestamp":"2024-12-06T15:00:13.745Z"}
+{"jobId":"60","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/6/2024","timestamp":"2024-12-06T18:03:25.409Z","to":["alex.waya@gmail.com"]}
+{"jobId":"60","level":"info","message":"Email sent successfully","messageId":"<f4404d9c-1896-9e65-7b5e-7ee8bfd84bca@gmail.com>","response":"250 2.0.0 OK  1733508207 5b1f17b1804b1-434da1135e5sm64444075e9.32 - gsmtp","timestamp":"2024-12-06T18:03:27.724Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-08T09:37:54.722Z"}
+{"jobId":"61","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/8/2024","timestamp":"2024-12-08T09:38:00.128Z","to":["alex.waya@gmail.com"]}
+{"jobId":"61","level":"info","message":"Email sent successfully","messageId":"<c963cb9d-1f11-176a-a4f9-1bcaa7e3e77a@gmail.com>","response":"250 2.0.0 OK  1733650682 ffacd0b85a97d-3861ecf42desm9396914f8f.15 - gsmtp","timestamp":"2024-12-08T09:38:02.269Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-09T21:08:35.957Z"}
+{"jobId":"62","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/10/2024","timestamp":"2024-12-09T21:08:41.250Z","to":["alex.waya@gmail.com"]}
+{"jobId":"62","level":"info","message":"Email sent successfully","messageId":"<626e6521-2c17-e92e-0119-586cfa839716@gmail.com>","response":"250 2.0.0 OK  1733778523 ffacd0b85a97d-3861f59cc6fsm13977299f8f.34 - gsmtp","timestamp":"2024-12-09T21:08:43.316Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-09T21:09:33.074Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-09T21:10:48.115Z"}
+{"jobId":"63","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/10/2024","timestamp":"2024-12-09T22:00:09.250Z","to":["alex.waya@gmail.com"]}
+{"jobId":"63","level":"info","message":"Email sent successfully","messageId":"<98a33c4d-b77c-588f-bf58-1ed2eb401681@gmail.com>","response":"250 2.0.0 OK  1733781612 ffacd0b85a97d-3862a4ae481sm11794781f8f.25 - gsmtp","timestamp":"2024-12-09T22:00:11.832Z"}
+{"jobId":"64","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/10/2024","timestamp":"2024-12-09T23:00:08.186Z","to":["alex.waya@gmail.com"]}
+{"jobId":"64","level":"info","message":"Email sent successfully","messageId":"<d7bd603a-a132-90bc-458a-81ff25421f40@gmail.com>","response":"250 2.0.0 OK  1733785211 ffacd0b85a97d-3861ecf4008sm14172119f8f.22 - gsmtp","timestamp":"2024-12-09T23:00:11.360Z"}
+{"jobId":"65","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/10/2024","timestamp":"2024-12-10T06:23:46.112Z","to":["alex.waya@gmail.com"]}
+{"jobId":"65","level":"info","message":"Email sent successfully","messageId":"<b513c501-f88d-0e23-bbb4-2b99ad3ed090@gmail.com>","response":"250 2.0.0 OK  1733811828 5b1f17b1804b1-434fe3cc773sm35327885e9.29 - gsmtp","timestamp":"2024-12-10T06:23:48.650Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T10:17:53.734Z"}
+{"jobId":"65","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/12/2024","timestamp":"2024-12-12T10:18:07.406Z","to":["alex.waya@gmail.com"]}
+{"jobId":"65","level":"info","message":"Email sent successfully","messageId":"<a8aadbc6-a405-2ef7-7987-b27a193d7ca0@gmail.com>","response":"250 2.0.0 OK  1733998690 ffacd0b85a97d-38782514dadsm3571189f8f.68 - gsmtp","timestamp":"2024-12-12T10:18:09.623Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T10:19:13.178Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T12:31:11.177Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T12:33:50.075Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T12:35:42.512Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T14:00:24.860Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T14:04:05.294Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T14:15:41.695Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:05:16.947Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:07:38.744Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:14:17.858Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:33:38.712Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:34:38.086Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:34:54.840Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:35:10.792Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:38:28.495Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:38:50.841Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T17:39:29.152Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T19:19:41.324Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T19:38:32.136Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T19:40:02.912Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T19:41:12.494Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T19:53:11.067Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T22:09:32.366Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T22:09:38.889Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T22:35:34.838Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T22:35:57.329Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T22:38:28.128Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T22:39:16.109Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-12T22:42:26.507Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T05:10:31.987Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T05:10:54.675Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T05:18:41.619Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T05:20:11.457Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T05:21:58.712Z"}
+{"jobId":"66","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T06:00:06.956Z","to":[]}
+{"error":"No recipients defined","jobId":"66","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T06:00:07.979Z","to":[]}
+{"jobId":"66","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T06:00:09.004Z","to":[]}
+{"error":"No recipients defined","jobId":"66","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T06:00:09.955Z","to":[]}
+{"jobId":"66","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T06:00:12.961Z","to":[]}
+{"error":"No recipients defined","jobId":"66","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T06:00:13.924Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T06:03:33.446Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T07:00:07.180Z"}
+{"jobId":"67","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T07:00:43.024Z","to":[]}
+{"error":"No recipients defined","jobId":"67","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T07:00:43.992Z","to":[]}
+{"jobId":"67","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T07:00:45.025Z","to":[]}
+{"error":"No recipients defined","jobId":"67","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T07:00:45.972Z","to":[]}
+{"jobId":"67","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T07:00:48.977Z","to":[]}
+{"error":"No recipients defined","jobId":"67","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T07:00:49.921Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T07:59:58.691Z"}
+{"jobId":"68","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T08:00:06.928Z","to":[]}
+{"error":"No recipients defined","jobId":"68","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T08:00:07.898Z","to":[]}
+{"jobId":"68","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T08:00:08.910Z","to":[]}
+{"error":"No recipients defined","jobId":"68","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T08:00:09.874Z","to":[]}
+{"jobId":"68","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T08:00:12.877Z","to":[]}
+{"error":"No recipients defined","jobId":"68","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T08:00:13.835Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T08:01:44.607Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T08:02:18.295Z"}
+{"jobId":"69","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T09:00:06.972Z","to":[]}
+{"error":"No recipients defined","jobId":"69","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T09:00:08.023Z","to":[]}
+{"jobId":"69","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T09:00:09.041Z","to":[]}
+{"error":"No recipients defined","jobId":"69","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T09:00:09.994Z","to":[]}
+{"jobId":"69","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T09:00:13.008Z","to":[]}
+{"error":"No recipients defined","jobId":"69","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T09:00:13.959Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T09:28:12.645Z"}
+{"jobId":"70","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T10:00:06.805Z","to":[]}
+{"error":"No recipients defined","jobId":"70","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T10:00:07.847Z","to":[]}
+{"jobId":"70","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T10:00:08.873Z","to":[]}
+{"error":"No recipients defined","jobId":"70","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T10:00:09.851Z","to":[]}
+{"jobId":"70","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T10:00:12.866Z","to":[]}
+{"error":"No recipients defined","jobId":"70","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T10:00:13.832Z","to":[]}
+{"jobId":"71","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T11:00:06.834Z","to":[]}
+{"error":"No recipients defined","jobId":"71","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T11:00:07.917Z","to":[]}
+{"jobId":"71","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T11:00:08.929Z","to":[]}
+{"error":"No recipients defined","jobId":"71","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T11:00:10.889Z","to":[]}
+{"jobId":"71","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T11:00:13.908Z","to":[]}
+{"error":"No recipients defined","jobId":"71","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T11:00:14.862Z","to":[]}
+{"jobId":"72","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T12:00:06.883Z","to":[]}
+{"error":"No recipients defined","jobId":"72","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T12:00:07.954Z","to":[]}
+{"jobId":"72","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T12:00:08.969Z","to":[]}
+{"error":"No recipients defined","jobId":"72","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T12:00:09.921Z","to":[]}
+{"jobId":"72","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T12:00:12.926Z","to":[]}
+{"error":"No recipients defined","jobId":"72","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T12:00:13.892Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T12:47:46.660Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T12:57:45.130Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-13T12:58:50.517Z"}
+{"jobId":"73","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T13:00:06.892Z","to":[]}
+{"error":"No recipients defined","jobId":"73","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T13:00:07.946Z","to":[]}
+{"jobId":"73","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T13:00:08.966Z","to":[]}
+{"error":"No recipients defined","jobId":"73","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T13:00:09.974Z","to":[]}
+{"jobId":"73","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T13:00:12.993Z","to":[]}
+{"error":"No recipients defined","jobId":"73","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T13:00:13.992Z","to":[]}
+{"jobId":"74","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T14:00:06.867Z","to":[]}
+{"error":"No recipients defined","jobId":"74","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T14:00:07.929Z","to":[]}
+{"jobId":"74","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T14:00:08.935Z","to":[]}
+{"error":"No recipients defined","jobId":"74","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T14:00:09.969Z","to":[]}
+{"jobId":"74","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T14:00:12.985Z","to":[]}
+{"error":"No recipients defined","jobId":"74","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T14:00:13.983Z","to":[]}
+{"jobId":"75","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T15:00:06.813Z","to":[]}
+{"error":"No recipients defined","jobId":"75","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T15:00:07.856Z","to":[]}
+{"jobId":"75","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T15:00:08.868Z","to":[]}
+{"error":"No recipients defined","jobId":"75","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T15:00:09.875Z","to":[]}
+{"jobId":"75","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T15:00:12.882Z","to":[]}
+{"error":"No recipients defined","jobId":"75","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T15:00:13.873Z","to":[]}
+{"jobId":"76","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T16:00:07.043Z","to":[]}
+{"error":"No recipients defined","jobId":"76","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T16:00:08.092Z","to":[]}
+{"jobId":"76","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T16:00:09.104Z","to":[]}
+{"error":"No recipients defined","jobId":"76","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T16:00:10.124Z","to":[]}
+{"jobId":"76","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T16:00:13.135Z","to":[]}
+{"error":"No recipients defined","jobId":"76","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T16:00:14.144Z","to":[]}
+{"jobId":"77","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T17:00:06.894Z","to":[]}
+{"error":"No recipients defined","jobId":"77","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T17:00:07.942Z","to":[]}
+{"jobId":"77","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T17:00:08.959Z","to":[]}
+{"error":"No recipients defined","jobId":"77","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T17:00:09.978Z","to":[]}
+{"jobId":"77","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T17:00:12.986Z","to":[]}
+{"error":"No recipients defined","jobId":"77","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T17:00:13.993Z","to":[]}
+{"jobId":"78","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T18:00:07.600Z","to":[]}
+{"error":"No recipients defined","jobId":"78","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T18:00:08.769Z","to":[]}
+{"jobId":"78","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T18:00:09.780Z","to":[]}
+{"error":"No recipients defined","jobId":"78","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T18:00:10.895Z","to":[]}
+{"jobId":"78","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T18:00:13.911Z","to":[]}
+{"error":"No recipients defined","jobId":"78","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T18:00:15.404Z","to":[]}
+{"jobId":"79","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T19:00:07.335Z","to":[]}
+{"error":"No recipients defined","jobId":"79","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T19:00:08.584Z","to":[]}
+{"jobId":"79","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T19:00:09.590Z","to":[]}
+{"error":"No recipients defined","jobId":"79","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T19:00:10.711Z","to":[]}
+{"jobId":"79","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T19:00:13.725Z","to":[]}
+{"error":"No recipients defined","jobId":"79","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T19:00:14.842Z","to":[]}
+{"jobId":"80","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T20:00:08.708Z","to":[]}
+{"error":"No recipients defined","jobId":"80","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T20:00:10.222Z","to":[]}
+{"jobId":"80","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T20:00:11.285Z","to":[]}
+{"error":"No recipients defined","jobId":"80","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T20:00:12.568Z","to":[]}
+{"jobId":"80","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T20:00:15.587Z","to":[]}
+{"error":"No recipients defined","jobId":"80","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/13/2024","timestamp":"2024-12-13T20:00:16.868Z","to":[]}
+{"jobId":"81","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T21:00:07.135Z","to":[]}
+{"error":"No recipients defined","jobId":"81","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T21:00:08.230Z","to":[]}
+{"jobId":"81","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T21:00:09.244Z","to":[]}
+{"error":"No recipients defined","jobId":"81","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T21:00:10.247Z","to":[]}
+{"jobId":"81","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T21:00:13.254Z","to":[]}
+{"error":"No recipients defined","jobId":"81","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T21:00:14.264Z","to":[]}
+{"jobId":"82","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T22:00:06.806Z","to":[]}
+{"error":"No recipients defined","jobId":"82","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T22:00:07.855Z","to":[]}
+{"jobId":"82","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T22:00:08.868Z","to":[]}
+{"error":"No recipients defined","jobId":"82","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T22:00:09.878Z","to":[]}
+{"jobId":"82","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T22:00:12.881Z","to":[]}
+{"error":"No recipients defined","jobId":"82","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T22:00:13.877Z","to":[]}
+{"jobId":"83","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T23:00:06.901Z","to":[]}
+{"error":"No recipients defined","jobId":"83","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T23:00:07.973Z","to":[]}
+{"jobId":"83","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T23:00:08.981Z","to":[]}
+{"error":"No recipients defined","jobId":"83","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T23:00:09.985Z","to":[]}
+{"jobId":"83","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T23:00:12.998Z","to":[]}
+{"error":"No recipients defined","jobId":"83","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-13T23:00:14.002Z","to":[]}
+{"jobId":"84","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T00:00:06.849Z","to":[]}
+{"error":"No recipients defined","jobId":"84","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T00:00:07.896Z","to":[]}
+{"jobId":"84","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T00:00:08.904Z","to":[]}
+{"error":"No recipients defined","jobId":"84","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T00:00:09.908Z","to":[]}
+{"jobId":"84","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T00:00:12.918Z","to":[]}
+{"error":"No recipients defined","jobId":"84","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T00:00:13.924Z","to":[]}
+{"jobId":"85","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T01:00:06.824Z","to":[]}
+{"error":"No recipients defined","jobId":"85","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T01:00:07.880Z","to":[]}
+{"jobId":"85","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T01:00:08.884Z","to":[]}
+{"error":"No recipients defined","jobId":"85","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T01:00:09.870Z","to":[]}
+{"jobId":"85","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T01:00:12.890Z","to":[]}
+{"error":"No recipients defined","jobId":"85","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T01:00:13.898Z","to":[]}
+{"jobId":"86","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T02:00:06.899Z","to":[]}
+{"error":"No recipients defined","jobId":"86","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T02:00:07.943Z","to":[]}
+{"jobId":"86","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T02:00:08.947Z","to":[]}
+{"error":"No recipients defined","jobId":"86","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T02:00:09.948Z","to":[]}
+{"jobId":"86","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T02:00:12.968Z","to":[]}
+{"error":"No recipients defined","jobId":"86","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T02:00:13.978Z","to":[]}
+{"jobId":"87","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T03:00:06.828Z","to":[]}
+{"error":"No recipients defined","jobId":"87","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T03:00:07.866Z","to":[]}
+{"jobId":"87","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T03:00:08.888Z","to":[]}
+{"error":"No recipients defined","jobId":"87","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T03:00:09.879Z","to":[]}
+{"jobId":"87","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T03:00:12.891Z","to":[]}
+{"error":"No recipients defined","jobId":"87","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T03:00:13.897Z","to":[]}
+{"jobId":"88","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T04:00:09.112Z","to":[]}
+{"error":"No recipients defined","jobId":"88","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T04:00:10.631Z","to":[]}
+{"jobId":"88","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T04:00:11.652Z","to":[]}
+{"error":"No recipients defined","jobId":"88","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T04:00:12.777Z","to":[]}
+{"jobId":"88","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T04:00:15.795Z","to":[]}
+{"error":"No recipients defined","jobId":"88","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T04:00:16.976Z","to":[]}
+{"jobId":"89","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T05:00:08.498Z","to":[]}
+{"error":"No recipients defined","jobId":"89","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T05:00:09.749Z","to":[]}
+{"jobId":"89","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T05:00:10.757Z","to":[]}
+{"error":"No recipients defined","jobId":"89","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T05:00:11.986Z","to":[]}
+{"jobId":"89","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T05:00:15.001Z","to":[]}
+{"error":"No recipients defined","jobId":"89","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T05:00:16.191Z","to":[]}
+{"jobId":"90","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T06:00:08.480Z","to":[]}
+{"error":"No recipients defined","jobId":"90","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T06:00:09.805Z","to":[]}
+{"jobId":"90","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T06:00:10.829Z","to":[]}
+{"error":"No recipients defined","jobId":"90","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T06:00:12.127Z","to":[]}
+{"jobId":"90","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T06:00:15.139Z","to":[]}
+{"error":"No recipients defined","jobId":"90","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T06:00:16.354Z","to":[]}
+{"jobId":"91","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T08:00:08.342Z","to":[]}
+{"error":"No recipients defined","jobId":"91","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T08:00:09.394Z","to":[]}
+{"jobId":"91","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T08:00:10.412Z","to":[]}
+{"error":"No recipients defined","jobId":"91","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T08:00:11.427Z","to":[]}
+{"jobId":"91","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T08:00:14.438Z","to":[]}
+{"error":"No recipients defined","jobId":"91","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T08:00:15.424Z","to":[]}
+{"jobId":"92","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T09:00:06.861Z","to":[]}
+{"error":"No recipients defined","jobId":"92","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T09:00:07.923Z","to":[]}
+{"jobId":"92","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T09:00:08.942Z","to":[]}
+{"error":"No recipients defined","jobId":"92","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T09:00:09.940Z","to":[]}
+{"jobId":"92","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T09:00:12.944Z","to":[]}
+{"error":"No recipients defined","jobId":"92","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T09:00:13.963Z","to":[]}
+{"jobId":"93","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T10:00:06.854Z","to":[]}
+{"error":"No recipients defined","jobId":"93","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T10:00:07.934Z","to":[]}
+{"jobId":"93","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T10:00:08.952Z","to":[]}
+{"error":"No recipients defined","jobId":"93","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T10:00:09.956Z","to":[]}
+{"jobId":"93","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T10:00:12.965Z","to":[]}
+{"error":"No recipients defined","jobId":"93","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T10:00:13.959Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T10:03:32.140Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T10:04:50.764Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T10:16:27.382Z"}
+{"jobId":"94","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T11:00:06.887Z","to":[]}
+{"error":"No recipients defined","jobId":"94","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T11:00:07.954Z","to":[]}
+{"jobId":"94","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T11:00:08.991Z","to":[]}
+{"error":"No recipients defined","jobId":"94","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T11:00:10.004Z","to":[]}
+{"jobId":"94","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T11:00:13.010Z","to":[]}
+{"error":"No recipients defined","jobId":"94","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T11:00:14.013Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T11:56:06.263Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T12:00:11.526Z"}
+{"jobId":"95","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T12:00:47.163Z","to":[]}
+{"error":"No recipients defined","jobId":"95","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T12:00:48.190Z","to":[]}
+{"jobId":"95","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T12:00:49.200Z","to":[]}
+{"error":"No recipients defined","jobId":"95","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T12:00:50.205Z","to":[]}
+{"jobId":"95","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T12:00:53.223Z","to":[]}
+{"error":"No recipients defined","jobId":"95","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T12:00:54.223Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T12:07:47.822Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T12:15:53.292Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T12:17:13.805Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T12:18:27.561Z"}
+{"jobId":"96","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T13:00:06.802Z","to":[]}
+{"error":"No recipients defined","jobId":"96","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T13:00:07.856Z","to":[]}
+{"jobId":"96","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T13:00:08.872Z","to":[]}
+{"error":"No recipients defined","jobId":"96","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T13:00:09.889Z","to":[]}
+{"jobId":"96","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T13:00:12.904Z","to":[]}
+{"error":"No recipients defined","jobId":"96","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T13:00:13.898Z","to":[]}
+{"jobId":"97","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T14:00:06.867Z","to":[]}
+{"error":"No recipients defined","jobId":"97","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T14:00:07.923Z","to":[]}
+{"jobId":"97","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T14:00:08.935Z","to":[]}
+{"error":"No recipients defined","jobId":"97","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T14:00:10.012Z","to":[]}
+{"jobId":"97","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T14:00:13.030Z","to":[]}
+{"error":"No recipients defined","jobId":"97","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T14:00:14.025Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T14:46:22.949Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T14:47:04.904Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T14:48:21.929Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T14:49:19.307Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T14:49:55.665Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T14:50:20.471Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T14:54:16.912Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T14:58:18.764Z"}
+{"jobId":"98","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T15:00:07.339Z","to":[]}
+{"error":"No recipients defined","jobId":"98","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T15:00:08.404Z","to":[]}
+{"jobId":"98","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T15:00:09.430Z","to":[]}
+{"error":"No recipients defined","jobId":"98","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T15:00:10.449Z","to":[]}
+{"jobId":"98","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T15:00:13.460Z","to":[]}
+{"error":"No recipients defined","jobId":"98","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T15:00:14.471Z","to":[]}
+{"jobId":"99","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T16:00:06.671Z","to":[]}
+{"error":"No recipients defined","jobId":"99","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T16:00:07.721Z","to":[]}
+{"jobId":"99","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T16:00:08.736Z","to":[]}
+{"error":"No recipients defined","jobId":"99","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T16:00:09.728Z","to":[]}
+{"jobId":"99","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T16:00:12.744Z","to":[]}
+{"error":"No recipients defined","jobId":"99","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T16:00:13.734Z","to":[]}
+{"jobId":"100","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T17:00:08.116Z","to":[]}
+{"error":"No recipients defined","jobId":"100","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T17:00:09.344Z","to":[]}
+{"jobId":"100","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T17:00:10.350Z","to":[]}
+{"error":"No recipients defined","jobId":"100","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T17:00:11.720Z","to":[]}
+{"jobId":"100","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T17:00:14.727Z","to":[]}
+{"error":"No recipients defined","jobId":"100","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T17:00:15.886Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T17:22:46.505Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T17:23:37.524Z"}
+{"jobId":"101","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T18:00:09.382Z","to":[]}
+{"error":"No recipients defined","jobId":"101","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T18:00:10.605Z","to":[]}
+{"jobId":"101","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T18:00:11.628Z","to":[]}
+{"error":"No recipients defined","jobId":"101","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T18:00:12.741Z","to":[]}
+{"jobId":"101","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T18:00:15.756Z","to":[]}
+{"error":"No recipients defined","jobId":"101","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T18:00:16.882Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T18:34:34.355Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T18:35:25.354Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T18:59:51.590Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T19:00:08.005Z"}
+{"jobId":"102","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T19:00:14.294Z","to":[]}
+{"error":"No recipients defined","jobId":"102","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T19:00:15.464Z","to":[]}
+{"jobId":"102","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T19:00:16.471Z","to":[]}
+{"error":"No recipients defined","jobId":"102","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T19:00:17.606Z","to":[]}
+{"jobId":"102","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T19:00:20.616Z","to":[]}
+{"error":"No recipients defined","jobId":"102","level":"error","message":"Error sending email","subject":"Social Eye Analytics Report - 12/14/2024","timestamp":"2024-12-14T19:00:21.780Z","to":[]}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-14T22:06:04.967Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:05:06.807Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:22:33.165Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:29:32.001Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:31:34.153Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:33:46.761Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:42:35.245Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:47:13.076Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:51:13.602Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T00:53:46.534Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T01:08:32.759Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T01:09:52.590Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T01:10:40.937Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T01:23:39.636Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T16:42:46.849Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T16:43:21.202Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T16:50:23.240Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T16:50:48.895Z"}
+{"jobId":"103","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/15/2024","timestamp":"2024-12-15T18:00:10.297Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"103","level":"info","message":"Email sent successfully","messageId":"<c9f28428-eb0a-c8db-4e88-6f707ad624a2@gmail.com>","response":"250 2.0.0 OK  1734285616 a640c23a62f3a-aab9606843csm235859366b.50 - gsmtp","timestamp":"2024-12-15T18:00:13.681Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T18:19:41.053Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T19:37:30.840Z"}
+{"jobId":"104","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 12/15/2024","timestamp":"2024-12-15T19:37:49.605Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"104","level":"info","message":"Email sent successfully","messageId":"<491615b5-09e2-fdfa-3697-a4434e2e4c6e@gmail.com>","response":"250 2.0.0 OK  1734291471 a640c23a62f3a-aab963c5494sm247011366b.189 - gsmtp","timestamp":"2024-12-15T19:37:52.018Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T19:45:09.622Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-15T19:45:16.690Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T06:35:29.808Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T06:40:13.384Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T06:54:17.172Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T06:55:55.102Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T06:57:37.854Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T06:59:47.800Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:03:32.537Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:06:01.713Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:07:08.175Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:10:39.438Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:13:31.455Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:15:58.380Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:17:09.259Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:19:04.357Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:20:20.028Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T07:56:03.869Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T09:09:05.149Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T09:11:08.308Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T09:13:16.981Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-16T09:54:21.411Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2024-12-28T14:57:57.131Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-01T19:03:14.965Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T14:10:53.023Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T14:34:38.433Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T14:36:32.928Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T14:37:14.091Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T14:38:11.743Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T14:39:05.616Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T15:20:28.859Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T17:20:22.466Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T17:21:04.108Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T17:24:29.092Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T17:29:05.173Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T17:33:08.499Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T17:36:06.244Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T17:42:50.436Z"}
+{"jobId":"105","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 1/2/2025","timestamp":"2025-01-02T18:00:08.064Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"105","level":"info","message":"Email sent successfully","messageId":"<35763ddf-3427-2e22-1c26-e980edccf002@gmail.com>","response":"250 2.0.0 OK  1735840811 ffacd0b85a97d-38a1c833155sm38303216f8f.24 - gsmtp","timestamp":"2025-01-02T18:00:10.410Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T18:32:05.653Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T18:40:17.713Z"}
+{"jobId":"106","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 1/2/2025","timestamp":"2025-01-02T18:45:26.785Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"106","level":"info","message":"Email sent successfully","messageId":"<dbca390b-de40-48b2-c6c4-0a75208999bd@gmail.com>","response":"250 2.0.0 OK  1735843530 ffacd0b85a97d-38a1c89e126sm38175419f8f.65 - gsmtp","timestamp":"2025-01-02T18:45:29.072Z"}
+{"jobId":"107","level":"info","message":"Processing email job","subject":"Social Eye Analytics Report - 1/2/2025","timestamp":"2025-01-02T18:56:03.694Z","to":["benardogutu65@gmail.com"]}
+{"jobId":"107","level":"info","message":"Email sent successfully","messageId":"<5a2b8022-e62c-8ad1-2ffe-47bddd7e56a0@gmail.com>","response":"250 2.0.0 OK  1735844167 5b1f17b1804b1-43656b4432dsm491319125e9.41 - gsmtp","timestamp":"2025-01-02T18:56:06.068Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T22:41:32.535Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T22:54:02.735Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:09:17.444Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:14:08.840Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:18:05.272Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:19:46.232Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:21:56.412Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:25:16.731Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:26:26.388Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:27:01.109Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:40:11.288Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:45:01.979Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:46:17.279Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:47:45.698Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:48:06.386Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:51:03.539Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:54:58.828Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-02T23:58:05.277Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:00:49.708Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:02:15.706Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:03:39.322Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:04:16.650Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:04:57.979Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:06:15.164Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:07:23.397Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:08:31.559Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:10:29.447Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:11:27.418Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:12:19.705Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:13:06.432Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:14:09.847Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:15:25.961Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:15:46.062Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:16:43.115Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:17:27.237Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:21:01.369Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:22:19.670Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:23:14.699Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:24:01.796Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:29:39.007Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:30:17.595Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:30:44.344Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:32:21.844Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:35:20.594Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:41:32.623Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:41:56.912Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:42:43.322Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:45:54.831Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:47:52.687Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:49:56.936Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T00:58:41.360Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-03T01:05:14.835Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-04T11:50:07.199Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-04T11:54:26.481Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-04T12:01:51.849Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-04T12:04:22.755Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-04T12:13:01.157Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-04T12:13:51.299Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-04T12:15:23.168Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-04T12:19:01.640Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-08T15:51:13.881Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-08T19:49:29.354Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-10T07:30:55.213Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-10T09:41:12.875Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-10T16:29:28.987Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-11T07:25:56.485Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-11T07:30:32.928Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-11T07:33:39.347Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-11T07:59:25.141Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-11T09:07:13.371Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-11T09:13:00.234Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-11T13:01:26.959Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-12T21:24:00.875Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-01-12T21:27:48.571Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T06:40:34.180Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T07:13:31.656Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:08:19.180Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:09:05.368Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:13:39.937Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:18:18.438Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:19:00.637Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:27:12.189Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:29:08.586Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:32:41.505Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:33:07.959Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:34:02.841Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:36:14.461Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T08:37:53.974Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T09:17:44.641Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T09:35:29.628Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T09:35:40.322Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T09:38:50.583Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-07T09:41:05.060Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T17:47:17.924Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T17:48:34.329Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T18:09:59.363Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T18:10:21.015Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T18:11:41.779Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T18:16:41.760Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T18:16:58.909Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T18:18:01.234Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T18:21:52.426Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T19:08:29.122Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T19:09:33.484Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T19:16:08.751Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T19:17:58.267Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T19:21:51.568Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T19:22:20.502Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T19:22:34.732Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T20:02:21.138Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T20:02:53.688Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T20:03:08.177Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T21:20:04.995Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T21:49:16.364Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T21:53:13.271Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T21:58:15.235Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:03:35.188Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:07:57.619Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:12:21.304Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:14:55.817Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:24:15.559Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:30:54.433Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:35:14.111Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:37:49.920Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:38:23.037Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:40:22.036Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:49:23.446Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:52:30.791Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-10T22:55:08.900Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T05:50:16.320Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T05:58:07.668Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T05:59:38.190Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T06:03:10.143Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T06:12:53.147Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T06:14:41.575Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T06:23:13.870Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T06:31:55.390Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T06:51:10.248Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T08:02:24.828Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T08:09:09.713Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T08:15:15.902Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T08:21:09.095Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T08:25:33.081Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T09:07:56.484Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T09:13:25.505Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T09:22:11.905Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T09:29:49.657Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T09:36:42.837Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T11:46:26.465Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T11:57:54.340Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:11:24.659Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:17:23.223Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:28:43.504Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:35:22.368Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:36:13.553Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:38:03.815Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:40:37.742Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:44:41.462Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:45:57.526Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:49:59.696Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:53:28.365Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:55:49.310Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T12:57:34.729Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:00:20.156Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:03:04.760Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:06:30.709Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:11:38.849Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:19:22.602Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:31:59.753Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:33:41.881Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:36:16.556Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:41:54.163Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T13:47:13.810Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-11T14:11:39.254Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-12T08:42:18.594Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-12T09:18:49.212Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-12T09:50:13.241Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-14T13:32:37.851Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:11:36.271Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:20:48.943Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:36:59.168Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:45:00.451Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:45:16.852Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:46:07.041Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:46:49.747Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:47:47.522Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:49:40.233Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:54:48.165Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T21:58:36.027Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T22:04:59.180Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-16T22:05:37.686Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T05:56:18.781Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T05:56:40.407Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:03:15.756Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:04:59.510Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:06:44.984Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:07:58.368Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:08:58.782Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:09:19.644Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:12:13.235Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:17:37.030Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:20:12.864Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:21:38.420Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T06:28:21.954Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T07:10:41.300Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T07:16:29.386Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T07:22:54.023Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T07:45:09.014Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:08:02.521Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:09:12.116Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:12:34.411Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:23:43.366Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:37:51.426Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:40:21.007Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:45:09.575Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:53:39.217Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T08:55:07.004Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:01:13.358Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:07:08.544Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:07:39.913Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:09:00.006Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:14:22.524Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:15:09.489Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:35:04.074Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:37:47.891Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:51:37.987Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T09:52:03.731Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T10:14:03.607Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T11:40:04.726Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T11:48:57.474Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T11:50:38.435Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T11:52:54.687Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T11:54:35.209Z"}
+{"level":"info","message":"Email server is ready to send messages","timestamp":"2025-02-17T11:58:06.959Z"}

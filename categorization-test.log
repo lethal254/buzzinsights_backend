@@ -1,0 +1,11 @@
+{"isOrg":true,"level":"info","message":"Starting categorization test","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-04T17:35:58.690Z"}
+{"feedbackCategoriesCount":1,"isOrg":true,"level":"info","message":"Starting categorization of 10 posts","productCategoriesCount":1,"targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-04T17:36:06.960Z"}
+{"batchSize":2,"level":"info","message":"Processing batch 1","timestamp":"2024-12-04T17:36:06.961Z","totalProcessed":0}
+{"batchSize":2,"batchStart":0,"error":{"message":"Unexpected token '`', \"```json\n{\n\"... is not valid JSON","name":"SyntaxError","stack":"SyntaxError: Unexpected token '`', \"```json\n{\n\"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at C:\\My Files\\projects\\social_eye_services\\src\\test_functions\\categorize.ts:173:31\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\My Files\\projects\\social_eye_services\\src\\test_functions\\categorize.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"},"level":"error","message":"Error processing batch","timestamp":"2024-12-04T17:36:10.039Z"}
+{"isOrg":true,"level":"info","message":"Starting categorization test","targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-04T17:37:03.700Z"}
+{"feedbackCategoriesCount":1,"isOrg":true,"level":"info","message":"Starting categorization of 10 posts","productCategoriesCount":1,"targetId":"org_2pUEcMBmWPLRIhkDoGEZrMzaUyF","timestamp":"2024-12-04T17:37:10.861Z"}
+{"batchSize":2,"level":"info","message":"Processing batch 1","timestamp":"2024-12-04T17:37:10.862Z","totalProcessed":0}
+{"level":"info","message":"Successfully processed batch 1","processedCount":2,"timestamp":"2024-12-04T17:37:15.869Z","totalPosts":10}
+{"batchSize":2,"level":"info","message":"Processing batch 2","timestamp":"2024-12-04T17:37:45.877Z","totalProcessed":2}
+{"level":"info","message":"Successfully processed batch 2","processedCount":4,"timestamp":"2024-12-04T17:37:51.581Z","totalPosts":10}
+{"batchSize":2,"level":"info","message":"Processing batch 3","timestamp":"2024-12-04T17:38:21.595Z","totalProcessed":4}
