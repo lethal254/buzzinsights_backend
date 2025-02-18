@@ -39,6 +39,7 @@ const QuerySchema = z.object({
   userId: z.string().optional(),
   orgId: z.string().optional(),
   search: z.string().optional(),
+  hideNoise: z.string().optional(),
 })
 
 // GET /api/posts
@@ -62,9 +63,12 @@ router.get("/", async (req: Request, res) => {
       ? new Date().getTime() - params.window * 60 * 60 * 1000
       : undefined
 
+      console.log(params.hideNoise)
+
     // Build where clause
     const where: any = {
       AND: [
+        params.hideNoise ? { category: { not: "Noise" } } : undefined,
         params.userId ? { userId: params.userId } : undefined,
         params.orgId ? { orgId: params.orgId } : undefined,
         params.category ? { category: params.category } : undefined,
@@ -85,6 +89,8 @@ router.get("/", async (req: Request, res) => {
           : undefined,
       ].filter(Boolean), // Remove undefined values
     }
+
+    console.log("where", where)
 
     // Add sort by clause
 

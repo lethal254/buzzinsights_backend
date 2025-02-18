@@ -1,7 +1,9 @@
 import { Annotation, StateGraph, START, END } from "@langchain/langgraph"
 import { chatModel } from "./aiConfig"
 import { extractDateRange } from "./date.utils"
-import { processUserQuery, summarizeChatHistory } from "./langGraphHelpers" // NEW: import helper functions
+import { summarizeChatHistory } from "./langGraphHelpers"
+import { retrievalNode, calculateRelevance } from "./ragflow" // Update import to include calculateRelevance
+import { Document } from "@langchain/core/documents"
 
 // Define GraphAnnotation schema
 export const GraphAnnotation = Annotation.Root({
@@ -46,29 +48,78 @@ export async function dateExtractionNode(
   }
 }
 
-// Node 2: Retrieval
-export async function retrievalNode(
-  state: typeof GraphAnnotation.State
-): Promise<Partial<typeof GraphAnnotation.State>> {
-  try {
-    // Assume processUserQuery is imported from elsewhere or defined similarly
-    const docs = await processUserQuery(state.userQuery, {
-      orgId: state.orgId,
-      userId: state.userId,
+// Optimize context compression
+async function compressContext(
+  docs: Document[],
+  query: string,
+  maxTokens: number = 3000
+): Promise<string> {
+  console.log("Initial docs count:", docs.length)
+
+  const relevantDocs = docs
+    .map((doc) => ({
+      doc,
+      score: calculateRelevance(query, doc.pageContent),
+    }))
+    .filter((item) => item.score > 0.05) // Lower threshold to get more results
+    .sort((a, b) => b.score - a.score)
+    .map((item) => item.doc)
+    .slice(0, 8) // Increase limit
+
+  console.log("Relevant docs after filtering:", relevantDocs.length)
+  console.log(
+    "Relevance scores:",
+    relevantDocs.map((doc) => calculateRelevance(query, doc.pageContent))
+  )
+
+  // Simple concatenation with key info
+  return relevantDocs
+    .map((doc) => {
+      const metadata = doc.metadata
+      return `
+Post: ${doc.pageContent.slice(0, 500)}...
+Category: ${metadata.category || "N/A"}
+Product: ${metadata.product || "N/A"}
+Sentiment: ${metadata.sentimentCategory || "N/A"}
+URL: ${metadata.permalink || "N/A"}
+---
+`
     })
-    let ctx = ""
-    for (const doc of docs) {
-      ctx += doc.pageContent + "\n"
-      // ...existing concatenation...
-    }
-    console.log("LangGraph - Retrieved context length:", ctx.length)
-    return {
-      context: ctx,
-      messages: state.messages.concat([{ type: "retrieval", content: ctx }]),
-    }
-  } catch (error) {
-    console.error("Error in retrievalNode:", error)
-    throw error
+    .join("\n")
+}
+
+// Optimize fact verification to be faster
+async function verifyFacts(
+  response: string,
+  context: string,
+  query: string
+): Promise<{ verified: string; confidence: number }> {
+  // Skip verification for short or simple responses
+  if (
+    response.length < 100 &&
+    !response.includes("number") &&
+    !response.includes("statistic")
+  ) {
+    return { verified: response, confidence: 1.0 }
+  }
+
+  // Use simpler verification prompt
+  const verificationPrompt = `
+Verify this response is supported by the context. If not, correct any unsupported claims.
+Query: ${query}
+Response: ${response}
+Context: ${context}
+`
+
+  const verificationResult = await chatModel.invoke(verificationPrompt)
+  const content =
+    typeof verificationResult.content === "string"
+      ? verificationResult.content
+      : String(verificationResult.content)
+
+  return {
+    verified: content,
+    confidence: content === response ? 1.0 : 0.8,
   }
 }
 
@@ -131,14 +182,13 @@ If no relevant data: "I don't see any relevant data about that in the current co
 3. **Data Structure Available**
 Each post contains:
 - content: Main post text
+- permalink: Full Reddit URL (already includes "https://www.reddit.com")
 - category: Feedback category (e.g., hardware, software, feature request)
-- product: The specific product mentioned
 - sentimentScore: (-1 to 1) sentiment rating
 - sentimentCategory: ("positive", "negative", "neutral")
 - sameIssuesCount: Number of similar reported issues
 - sameDeviceCount: Number of similar device mentions
 - solutionsCount: Number of provided solutions
-- permalink: Reddit post URL (prefix with "https://www.reddit.com")
 - labels: Topic labels array
 - comments: Array of related comments with similar fields
 
@@ -152,38 +202,51 @@ Remember:
 1. Only analyze data present in the context
 2. Provide specific numbers and metrics
 3. Quote relevant user feedback for key points
-4. Include permalinks to significant posts
-5. Never invent or hallucinate data
+4. When referencing posts, use the exact permalink provided
+5. Never modify or construct permalinks manually
+6. Never invent or hallucinate data
 `
 
     const prompt = promptTemplate
       .replace("{context}", state.context)
       .replace("{question}", state.userQuery)
-    const response = await chatModel.invoke(prompt)
 
-    // Convert response.content to string to satisfy type constraints
-    let responseContent: string
-    if (typeof response.content === "string") {
-      responseContent = response.content
-    } else if (Array.isArray(response.content)) {
-      responseContent = response.content
-        .map((item) =>
-          typeof item === "string"
-            ? item
-            : (item as any).text
-            ? (item as any).text
-            : JSON.stringify(item)
-        )
-        .join(" ")
-    } else {
-      responseContent = String(response.content)
+    const response = await chatModel.invoke(prompt)
+    let responseContent: string =
+      typeof response.content === "string"
+        ? response.content
+        : String(response.content)
+
+    // Skip verification for greetings or empty context
+    if (!state.context || state.context.trim() === "") {
+      return {
+        answer: responseContent,
+        messages: state.messages.concat([
+          { type: "generation", content: responseContent },
+        ]),
+      }
     }
 
-    console.log("LangGraph - AI Response:", responseContent)
+    // Verify facts in the response
+    const { verified, confidence } = await verifyFacts(
+      responseContent,
+      state.context,
+      state.userQuery
+    )
+
+    // Create final response with confidence disclaimer if needed
+    const finalResponse =
+      confidence < 0.8
+        ? `${responseContent}\n\nNote: Some information in this response may be incomplete or require additional verification.`
+        : responseContent
+
+    console.log("LangGraph - AI Response:", finalResponse)
+    console.log("Response confidence:", confidence)
+
     return {
-      answer: responseContent,
+      answer: finalResponse,
       messages: state.messages.concat([
-        { type: "generation", content: responseContent },
+        { type: "generation", content: finalResponse },
       ]),
     }
   } catch (error) {
@@ -206,8 +269,6 @@ export const makeRAGQuery = async ({
 }) => {
   try {
     const threadId = orgId || userId || "default_thread"
-    // Assume memorySavers is maintained elsewhere or add it here if needed.
-    const requestCheckpointer = new Map<string, any>() // simplified checkpointer map
     const requestGraph = new StateGraph(GraphAnnotation)
       .addNode("dateExtraction", dateExtractionNode)
       .addNode("retrieval", retrievalNode)
@@ -216,7 +277,7 @@ export const makeRAGQuery = async ({
       .addEdge("dateExtraction", "retrieval")
       .addEdge("retrieval", "generation")
       .addEdge("generation", END)
-      .compile({ checkpointer: requestCheckpointer.get(threadId) })
+      .compile()
 
     const partialState = {
       userQuery,

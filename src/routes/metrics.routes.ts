@@ -195,7 +195,6 @@ router.get("/", async (req: Request, res) => {
             ),
             topIssues: allPosts
               .sort((a, b) => b.numComments - a.numComments)
-              .slice(0, 5)
               .map((post) => ({
                 title: post.title,
                 commentCount: post.numComments,
@@ -231,7 +230,6 @@ router.get("/", async (req: Request, res) => {
       },
       topPosts: [...currentPosts]
         .sort((a, b) => b.numComments - a.numComments)
-        .slice(0, 5)
         .map((post) => ({
           title: post.title,
           commentCount: post.numComments,
@@ -280,7 +278,6 @@ router.get("/time-window", async (req, res) => {
 
 router.get("/new", async (req, res) => {
   const result = MetricsQuerySchema.safeParse(req.query)
-  console.log(req.query, "result")
   if (!result.success) {
     return ResponseUtils.error(
       res,
@@ -289,8 +286,6 @@ router.get("/new", async (req, res) => {
       "VALIDATION_ERROR"
     )
   }
-
-  console.log(result.data, "result.data")
 
   const { userId, orgId, timeWindow, product } = result.data
 
@@ -461,13 +456,10 @@ router.get("/new", async (req, res) => {
       topCategories: Array.from(top5CategoriesInCurrentWindowWithTop5Posts)
         .filter(([category]) => category !== "Noise")
         .sort((a, b) => b[1].count - a[1].count)
-        .slice(0, 5)
         .map(([category, data]) => ({
           category,
           count: data.count,
-          topIssues: data.posts
-            .sort((a, b) => b.commentCount - a.commentCount)
-            .slice(0, 5),
+          topIssues: data.posts.sort((a, b) => b.commentCount - a.commentCount),
         })),
       topPosts: top10MostEngagingPostsInCurrentWindow,
     },
@@ -482,13 +474,10 @@ router.get("/new", async (req, res) => {
       topCategories: Array.from(top5CategoriesInPreviousWindowWithTop5Posts)
         .filter(([category]) => category !== "Noise")
         .sort((a, b) => b[1].count - a[1].count)
-        .slice(0, 5)
         .map(([category, data]) => ({
           category,
           count: data.count,
-          topIssues: data.posts
-            .sort((a, b) => b.commentCount - a.commentCount)
-            .slice(0, 5),
+          topIssues: data.posts.sort((a, b) => b.commentCount - a.commentCount),
         })),
       topPosts: top10MostEngagingPostsInPreviousWindow,
     },

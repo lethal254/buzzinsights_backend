@@ -36,6 +36,7 @@
     "nodemailer": "^6.9.16",
     "sentiment": "^5.0.2",
     "snoowrap": "^1.23.0",
+    "stopword": "^3.1.4",
     "winston": "^3.17.0",
     "zod": "^3.24.1"
   },
@@ -44,6 +45,7 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.1",
     "@types/sentiment": "^5.0.4",
+    "@types/stopword": "^2.0.3",
     "nodemon": "^3.1.7",
     "prisma": "^6.0.0",
     "ts-node": "^10.9.2",

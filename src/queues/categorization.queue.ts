@@ -5,6 +5,7 @@ import { createLogger, transports, format } from "winston"
 import prisma from "../utils/prismaClient"
 import { ingestData } from "../utils/ingestion.utils"
 import { schedulePineconeIngestion } from "../queues/pineconeIngestion.queue"
+import { chatModel } from "../utils/aiConfig"
 
 const logger = createLogger({
   level: "info",
@@ -15,16 +16,18 @@ const logger = createLogger({
   ],
 })
 
-const geminiAPIKey = process.env.GEMINI_API_KEY as string
-const genAI = new GoogleGenerativeAI(geminiAPIKey)
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
+// const geminiAPIKey = process.env.GEMINI_API_KEY as string
+// const genAI = new GoogleGenerativeAI(geminiAPIKey)
+// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
+
+const model = chatModel
 
 // Create a new queue
 export const categorizationQueue = new Queue("categorization-queue", {
   redis: REDIS_CONFIG,
   defaultJobOptions: {
     repeat: {
-      every: 60 * 60 * 1000, // 1 hour
+      every: 5 * 60 * 1000, // 5 minutes
     },
   },
 })
@@ -178,8 +181,8 @@ IMPORTANT: Respond with raw JSON only, no markdown formatting. The response shou
 }
 `
 
-        const result = await model.generateContent(prompt)
-        const responseText = result.response.text()
+        const result = await model.invoke(prompt)
+        const responseText = result.content.toString()
 
         // Clean up markdown formatting if present and parse JSON
         const jsonStr = responseText.replace(/```json\n|\n```/g, "").trim()
