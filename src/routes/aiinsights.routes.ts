@@ -17,13 +17,10 @@ const ClearHistorySchema = z.object({
   orgId: z.string().optional(),
 })
 
-
-
-
 const SummarySchema = z.object({
   userId: z.string().optional(),
   orgId: z.string().optional(),
-  payload: z.string()
+  payload: z.string(),
 })
 
 /**
@@ -112,20 +109,19 @@ router.post("/clear_history", async (req, res) => {
   }
 })
 
-router.get("/summary", async (req, res) => {
-  console.log("HERE")
-  const result = SummarySchema.safeParse(req.query)
+router.post("/summary", async (req, res) => {
+  const bodyResult = SummarySchema.safeParse(req.body)
 
-  if (!result.success) {
+  if (!bodyResult.success) {
     return ResponseUtils.error(
       res,
-      result.error.errors[0].message,
+      bodyResult.error.errors[0].message,
       400,
       "VALIDATION_ERROR"
     )
   }
 
-  const { userId, orgId, payload } = result.data
+  const { userId, orgId, payload } = bodyResult.data
   const isOrg = Boolean(orgId)
 
   if (!userId && !orgId) {
@@ -136,7 +132,6 @@ router.get("/summary", async (req, res) => {
       "VALIDATION_ERROR"
     )
   }
-
 
   const promptTemplate = `
   You are an AI assistant tasked with analyzing Reddit feedback. Please analyze the following feedback post and provide a comprehensive analysis:
@@ -188,13 +183,12 @@ router.get("/summary", async (req, res) => {
 
   Here is the post: ${payload}
   `
-  
 
   try {
     const response = await chatModel.invoke(promptTemplate)
-    
-    ResponseUtils.success(res, { 
-      summary: response.content 
+
+    ResponseUtils.success(res, {
+      summary: response.content,
     })
   } catch (error) {
     ResponseUtils.error(
