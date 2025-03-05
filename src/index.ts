@@ -24,6 +24,12 @@ import preferencesRoutes from "./routes/preferences.routes"
 import postsRoutes from "./routes/posts.routes"
 import aiinsightsRoutes from "./routes/aiinsights.routes"
 import pineconeRoutes from "./routes/pineconeIngestion.route"
+import Redis from "ioredis"
+interface RedisError extends Error {
+  code?: string
+  errno?: number
+  syscall?: string
+}
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -42,6 +48,7 @@ app.use(express.json())
 
 // Rebuild Bull Board configuration on each request using only static queues
 const serverAdapter = new ExpressAdapter()
+
 app.use("/admin/queues", async (req, res, next) => {
   const staticQueues = [
     new BullAdapter(emailQueue),
@@ -66,7 +73,8 @@ app.use(
       admin: process.env.BULL_DASHBOARD_PASSWORD || "admin",
     },
     challenge: true,
-  })
+  }),
+  serverAdapter.getRouter()
 )
 // Mount the Bull Board UI
 app.use("/admin/queues", serverAdapter.getRouter())

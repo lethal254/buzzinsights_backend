@@ -1,6 +1,9 @@
 export const REDIS_CONFIG = {
-  host: process.env.REDIS_HOST || "localhost",
-  port: parseInt(process.env.REDIS_PORT || "6379"),
-  username: process.env.REDIS_USERNAME,
-  password: process.env.REDIS_PASSWORD,
+  host: process.env.AZURE_CACHE_FOR_REDIS_HOST_NAME || "localhost",
+  port: 6380, // Azure Redis Cache uses port 6380 for SSL
+  password: process.env.AZURE_CACHE_FOR_REDIS_ACCESS_KEY,
+  tls: {
+    servername: process.env.AZURE_CACHE_FOR_REDIS_HOST_NAME,
+    rejectUnauthorized: true,
+  },
 }

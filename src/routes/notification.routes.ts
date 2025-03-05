@@ -1,193 +1,239 @@
-import { Router } from 'express';
-import prisma from '../utils/prismaClient';
-import { startNotifications, stopNotifications } from '../queues/notification.queue';
-import { ResponseUtils } from '../utils/response.utils';
+import { Router } from "express"
+import prisma from "../utils/prismaClient"
+import {
+  enableNotifications,
+  disableNotifications,
+} from "../queues/notification.queue"
+import { ResponseUtils } from "../utils/response.utils"
+import { z } from "zod" // Add input validation
 
-const router = Router();
+const router = Router()
+
+// Input validation schemas
+const notificationSettingsSchema = z
+  .object({
+    userId: z.string().optional(),
+    orgId: z.string().optional(),
+    orgRole: z.string().optional(),
+    emails: z.array(z.string().email()).min(1),
+    timeWindow: z.number().min(1).max(168).default(24), // 1 hour to 1 week
+    issueThreshold: z.number().min(1).default(3),
+    volumeThresholdMultiplier: z.number().min(1).default(1.5),
+    sentimentThreshold: z.number().min(-1).max(1).default(0),
+    commentGrowthThreshold: z.number().min(1).default(2.0),
+  })
+  .refine((data) => Boolean(data.userId) || Boolean(data.orgId), {
+    message: "Either userId or orgId must be provided",
+  })
 
 /**
- * Start Notifications
- * POST /start
+ * Configure Notifications
+ * POST /configure
  */
-router.post("/start", async (req, res) => {
+router.post("/configure", async (req, res) => {
   try {
-    const {
-      userId,
-      orgId,
-      orgRole,
-      emails,
-      timeWindow,
-      issueThreshold,
-      volumeThresholdMultiplier = 1.5,
-      sentimentThreshold = 0,
-      commentGrowthThreshold = 2.0,
-    } = req.body;
-
-    const isOrg = Boolean(orgId);
+    const validatedData = notificationSettingsSchema.parse(req.body)
+    const { userId, orgId, orgRole, ...settings } = validatedData
+    const isOrg = Boolean(orgId)
 
     if (!userId && !orgId) {
       return ResponseUtils.error(
         res,
-        "Authentication error",
+        "Either userId or orgId is required",
         400,
-        'VALIDATION_ERROR'
-      );
+        "VALIDATION_ERROR"
+      )
     }
 
-    if (isOrg && orgRole !== 'org:admin') {
+    const targetId = orgId || userId
+    if (!targetId) {
       return ResponseUtils.error(
         res,
-        'Only org:admin can configure notifications for an organization',
-        403,
-        'FORBIDDEN'
-      );
+        "Invalid target ID",
+        400,
+        "VALIDATION_ERROR"
+      )
     }
 
     const updatedPreferences = await prisma.preferences.upsert({
-      where: isOrg ? { orgId } : { userId },
+      where: isOrg ? { orgId: targetId } : { userId: targetId },
       update: {
-        emails,
-        timeWindow: timeWindow || 24,
-        issueThreshold: issueThreshold || 3,
-        volumeThresholdMultiplier,
-        sentimentThreshold,
-        commentGrowthThreshold,
-        enabled: true
+        ...settings,
+        enabled: true,
+        ingestionActive: true,
       },
       create: {
-        ...(isOrg ? { orgId } : { userId }),
-        emails: emails || [],
-        timeWindow: timeWindow || 24,
-        issueThreshold: issueThreshold || 3,
-        volumeThresholdMultiplier,
-        sentimentThreshold,
-        commentGrowthThreshold,
-        enabled: true
-      }
-    });
+        ...(isOrg ? { orgId: targetId } : { userId: targetId }),
+        ...settings,
+        enabled: true,
+        ingestionActive: true,
+      },
+    })
 
-    const interval = updatedPreferences.timeWindow * 60 * 60 * 1000; // Convert timeWindow to milliseconds
-    await startNotifications(orgId || userId, isOrg, interval);
+    // Enable notifications with new settings
+    await enableNotifications(targetId, isOrg)
 
     ResponseUtils.success(res, {
-      message: "Notifications started successfully",
-      settings: updatedPreferences
-    });
+      message: "Notification preferences updated successfully",
+      settings: updatedPreferences,
+    })
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return ResponseUtils.error(
+        res,
+        "Invalid input data",
+        400,
+        "VALIDATION_ERROR",
+        error.errors
+      )
+    }
     ResponseUtils.error(
       res,
-      "Failed to start notifications",
+      "Failed to configure notifications",
       500,
-      'NOTIFICATION_ERROR',
+      "NOTIFICATION_ERROR",
       error instanceof Error ? error.message : undefined
-    );
+    )
   }
-});
+})
 
 /**
- * Stop Notifications
- * POST /stop
+ * Toggle Notifications
+ * POST /toggle
  */
-router.post("/stop", async (req, res) => {
+router.post("/toggle", async (req, res) => {
   try {
-    const { userId, orgId, orgRole } = req.body;
-    const isOrg = Boolean(orgId);
+    const { userId, orgId, orgRole, enable } = req.body
+    const isOrg = Boolean(orgId)
 
     if (!userId && !orgId) {
       return ResponseUtils.error(
         res,
-        "Authentication error",
+        "Either userId or orgId is required",
         400,
-        'VALIDATION_ERROR'
-      );
+        "VALIDATION_ERROR"
+      )
     }
 
-    if (isOrg && orgRole !== 'org:admin') {
+    const targetId = orgId || userId
+    if (!targetId) {
       return ResponseUtils.error(
         res,
-        'Only org:admin can stop notifications for an organization',
-        403,
-        'FORBIDDEN'
-      );
+        "Invalid target ID",
+        400,
+        "VALIDATION_ERROR"
+      )
     }
 
-    // Get existing preferences
     const preferences = await prisma.preferences.findUnique({
-      where: isOrg ? { orgId } : { userId }
-    });
+      where: isOrg ? { orgId: targetId } : { userId: targetId },
+    })
 
     if (!preferences) {
       return ResponseUtils.error(
         res,
-        "No notification settings found",
+        "Please configure notifications first",
         404,
-        'NOT_FOUND_ERROR'
-      );
+        "NOT_FOUND_ERROR"
+      )
     }
 
-    // Update preferences to disable notifications
-    await prisma.preferences.update({
-      where: isOrg ? { orgId } : { userId },
-      data: {
-        enabled: false
-      }
-    });
+    if (enable) {
+      await enableNotifications(targetId, isOrg)
+    } else {
+      await disableNotifications(targetId, isOrg)
+    }
 
-    // Stop the notification job
-    await stopNotifications(orgId || userId, isOrg);
+    await prisma.preferences.update({
+      where: isOrg ? { orgId: targetId } : { userId: targetId },
+      data: {
+        enabled: enable,
+        ingestionActive: enable,
+      },
+    })
 
     ResponseUtils.success(res, {
-      message: "Notifications stopped successfully"
-    });
+      message: `Notifications ${enable ? "enabled" : "disabled"} successfully`,
+    })
   } catch (error) {
     ResponseUtils.error(
       res,
-      "Failed to stop notifications",
+      "Failed to toggle notifications",
       500,
-      'NOTIFICATION_ERROR',
+      "NOTIFICATION_ERROR",
       error instanceof Error ? error.message : undefined
-    );
+    )
   }
-});
+})
 
 /**
- * Get Notification History
+ * Get Notification History with Details
  * GET /history
  */
 router.get("/history", async (req, res) => {
   try {
-    const orgId = req.query.orgId as string;
-    const userId = req.query.userId as string;
-    const limit = parseInt(req.query.limit as string) || 10;
-    const isOrg = Boolean(orgId);
+    const orgId = req.query.orgId as string
+    const userId = req.query.userId as string
+    const limit = Math.min(parseInt(req.query.limit as string) || 10, 50)
+    const isOrg = Boolean(orgId)
 
     if (!userId && !orgId) {
       return ResponseUtils.error(
         res,
-        "Authentication error",
+        "Either userId or orgId is required",
         400,
-        'VALIDATION_ERROR'
-      );
+        "VALIDATION_ERROR"
+      )
     }
 
     const notifications = await prisma.notificationHistory.findMany({
       where: isOrg ? { orgId } : { userId },
-      orderBy: {
-        createdAt: 'desc'
+      select: {
+        id: true,
+        createdAt: true,
+        category: true,
+        issueCount: true,
+        emailsSentTo: true,
+        postIds: true,
       },
-      take: limit
-    });
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: limit,
+    })
 
-    ResponseUtils.success(res, notifications);
+    // If you need post details, fetch them separately
+    const postIds = notifications.flatMap((n) => n.postIds)
+    const posts = await prisma.redditPost.findMany({
+      where: {
+        id: { in: postIds },
+      },
+      select: {
+        id: true,
+        title: true,
+        category: true,
+        sentimentScore: true,
+        numComments: true,
+        createdUtc: true,
+      },
+    })
+
+    // Combine the data
+    const notificationsWithPosts = notifications.map((notification) => ({
+      ...notification,
+      posts: posts.filter((post) => notification.postIds.includes(post.id)),
+    }))
+
+    ResponseUtils.success(res, notificationsWithPosts)
   } catch (error) {
     ResponseUtils.error(
       res,
       "Failed to fetch notification history",
       500,
-      'NOTIFICATION_ERROR',
+      "NOTIFICATION_ERROR",
       error instanceof Error ? error.message : undefined
-    );
+    )
   }
-});
+})
 
-export default router;
+export default router
