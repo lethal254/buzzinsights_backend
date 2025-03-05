@@ -34,15 +34,35 @@ interface RedisError extends Error {
 const app = express()
 const port = process.env.PORT || 4000
 
-// CORS configuration
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  process.env.FRONTEND_URL,
+].filter(Boolean) // Remove any undefined values
+
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "*",
+  origin: function (
+    origin: string | undefined,
+    callback: (error: Error | null, allow?: boolean) => void
+  ) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) {
+      return callback(null, true)
+    }
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      console.warn(`Origin ${origin} not allowed by CORS`)
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   credentials: true,
   optionsSuccessStatus: 200,
+  maxAge: 86400, // 24 hours
 }
-
 app.use(cors(corsOptions))
 app.use(express.json())
 
