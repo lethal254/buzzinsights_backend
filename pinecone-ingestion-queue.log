@@ -850,3 +850,7 @@
 {"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-23T17:20:22.149Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
 {"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-23T17:25:22.327Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
 {"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-02-23T17:30:24.436Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"jobId":"pinecone-ingestion-org_2tUiQrgBzzq1XrmRqW2W0gL7LJx-no-user","level":"info","message":"Processing pinecone ingestion job","payload":{"orgId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx"},"timestamp":"2025-03-06T01:20:13.330Z"}
+{"level":"info","message":"Calling ingestData","orgId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T01:20:18.338Z"}
+{"duration":"13146ms","jobId":"pinecone-ingestion-org_2tUiQrgBzzq1XrmRqW2W0gL7LJx-no-user","level":"info","message":"ingestData completed","timestamp":"2025-03-06T01:20:31.483Z"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx"},"timestamp":"2025-03-06T08:05:41.281Z","uniqueJobId":"pinecone-ingestion-org_2tUiQrgBzzq1XrmRqW2W0gL7LJx-no-user"}

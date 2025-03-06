@@ -7049,3 +7049,177 @@
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741210800000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T21:40:01.221Z"}
 {"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741210800000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T21:40:05.280Z"}
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741210800000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T21:40:05.524Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741214700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T22:45:01.234Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741214700000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T22:45:06.867Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741214700000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T22:45:07.115Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741215000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T22:50:01.228Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741215000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T22:50:03.794Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741215000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T22:50:04.039Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217100000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T23:25:01.359Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217100000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T23:25:03.983Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217100000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T23:25:04.233Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217400000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T23:30:01.250Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217400000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T23:30:05.321Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217400000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T23:30:05.570Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T23:35:01.247Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217700000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T23:35:03.859Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741217700000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T23:35:04.108Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T23:40:01.242Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T23:40:05.251Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T23:40:05.499Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218300000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T23:45:01.244Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218300000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T23:45:05.308Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218300000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T23:45:05.558Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218600000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T23:50:01.244Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218600000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T23:50:03.786Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218600000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T23:50:04.034Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218900000","level":"info","message":"Starting categorization job","timestamp":"2025-03-05T23:55:01.246Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218900000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-05T23:55:05.288Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741218900000","level":"info","message":"Categorization job completed","timestamp":"2025-03-05T23:55:05.536Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741219200000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T00:00:01.246Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741219200000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T00:00:03.820Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741219200000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T00:00:04.069Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220100000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T00:15:01.390Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220100000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T00:15:05.472Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220100000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T00:15:05.722Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220400000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T00:20:01.253Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220400000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T00:20:05.559Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220400000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T00:20:05.848Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T00:25:01.236Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220700000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T00:25:05.204Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741220700000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T00:25:05.453Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T00:30:01.274Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T00:30:05.294Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T00:30:05.553Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221600000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T00:40:01.330Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221600000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T00:40:05.287Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221600000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T00:40:05.536Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221900000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T00:45:01.237Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221900000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T00:45:05.236Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741221900000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T00:45:05.484Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741224900000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T01:35:01.437Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741224900000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T01:35:05.517Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741224900000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T01:35:05.769Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741225500000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T01:45:01.425Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741225500000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T01:45:05.353Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741225500000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T01:45:05.604Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741226100000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T01:55:01.337Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741226100000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T01:55:05.400Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741226100000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T01:55:05.653Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741226400000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T02:00:01.240Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741226400000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T02:00:03.838Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741226400000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T02:00:04.090Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741229400000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T02:50:01.247Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741229400000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T02:50:05.247Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741229400000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T02:50:05.496Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741229700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T02:55:01.246Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741229700000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T02:55:05.169Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741229700000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T02:55:05.419Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741230000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T03:00:01.252Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741230000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T03:00:05.249Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741230000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T03:00:05.497Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741231800000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T03:30:01.240Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741231800000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T03:30:05.141Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741231800000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T03:30:05.391Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741232400000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T03:40:01.301Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741232400000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T03:40:05.246Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741232400000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T03:40:05.496Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741232700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T03:45:01.256Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741232700000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T03:45:05.230Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741232700000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T03:45:05.479Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741233000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T03:50:01.239Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741233000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T03:50:05.305Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741233000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T03:50:05.555Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741233300000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T03:55:01.263Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741233300000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T03:55:03.870Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741233300000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T03:55:04.119Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741234500000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T04:15:01.252Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741234500000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T04:15:05.287Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741234500000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T04:15:05.536Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741235400000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T04:30:01.253Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741235400000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T04:30:05.331Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741235400000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T04:30:05.580Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741235700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T04:35:01.252Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741235700000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T04:35:05.311Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741235700000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T04:35:05.560Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T04:40:01.252Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T04:40:03.882Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T04:40:04.131Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236300000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T04:45:01.254Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236300000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T04:45:05.244Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236300000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T04:45:05.494Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236600000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T04:50:01.206Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236600000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T04:50:03.773Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741236600000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T04:50:04.011Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741237200000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:00:01.200Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741237200000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:00:05.278Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741237200000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:00:05.514Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741237800000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:10:01.210Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741237800000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:10:05.223Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741237800000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:10:05.462Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741238400000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:20:01.192Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741238400000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:20:05.265Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741238400000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:20:05.504Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741238700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:25:01.195Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741238700000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:25:05.193Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741238700000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:25:05.432Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:30:01.198Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:30:05.123Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:30:05.360Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239300000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:35:01.255Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239300000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:35:05.472Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239300000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:35:05.721Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239600000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:40:01.192Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239600000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:40:03.765Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741239600000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:40:04.004Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240200000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:50:01.429Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240200000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:50:04.045Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240200000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:50:04.283Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240500000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T05:55:01.206Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240500000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T05:55:05.146Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240500000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T05:55:05.384Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240800000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T06:00:01.205Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240800000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T06:00:03.763Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741240800000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T06:00:04.002Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T06:19:59.247Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T06:20:03.236Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T06:20:03.473Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242600000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T06:29:59.263Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242600000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T06:30:06.247Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242600000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T06:30:06.486Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242900000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T06:34:59.260Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242900000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T06:35:03.266Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741242900000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T06:35:03.508Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741243200000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T06:39:59.257Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741243200000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T06:40:03.189Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741243200000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T06:40:03.427Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741243800000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T06:49:59.264Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741243800000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T06:50:03.214Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741243800000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T06:50:03.452Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245000000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T07:09:59.298Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245000000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T07:10:01.874Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245000000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T07:10:02.113Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245300000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T07:14:59.289Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245300000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T07:15:01.908Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245300000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T07:15:02.151Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245600000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T07:19:59.303Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245600000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T07:20:04.932Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741245600000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T07:20:05.171Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741246500000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T07:34:59.310Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741246500000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T07:35:01.922Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741246500000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T07:35:02.163Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741247100000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T07:44:59.319Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741247100000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T07:45:06.632Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741247100000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T07:45:06.870Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248300000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T08:04:59.349Z"}
+{"feedbackCategoriesCount":15,"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248300000","level":"info","message":"Starting categorization of 19 posts","productCategoriesCount":16,"targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T08:05:03.990Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248300000","level":"info","message":"Processed batch of 10 posts","processedCount":10,"timestamp":"2025-03-06T08:05:18.203Z","totalPosts":19}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248300000","level":"info","message":"Processed batch of 9 posts","processedCount":19,"timestamp":"2025-03-06T08:05:35.802Z","totalPosts":19}
+{"errorCount":0,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248300000","level":"info","message":"Categorization job completed","processedCount":19,"timestamp":"2025-03-06T08:05:40.806Z","totalPosts":19}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248300000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T08:05:41.519Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248900000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T08:14:59.364Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248900000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T08:15:03.373Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741248900000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T08:15:03.612Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741249500000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T08:24:59.352Z"}
+{"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741249500000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T08:25:01.930Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741249500000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T08:25:02.168Z"}

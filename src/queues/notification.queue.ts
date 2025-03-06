@@ -34,32 +34,42 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-// Process notifications
+// Process all notifications for users with valid settings
 notificationQueue.process(async (job) => {
-  const { userId, orgId } = job.data as NotificationData
+  const { userId, orgId } = job.data
 
-  // Get user preferences
+  // Get preferences for this job
   const preferences = await prisma.preferences.findFirst({
-    where: {
-      ...(userId ? { userId } : { orgId }),
-      enabled: true,
-    },
+    where: orgId ? { orgId } : { userId },
   })
 
-  if (!preferences || !preferences.emails.length) {
+  // Skip if no preferences or emails
+  if (!preferences || !preferences.enabled || preferences.emails.length === 0) {
+    console.log(
+      `Skipping notification check for ${
+        orgId || userId
+      } - no active configuration`
+    )
     return
   }
 
-  const timeWindowHours = preferences.timeWindow
   const currentTime = new Date()
-  const windowStart = new Date(
-    currentTime.getTime() - timeWindowHours * 60 * 60 * 1000
-  )
+  const lastNotified = preferences.lastNotified || new Date(0)
+  const timeWindowMs = preferences.timeWindow * 60 * 60 * 1000
+
+  // Check if enough time has passed since last notification
+  if (currentTime.getTime() - lastNotified.getTime() < timeWindowMs) {
+    return
+  }
+
+  const windowStart = new Date(currentTime.getTime() - timeWindowMs)
 
   // Get posts within time window
   const posts = await prisma.redditPost.findMany({
     where: {
-      ...(userId ? { userId } : { orgId }),
+      ...(preferences.userId
+        ? { userId: preferences.userId }
+        : { orgId: preferences.orgId }),
       createdUtc: {
         gte: BigInt(Math.floor(windowStart.getTime() / 1000)),
       },
@@ -85,8 +95,8 @@ notificationQueue.process(async (job) => {
   // Update notification history
   await prisma.notificationHistory.create({
     data: {
-      userId,
-      orgId,
+      userId: preferences.userId,
+      orgId: preferences.orgId,
       postIds: posts.map((p) => p.id),
       category: "all",
       issueCount: posts.length,
@@ -100,6 +110,21 @@ notificationQueue.process(async (job) => {
     data: { lastNotified: currentTime },
   })
 })
+
+// Schedule the recurring job to check all notifications
+// Run every hour by default
+const NOTIFICATION_CHECK_INTERVAL = 60 * 60 * 1000 // 1 hour in milliseconds
+
+notificationQueue.add(
+  {},
+  {
+    repeat: {
+      every: NOTIFICATION_CHECK_INTERVAL,
+    },
+    removeOnComplete: true,
+    removeOnFail: false,
+  }
+)
 
 function checkThresholds(
   posts: RedditPost[],
@@ -248,77 +273,4 @@ async function sendNotificationEmail(
     subject: `Community Activity Alert - Category Insights - ${new Date().toLocaleDateString()}`,
     html,
   })
-}
-
-async function getNotificationJobKey(
-  targetId: string,
-  isOrg: boolean
-): Promise<string> {
-  return `notifications:${isOrg ? "org" : "user"}:${targetId}`
-}
-
-export async function manageNotifications(
-  targetId: string,
-  isOrg: boolean,
-  enable: boolean
-) {
-  try {
-    const preferences = await prisma.preferences.findFirst({
-      where: isOrg ? { orgId: targetId } : { userId: targetId },
-    })
-
-    if (!preferences) {
-      throw new Error("Preferences not found")
-    }
-
-    // Update preferences
-    await prisma.preferences.update({
-      where: { id: preferences.id },
-      data: { ingestionActive: enable },
-    })
-
-    const jobKey = await getNotificationJobKey(targetId, isOrg)
-
-    if (enable) {
-      // Schedule new notification job
-      await notificationQueue.add(
-        {
-          userId: isOrg ? undefined : targetId,
-          orgId: isOrg ? targetId : undefined,
-        },
-        {
-          jobId: jobKey,
-          repeat: {
-            every: preferences.timeWindow * 60 * 60 * 1000,
-          },
-        }
-      )
-      console.log(
-        `Notifications enabled for ${isOrg ? "org" : "user"}: ${targetId}`
-      )
-    } else {
-      // Remove existing jobs
-      const repeatable = await notificationQueue.getRepeatableJobs()
-      const job = repeatable.find((j) => j.key.includes(jobKey))
-
-      if (job) {
-        await notificationQueue.removeRepeatableByKey(job.key)
-        console.log(
-          `Notifications disabled for ${isOrg ? "org" : "user"}: ${targetId}`
-        )
-      }
-    }
-  } catch (error) {
-    console.error("Error managing notifications:", error)
-    throw new Error(`Failed to ${enable ? "enable" : "disable"} notifications`)
-  }
-}
-
-// Replace the existing scheduleNotifications function with these convenience methods
-export async function enableNotifications(targetId: string, isOrg: boolean) {
-  return manageNotifications(targetId, isOrg, true)
-}
-
-export async function disableNotifications(targetId: string, isOrg: boolean) {
-  return manageNotifications(targetId, isOrg, false)
 }
