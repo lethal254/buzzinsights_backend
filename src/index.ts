@@ -38,7 +38,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
   "http://localhost:4000",
-
+  "https://buzzinsightsbackend-d2akfjfggeh3f3fw.eastus2-01.azurewebsites.net",
   process.env.FRONTEND_URL,
 ].filter(Boolean) // Remove any undefined values
 
