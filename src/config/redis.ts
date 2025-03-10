@@ -4,6 +4,5 @@ export const REDIS_CONFIG = {
   password: process.env.AZURE_CACHE_FOR_REDIS_ACCESS_KEY,
   tls: {
     servername: process.env.AZURE_CACHE_FOR_REDIS_HOST_NAME,
-    rejectUnauthorized: true,
   },
 }
