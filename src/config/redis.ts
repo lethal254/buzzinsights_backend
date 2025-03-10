@@ -7,6 +7,7 @@ export const redis = new Redis({
   tls: {
     servername: process.env.AZURE_CACHE_FOR_REDIS_HOST_NAME,
   },
+  enableTLSForSentinelMode: false,
   maxRetriesPerRequest: null, // Disable request retries
   enableReadyCheck: false, // Skip readiness check to prevent issues
 })

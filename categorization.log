@@ -7237,3 +7237,6 @@
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":90,"timestamp":"2025-03-10T13:14:52.237Z","totalPosts":181}
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":100,"timestamp":"2025-03-10T13:15:10.988Z","totalPosts":181}
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":110,"timestamp":"2025-03-10T13:15:57.155Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741612200000","level":"info","message":"Starting categorization job","timestamp":"2025-03-10T13:48:51.451Z"}
+{"feedbackCategoriesCount":50,"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741612200000","level":"info","message":"Starting categorization of 88 posts","productCategoriesCount":41,"targetId":"org_2rY5icRiDG1cntMyBvUyQujS8X8","timestamp":"2025-03-10T13:48:58.792Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741612200000","level":"info","message":"Processed batch of 10 posts","processedCount":10,"timestamp":"2025-03-10T13:49:15.218Z","totalPosts":88}
