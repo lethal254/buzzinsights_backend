@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 dotenv.config()
 import Snoowrap from "snoowrap"
 import Queue from "bull"
-import { REDIS_CONFIG } from "../config/redis"
+import { redis } from "../config/redis"
 import prisma from "../utils/prismaClient"
 import { SubReddit } from "@prisma/client"
 
@@ -46,7 +46,7 @@ const r = new Snoowrap({
 
 // Initialize Bull queue
 export const ingestionQueue = new Queue("ingestion-queue", {
-  redis: REDIS_CONFIG,
+  redis: redis,
   defaultJobOptions: {
     removeOnComplete: true,
     removeOnFail: true,

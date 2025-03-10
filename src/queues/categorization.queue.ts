@@ -1,5 +1,5 @@
 import Queue from "bull"
-import { REDIS_CONFIG } from "../config/redis"
+import { redis } from "../config/redis"
 import { GoogleGenerativeAI } from "@google/generative-ai"
 import { createLogger, transports, format } from "winston"
 import prisma from "../utils/prismaClient"
@@ -24,7 +24,7 @@ const model = chatModel
 
 // Create a new queue
 export const categorizationQueue = new Queue("categorization-queue", {
-  redis: REDIS_CONFIG,
+  redis: redis,
   defaultJobOptions: {
     repeat: {
       every: 5 * 60 * 1000, // 5 minutes

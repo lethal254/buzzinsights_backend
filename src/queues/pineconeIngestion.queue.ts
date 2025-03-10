@@ -1,5 +1,5 @@
 import Queue, { Job } from "bull"
-import { REDIS_CONFIG } from "../config/redis"
+import { redis } from "../config/redis"
 import { createLogger, transports, format } from "winston"
 import { ingestData } from "../utils/ingestion.utils"
 
@@ -22,7 +22,7 @@ const logger = createLogger({
 
 // Create a fixed queue instance
 export const pineconeQueue = new Queue<IngestionJobData>("pinecone-ingestion", {
-  redis: REDIS_CONFIG,
+  redis: redis,
   defaultJobOptions: {
     removeOnComplete: false,
     removeOnFail: false,

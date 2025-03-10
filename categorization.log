@@ -7223,3 +7223,17 @@
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741249500000","level":"info","message":"Starting categorization job","timestamp":"2025-03-06T08:24:59.352Z"}
 {"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741249500000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-06T08:25:01.930Z"}
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741249500000","level":"info","message":"Categorization job completed","timestamp":"2025-03-06T08:25:02.168Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Starting categorization job","timestamp":"2025-03-10T13:09:36.873Z"}
+{"feedbackCategoriesCount":50,"isOrg":true,"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Starting categorization of 181 posts","productCategoriesCount":41,"targetId":"org_2rY5icRiDG1cntMyBvUyQujS8X8","timestamp":"2025-03-10T13:09:44.318Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":10,"timestamp":"2025-03-10T13:09:58.465Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":20,"timestamp":"2025-03-10T13:10:22.000Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":30,"timestamp":"2025-03-10T13:11:20.205Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":40,"timestamp":"2025-03-10T13:11:43.109Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":50,"timestamp":"2025-03-10T13:12:15.863Z","totalPosts":181}
+{"batchSize":10,"batchStart":50,"error":{"clientVersion":"6.0.0","code":"P2025","meta":{"cause":"Record to update not found.","modelName":"RedditPost"},"name":"PrismaClientKnownRequestError"},"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"error","message":"Error processing batch","timestamp":"2025-03-10T13:12:39.015Z"}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":60,"timestamp":"2025-03-10T13:13:28.241Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":70,"timestamp":"2025-03-10T13:13:49.714Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":80,"timestamp":"2025-03-10T13:14:14.792Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":90,"timestamp":"2025-03-10T13:14:52.237Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":100,"timestamp":"2025-03-10T13:15:10.988Z","totalPosts":181}
+{"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1740332100000","level":"info","message":"Processed batch of 10 posts","processedCount":110,"timestamp":"2025-03-10T13:15:57.155Z","totalPosts":181}
