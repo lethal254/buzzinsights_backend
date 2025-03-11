@@ -1,13 +1,14 @@
 import { RedisOptions } from "ioredis"
 
-const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL || ""
-const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || ""
+// const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL || ""
+// const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || ""
 
 export const redis: RedisOptions = {
-  host: new URL(UPSTASH_URL).hostname,
-  port: parseInt(process.env.UPSTASH_REDIS_PORT || "6379", 10),
-  password: UPSTASH_TOKEN,
+  host: process.env.AZURE_CACHE_FOR_REDIS_HOST_NAME || "localhost",
+  port: 6380,
+  password: process.env.AZURE_CACHE_FOR_REDIS_ACCESS_KEY,
   tls: {
+    servername: process.env.AZURE_CACHE_FOR_REDIS_HOST_NAME,
     rejectUnauthorized: false,
   },
   retryStrategy: (times: number) => Math.min(times * 50, 2000),

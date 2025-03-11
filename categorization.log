@@ -7423,3 +7423,7 @@
 {"jobId":"repeat:3e587a8edc22eaa2fbb84967fc950847:1741691400000","level":"info","message":"Starting categorization job","timestamp":"2025-03-11T11:10:03.890Z"}
 {"isOrg":true,"jobId":"repeat:3e587a8edc22eaa2fbb84967fc950847:1741691400000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-11T11:10:08.195Z"}
 {"jobId":"repeat:3e587a8edc22eaa2fbb84967fc950847:1741691400000","level":"info","message":"Categorization job completed","timestamp":"2025-03-11T11:10:08.440Z"}
+{"jobId":"repeat:734b14cd05e42b03d676064ba5ca32cf:1741691700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-11T11:15:13.630Z"}
+{"isOrg":true,"jobId":"repeat:734b14cd05e42b03d676064ba5ca32cf:1741691700000","level":"info","message":"No unprocessed posts found","targetId":"org_2tUiQrgBzzq1XrmRqW2W0gL7LJx","timestamp":"2025-03-11T11:15:19.901Z"}
+{"jobId":"repeat:734b14cd05e42b03d676064ba5ca32cf:1741691700000","level":"info","message":"Categorization job completed","timestamp":"2025-03-11T11:15:20.257Z"}
+{"jobId":"repeat:3e587a8edc22eaa2fbb84967fc950847:1741691700000","level":"info","message":"Starting categorization job","timestamp":"2025-03-11T11:15:20.516Z"}
