@@ -1,7 +1,7 @@
 import dotenv from "dotenv"
 dotenv.config()
 import Snoowrap from "snoowrap"
-import Queue from "bull"
+import { Queue, Worker } from "bullmq"
 import { redis } from "../config/redis"
 import prisma from "../utils/prismaClient"
 import { SubReddit } from "@prisma/client"
@@ -44,13 +44,92 @@ const r = new Snoowrap({
   password: process.env.REDDIT_PASSWORD!,
 })
 
-// Initialize Bull queue
+// Initialize BullMQ queue using the exported redis connection options
 export const ingestionQueue = new Queue("ingestion-queue", {
-  redis: redis,
+  connection: redis,
   defaultJobOptions: {
     removeOnComplete: true,
     removeOnFail: true,
   },
+})
+
+// Create a Worker to process jobs from the ingestionQueue
+const ingestionWorker = new Worker(
+  "ingestion-queue",
+  async (job) => {
+    if (!job || !job.data) {
+      console.error("Invalid job received:", job)
+      return
+    }
+
+    const { userId, orgId, subReddits } = job.data
+
+    try {
+      console.log(`🔄 Starting ingestion for user: ${userId}, org: ${orgId}`)
+      console.log(
+        `📊 Processing subreddits: ${subReddits
+          .map((subreddit: SubReddit) => subreddit.name)
+          .join(", ")}`
+      )
+
+      // Fetch posts from all subreddits
+      const allPosts = await getPostsFromSubReddits(subReddits)
+
+      // Process each batch of posts
+      for (const posts of allPosts) {
+        for (const post of posts) {
+          await saveAndProcessPost(post, userId, orgId)
+        }
+      }
+
+      console.log(`✅ Ingestion completed for user: ${userId}, org: ${orgId}`)
+      return { success: true }
+    } catch (error) {
+      console.error("Error processing ingestion job:", error)
+      throw error
+    }
+  },
+  { connection: redis }
+)
+
+// Handle job completion events on the worker
+ingestionWorker.on("completed", (job, result) => {
+  const { userId, orgId } = job.data
+  console.log(`✅ Job completed for user: ${userId}, org: ${orgId}`)
+})
+
+// Handle job failure events on the worker
+ingestionWorker.on("failed", async (job, error) => {
+  if (!job?.data) {
+    console.error("Failed job with no data:", error)
+    return
+  }
+
+  const { userId, orgId } = job.data
+  console.error(
+    `🚨 Job failed for user: ${userId}, org: ${orgId}. Error: ${error}`
+  )
+
+  // Update ingestionActive to false on failure
+  try {
+    await prisma.preferences.updateMany({
+      where: {
+        userId,
+        orgId: orgId || null,
+      },
+      data: {
+        ingestionActive: false,
+      },
+    })
+    console.log(
+      `⚠️ ingestionActive set to false for user: ${userId}, org: ${orgId}`
+    )
+  } catch (updateError) {
+    console.error(
+      "❌ Failed to update ingestion status to false after job failure:",
+      updateError
+    )
+  }
 })
 
 // Utility function to check if a URL is an image
@@ -78,7 +157,6 @@ const processComments = async (
   userId: string,
   orgId: string | null
 ): Promise<void> => {
-  // Explicit return type
   for (const comment of comments) {
     const commentData: RedditCommentData = {
       id: comment.id,
@@ -91,7 +169,7 @@ const processComments = async (
       body: comment.body,
       created_utc: comment.created_utc,
       score: comment.score,
-      replies: comment.replies, // Snoowrap already fetches replies recursively
+      replies: comment.replies,
     }
 
     try {
@@ -114,7 +192,7 @@ const processComments = async (
       })
       console.log(`✅ Comment saved/updated: ${commentData.id}`)
 
-      // If the comment has replies, process them recursively
+      // Process replies recursively, if any
       if (commentData.replies && commentData.replies.length > 0) {
         await processComments(postId, commentData.replies, userId, orgId)
       }
@@ -126,7 +204,7 @@ const processComments = async (
     }
 
     // Respect Reddit's API rate limits
-    await delay(5000) // 1-second delay between processing comments
+    await delay(5000)
   }
 }
 
@@ -136,7 +214,6 @@ const saveAndProcessPost = async (
   userId: string,
   orgId: string | null
 ): Promise<void> => {
-  // Explicit return type
   try {
     await prisma.redditPost.upsert({
       where: { id: post.id },
@@ -206,11 +283,11 @@ const saveAndProcessPost = async (
       })
   } catch (error) {
     console.error(`❌ Error processing post ${post.id}:`, error)
-    throw error // Ensure the job fails to trigger the 'failed' event
+    throw error
   }
 
   // Respect Reddit's API rate limits
-  await delay(3000) // 1-second delay between processing posts
+  await delay(3000)
 }
 
 // Function to fetch posts from subreddits
@@ -243,7 +320,6 @@ const getPostsFromSubReddits = async (subReddits: SubReddit[]) => {
 
       const duration = Date.now() - startTime
 
-      // Filter and map posts with careful error handling
       const mappedPosts = await Promise.all(
         posts.map(async (post: any) => {
           try {
@@ -293,7 +369,6 @@ const getPostsFromSubReddits = async (subReddits: SubReddit[]) => {
         })
       )
 
-      // Filter out null values and explicitly type as RedditPostData[]
       const validPosts = mappedPosts.filter(
         (post): post is RedditPostData => post !== null
       )
@@ -314,82 +389,7 @@ const getPostsFromSubReddits = async (subReddits: SubReddit[]) => {
   return results
 }
 
-// Define the job processor
-ingestionQueue.process(async (job) => {
-  if (!job || !job.data) {
-    console.error("Invalid job received:", job)
-    return
-  }
-
-  const { userId, orgId, subReddits } = job.data
-
-  try {
-    console.log(`🔄 Starting ingestion for user: ${userId}, org: ${orgId}`)
-    console.log(
-      `📊 Processing subreddits: ${subReddits
-        .map((subreddit: SubReddit) => subreddit.name)
-        .join(", ")}`
-    )
-
-    // Fetch posts from all subreddits
-    const allPosts = await getPostsFromSubReddits(subReddits)
-
-    // Process each batch of posts
-    for (const posts of allPosts) {
-      for (const post of posts) {
-        await saveAndProcessPost(post, userId, orgId)
-      }
-    }
-
-    console.log(`✅ Ingestion completed for user: ${userId}, org: ${orgId}`)
-    return { success: true }
-  } catch (error) {
-    console.error("Error processing ingestion job:", error)
-    throw error
-  }
-})
-
-// Handle job completion
-ingestionQueue.on("completed", (job, result) => {
-  const { userId, orgId } = job.data
-  console.log(`✅ Job completed for user: ${userId}, org: ${orgId}`)
-})
-
-// Handle job failure
-ingestionQueue.on("failed", async (job, error) => {
-  if (!job?.data) {
-    console.error("Failed job with no data:", error)
-    return
-  }
-
-  const { userId, orgId } = job.data
-  console.error(
-    `🚨 Job failed for user: ${userId}, org: ${orgId}. Error: ${error}`
-  )
-
-  // Update ingestionActive to false on failure
-  try {
-    await prisma.preferences.updateMany({
-      where: {
-        userId,
-        orgId: orgId || null,
-      },
-      data: {
-        ingestionActive: false,
-      },
-    })
-    console.log(
-      `⚠️ ingestionActive set to false for user: ${userId}, org: ${orgId}`
-    )
-  } catch (updateError) {
-    console.error(
-      "❌ Failed to update ingestion status to false after job failure:",
-      updateError
-    )
-  }
-})
-
-// Function to start ingestion with repeatable jobs
+// Define a function to schedule repeatable ingestion jobs
 export const startIngestion = async (data: {
   userId: string | null
   orgId: string | null
@@ -407,6 +407,7 @@ export const startIngestion = async (data: {
 `)
 
   await ingestionQueue.add(
+    "ingestion-job",
     {
       userId: data.userId,
       orgId: data.orgId,
@@ -415,7 +416,7 @@ export const startIngestion = async (data: {
     {
       repeat: {
         cron: data.cronSchedule,
-      },
+      } as any,
       jobId: `ingestion-${data.orgId || "no-org"}-${data.userId}`,
     }
   )

@@ -1,12 +1,14 @@
-import Queue from "bull"
+import { Queue, Worker } from "bullmq"
 import { PrismaClient, RedditPost, Preferences } from "@prisma/client"
 import nodemailer from "nodemailer"
 import { formatDistanceToNow } from "date-fns"
+import { redis } from "../config/redis"
 
 const prisma = new PrismaClient()
 
-// Combined notification queue
+// Create notification queue with default job options
 export const notificationQueue = new Queue("notifications", {
+  connection: redis,
   defaultJobOptions: {
     removeOnComplete: true,
     removeOnFail: false,
@@ -14,11 +16,6 @@ export const notificationQueue = new Queue("notifications", {
 })
 
 interface NotificationData {
-  userId?: string
-  orgId?: string
-}
-
-interface NotificationJobId {
   userId?: string
   orgId?: string
 }
@@ -34,98 +31,131 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-// Process all notifications for users with valid settings
-notificationQueue.process(async (job) => {
-  const { userId, orgId } = job.data
+// Create a Worker to process notification jobs
+const notificationWorker = new Worker(
+  "notifications",
+  async (job) => {
+    const { userId, orgId } = job.data as NotificationData
 
-  // Get preferences for this job
-  const preferences = await prisma.preferences.findFirst({
-    where: orgId ? { orgId } : { userId },
-  })
+    // Get preferences for this job
+    const preferences = await prisma.preferences.findFirst({
+      where: orgId ? { orgId } : { userId },
+    })
 
-  // Skip if no preferences or emails
-  if (!preferences || !preferences.enabled || preferences.emails.length === 0) {
-    console.log(
-      `Skipping notification check for ${
-        orgId || userId
-      } - no active configuration`
-    )
-    return
-  }
+    // Skip if no preferences or emails
+    if (
+      !preferences ||
+      !preferences.enabled ||
+      preferences.emails.length === 0
+    ) {
+      console.log(
+        `Skipping notification check for ${
+          orgId || userId
+        } - no active configuration`
+      )
+      return
+    }
 
-  const currentTime = new Date()
-  const lastNotified = preferences.lastNotified || new Date(0)
-  const timeWindowMs = preferences.timeWindow * 60 * 60 * 1000
+    const currentTime = new Date()
+    const lastNotified = preferences.lastNotified || new Date(0)
+    const timeWindowMs = preferences.timeWindow * 60 * 60 * 1000
 
-  // Check if enough time has passed since last notification
-  if (currentTime.getTime() - lastNotified.getTime() < timeWindowMs) {
-    return
-  }
+    // Check if enough time has passed since last notification
+    if (currentTime.getTime() - lastNotified.getTime() < timeWindowMs) {
+      return
+    }
 
-  const windowStart = new Date(currentTime.getTime() - timeWindowMs)
+    const windowStart = new Date(currentTime.getTime() - timeWindowMs)
 
-  // Get posts within time window
-  const posts = await prisma.redditPost.findMany({
-    where: {
-      ...(preferences.userId
-        ? { userId: preferences.userId }
-        : { orgId: preferences.orgId }),
-      createdUtc: {
-        gte: BigInt(Math.floor(windowStart.getTime() / 1000)),
+    // Get posts within time window
+    const posts = await prisma.redditPost.findMany({
+      where: {
+        ...(preferences.userId
+          ? { userId: preferences.userId }
+          : { orgId: preferences.orgId }),
+        createdUtc: {
+          gte: BigInt(Math.floor(windowStart.getTime() / 1000)),
+        },
       },
-    },
-    include: {
-      comments: true,
-    },
-    orderBy: {
-      numComments: "desc",
-    },
-  })
+      include: {
+        comments: true,
+      },
+      orderBy: {
+        numComments: "desc",
+      },
+    })
 
-  // Check thresholds
-  const shouldNotify = checkThresholds(posts, preferences)
+    // Check thresholds
+    const shouldNotify = checkThresholds(posts, preferences)
+    if (!shouldNotify) {
+      return
+    }
 
-  if (!shouldNotify) {
-    return
-  }
+    // Send email notification
+    await sendNotificationEmail(posts, preferences)
 
-  // Send email notification
-  await sendNotificationEmail(posts, preferences)
+    // Update notification history
+    await prisma.notificationHistory.create({
+      data: {
+        userId: preferences.userId,
+        orgId: preferences.orgId,
+        postIds: posts.map((p) => p.id),
+        category: "all",
+        issueCount: posts.length,
+        emailsSentTo: preferences.emails,
+      },
+    })
 
-  // Update notification history
-  await prisma.notificationHistory.create({
-    data: {
-      userId: preferences.userId,
-      orgId: preferences.orgId,
-      postIds: posts.map((p) => p.id),
-      category: "all",
-      issueCount: posts.length,
-      emailsSentTo: preferences.emails,
-    },
-  })
+    // Update last notified timestamp
+    await prisma.preferences.update({
+      where: { id: preferences.id },
+      data: { lastNotified: currentTime },
+    })
+  },
+  { connection: redis }
+)
 
-  // Update last notified timestamp
-  await prisma.preferences.update({
-    where: { id: preferences.id },
-    data: { lastNotified: currentTime },
-  })
+// Attach event listeners to the worker
+notificationWorker.on("failed", (job, error) => {
+  console.error("Notification job failed:", job?.id, error)
+})
+notificationWorker.on("completed", (job) => {
+  console.log("Notification job completed:", job.id)
 })
 
-// Schedule the recurring job to check all notifications
-// Run every hour by default
+// Schedule the recurring job to check notifications every hour
 const NOTIFICATION_CHECK_INTERVAL = 60 * 60 * 1000 // 1 hour in milliseconds
 
 notificationQueue.add(
+  "notification-check",
   {},
   {
-    repeat: {
-      every: NOTIFICATION_CHECK_INTERVAL,
-    },
+    repeat: { every: NOTIFICATION_CHECK_INTERVAL },
     removeOnComplete: true,
     removeOnFail: false,
   }
 )
 
+// New helper function to schedule a notification job
+export const scheduleNotification = async (
+  targetId: string,
+  isOrg: boolean
+) => {
+  const jobData: NotificationData = {
+    userId: isOrg ? undefined : targetId,
+    orgId: isOrg ? targetId : undefined,
+  }
+
+  await notificationQueue.add("notification-job", jobData, {
+    attempts: 3,
+    backoff: {
+      type: "exponential",
+      delay: 60000, // 1 minute
+    },
+  })
+}
+
+// Function to check thresholds for notifications
 function checkThresholds(
   posts: RedditPost[],
   preferences: Preferences
@@ -141,7 +171,7 @@ function checkThresholds(
   }, {} as Record<string, RedditPost[]>)
 
   // Check thresholds for each category
-  for (const [category, categoryPosts] of Object.entries(postsByCategory)) {
+  for (const [_, categoryPosts] of Object.entries(postsByCategory)) {
     // Volume threshold per category
     const volumeExceeded = categoryPosts.length >= preferences.issueThreshold
 
@@ -168,6 +198,7 @@ function checkThresholds(
   return false
 }
 
+// Function to send a notification email
 async function sendNotificationEmail(
   posts: RedditPost[],
   preferences: Preferences
@@ -176,7 +207,6 @@ async function sendNotificationEmail(
   const postsByCategory = posts.reduce((acc, post) => {
     const category = post.category || "uncategorized"
     if (category.toLowerCase() === "noise") return acc
-
     if (!acc[category]) {
       acc[category] = []
     }
@@ -244,8 +274,7 @@ async function sendNotificationEmail(
               <p style="color: #666; font-size: 14px;">
                 ${post.numComments} comments · Posted ${formatDistanceToNow(
                 new Date(Number(post.createdUtc) * 1000)
-              )} ago
-                · Sentiment: ${post.sentimentScore?.toFixed(2) || "N/A"}
+              )} ago · Sentiment: ${post.sentimentScore?.toFixed(2) || "N/A"}
               </p>
               <p style="margin: 10px 0;">${post.content.slice(0, 150)}...</p>
               ${

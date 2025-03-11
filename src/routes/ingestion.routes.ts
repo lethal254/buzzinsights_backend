@@ -166,7 +166,39 @@ router.post("/stop", async (req, res) => {
       )
     }
 
-    // Remove all active jobs
+    // Get all repeatable jobs first
+    const repeatableJobs = await ingestionQueue.getRepeatableJobs()
+
+    // Find and remove repeatable jobs for this user/org
+    for (const job of repeatableJobs) {
+      // Safely check job name and key
+      const jobName = job.name || ""
+      const jobKey = job.key || ""
+
+      if (
+        ((userId && jobName.includes(userId)) ||
+          (orgId && jobName.includes(orgId))) &&
+        jobKey
+      ) {
+        try {
+          // Use the new non-deprecated method
+          await ingestionQueue.removeJobScheduler(jobKey)
+        } catch (error) {
+          console.warn(`Failed to remove job scheduler ${jobKey}:`, error)
+          // Fallback to deprecated method if needed
+          try {
+            await ingestionQueue.removeRepeatableByKey(jobKey)
+          } catch (fallbackError) {
+            console.error(
+              `Failed to remove repeatable job ${jobKey} with fallback:`,
+              fallbackError
+            )
+          }
+        }
+      }
+    }
+
+    // Remove any remaining active/waiting/delayed jobs
     const activeJobs = await ingestionQueue.getActive()
     const waitingJobs = await ingestionQueue.getWaiting()
     const delayedJobs = await ingestionQueue.getDelayed()
@@ -175,15 +207,22 @@ router.post("/stop", async (req, res) => {
     let removedCount = 0
 
     for (const job of allJobs) {
-      const jobData = job.data
+      const jobData = job.data as { userId?: string; orgId?: string }
+
       if (
         (userId && jobData.userId === userId) ||
         (orgId && jobData.orgId === orgId)
       ) {
-        ;(await job.isActive())
-          ? await job.moveToFailed({ message: "Ingestion stopped" })
-          : await job.remove()
-        removedCount++
+        try {
+          if (await job.isActive()) {
+            await job.moveToFailed({ message: "Ingestion stopped" })
+          } else if (!job.opts.repeat) {
+            await job.remove()
+          }
+          removedCount++
+        } catch (error) {
+          console.warn(`Failed to handle job ${job.id}:`, error)
+        }
       }
     }
 
@@ -203,7 +242,7 @@ router.post("/stop", async (req, res) => {
       removedJobs: removedCount,
     })
   } catch (error) {
-    console.log(error)
+    console.error("Stop ingestion error:", error)
     ResponseUtils.error(
       res,
       "Failed to stop ingestion",

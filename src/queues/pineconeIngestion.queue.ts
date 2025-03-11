@@ -1,4 +1,4 @@
-import Queue, { Job } from "bull"
+import { Queue, Worker, Job } from "bullmq"
 import { redis } from "../config/redis"
 import { createLogger, transports, format } from "winston"
 import { ingestData } from "../utils/ingestion.utils"
@@ -20,41 +20,28 @@ const logger = createLogger({
   ],
 })
 
-// Create a fixed queue instance
+// Create the pinecone ingestion queue
 export const pineconeQueue = new Queue<IngestionJobData>("pinecone-ingestion", {
-  redis: redis,
+  connection: redis,
   defaultJobOptions: {
     removeOnComplete: false,
     removeOnFail: false,
   },
 })
 
-// Add event listeners for debugging job lifecycle
-pineconeQueue.on("active", (job) => {
-  console.info(`Job ${job.id} is now active`)
-})
-pineconeQueue.on("completed", (job, result) => {
-  console.info(`Job ${job.id} completed with result:`, result)
-})
-pineconeQueue.on("failed", (job, err) => {
-  console.error(`Job ${job.id} failed with error:`, err)
-})
-
-// Update the processor to register a named handler for "pinecone-ingestion"
-pineconeQueue.process(
+// Create a Worker to process jobs from the pinecone ingestion queue
+const pineconeWorker = new Worker<IngestionJobData>(
   "pinecone-ingestion",
   async (job: Job<IngestionJobData>) => {
     logger.info("Processing pinecone ingestion job", {
       jobId: job.id,
       payload: job.data.payload,
     })
-    // Optionally add a small delay to see the job active
+    // Optional delay to see the job active
     await new Promise((resolve) => setTimeout(resolve, 5000))
     const startTime = Date.now()
     try {
       const { orgId, userId } = job.data.payload || {}
-
-      // Added logging before calling ingestData
       logger.info("Calling ingestData", { orgId, userId })
       await ingestData({
         orgId: orgId || undefined,
@@ -68,8 +55,20 @@ pineconeQueue.process(
       logger.error("Error in pinecone ingestion job", { jobId: job.id, error })
       throw error
     }
-  }
+  },
+  { connection: redis }
 )
+
+// Attach event listeners for debugging job lifecycle
+pineconeWorker.on("active", (job) => {
+  console.info(`Job ${job.id} is now active`)
+})
+pineconeWorker.on("completed", (job, result) => {
+  console.info(`Job ${job.id} completed with result:`, result)
+})
+pineconeWorker.on("failed", (job, err) => {
+  console.error(`Job ${job?.id} failed with error:`, err)
+})
 
 // API to schedule a one-off pinecone ingestion job
 export const schedulePineconeIngestion = async (payload: {
@@ -80,7 +79,7 @@ export const schedulePineconeIngestion = async (payload: {
     payload.userId || "no-user"
   }`
 
-  // Remove any existing job with the same unique id (if applicable)
+  // Remove any existing repeatable job with the same unique id, if it exists
   const existingJobs = await pineconeQueue.getRepeatableJobs()
   for (const job of existingJobs) {
     if (job.id === uniqueJobId) {
@@ -100,7 +99,7 @@ export const schedulePineconeIngestion = async (payload: {
   logger.info("Scheduled one-off pinecone ingestion", { payload, uniqueJobId })
 }
 
-// Updated API to cancel pinecone ingestion job for a specific user/org
+// API to cancel pinecone ingestion jobs for a specific user/org
 export const cancelPineconeIngestion = async (payload: {
   orgId?: string
   userId?: string
@@ -123,7 +122,7 @@ export const cancelPineconeIngestion = async (payload: {
   }
 
   // Remove waiting jobs
-  const waitingJobs = await pineconeQueue.getWaiting()
+  const waitingJobs = await pineconeQueue.getJobs(["waiting"])
   for (const job of waitingJobs) {
     if (job.id === uniqueJobId) {
       await job.remove()
@@ -132,11 +131,25 @@ export const cancelPineconeIngestion = async (payload: {
     }
   }
 
-  // Move active jobs to failed
-  const activeJobs = await pineconeQueue.getActive()
+  // Remove delayed jobs
+  const delayedJobs = await pineconeQueue.getJobs(["delayed"])
+  for (const job of delayedJobs) {
+    if (job.id === uniqueJobId) {
+      await job.remove()
+      removedCount++
+      logger.info("Cancelled delayed pinecone ingestion job", { uniqueJobId })
+    }
+  }
+
+  // For active jobs, move them to failed
+  const activeJobs = await pineconeQueue.getJobs(["active"])
   for (const job of activeJobs) {
     if (job.id === uniqueJobId) {
-      await job.moveToFailed({ message: "Pinecone ingestion cancelled" }, true)
+      await job.moveToFailed(
+        new Error("Pinecone ingestion cancelled"),
+        "",
+        true
+      )
       removedCount++
       logger.info("Cancelled active pinecone ingestion job", { uniqueJobId })
     }

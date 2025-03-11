@@ -862,3 +862,4 @@
 {"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-03-11T07:13:56.134Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
 {"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-03-11T07:15:37.500Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
 {"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-03-11T07:20:18.089Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}
+{"level":"info","message":"Scheduled one-off pinecone ingestion","payload":{"orgId":"org_2rY5icRiDG1cntMyBvUyQujS8X8"},"timestamp":"2025-03-11T07:45:21.031Z","uniqueJobId":"pinecone-ingestion-org_2rY5icRiDG1cntMyBvUyQujS8X8-no-user"}

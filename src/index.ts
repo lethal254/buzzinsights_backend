@@ -4,7 +4,7 @@ import cors from "cors"
 dotenv.config()
 import { emailQueue } from "./queues/email.queue"
 import { createBullBoard } from "@bull-board/api"
-import { BullAdapter } from "@bull-board/api/bullAdapter"
+import { BullMQAdapter } from "@bull-board/api/bullMQAdapter"
 import { ExpressAdapter } from "@bull-board/express"
 import { ingestionQueue } from "./queues/ingestion.queue"
 import { categorizationQueue } from "./queues/categorization.queue"
@@ -24,12 +24,6 @@ import preferencesRoutes from "./routes/preferences.routes"
 import postsRoutes from "./routes/posts.routes"
 import aiinsightsRoutes from "./routes/aiinsights.routes"
 import pineconeRoutes from "./routes/pineconeIngestion.route"
-import Redis from "ioredis"
-interface RedisError extends Error {
-  code?: string
-  errno?: number
-  syscall?: string
-}
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -68,26 +62,24 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json())
 
-// Rebuild Bull Board configuration on each request using only static queues
+// Set up Bull Board once during app initialization using BullMQAdapter
 const serverAdapter = new ExpressAdapter()
+serverAdapter.setBasePath("/admin/queues")
 
-app.use("/admin/queues", async (req, res, next) => {
-  const staticQueues = [
-    new BullAdapter(emailQueue),
-    new BullAdapter(ingestionQueue),
-    new BullAdapter(categorizationQueue),
-    new BullAdapter(notificationQueue),
-    new BullAdapter(pineconeQueue),
-  ]
-  const boards = createBullBoard({
-    queues: staticQueues,
-    serverAdapter,
-  })
-  serverAdapter.setBasePath("/admin/queues")
-  next()
+const staticQueues = [
+  new BullMQAdapter(emailQueue),
+  new BullMQAdapter(ingestionQueue),
+  new BullMQAdapter(categorizationQueue),
+  new BullMQAdapter(notificationQueue),
+  new BullMQAdapter(pineconeQueue),
+]
+
+createBullBoard({
+  queues: staticQueues,
+  serverAdapter,
 })
 
-// Use basic auth middleware for the dashboard
+// Apply auth middleware only to the Bull Board routes
 app.use(
   "/admin/queues",
   basicAuth({
@@ -98,8 +90,6 @@ app.use(
   }),
   serverAdapter.getRouter()
 )
-// Mount the Bull Board UI
-app.use("/admin/queues", serverAdapter.getRouter())
 
 // Mount routes
 app.use("/metrics", metricsRoutes)
@@ -119,12 +109,12 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server")
 })
 
-// Email endpoint
+// Email endpoint – note that for BullMQ, you must provide a job name
 app.post("/send-email", async (req: Request, res: Response) => {
   try {
     const { to, subject, content } = req.body
 
-    const job = await emailQueue.add({
+    const job = await emailQueue.add("send-email", {
       to,
       subject,
       content,
@@ -158,3 +148,5 @@ const server = app
       console.error("Server error:", err)
     }
   })
+
+export default app

@@ -90,6 +90,7 @@ router.post("/configure", async (req, res) => {
       ) {
         // Start notification service for this user/org
         await notificationQueue.add(
+          "notification-job", // Add this job name parameter
           { userId: targetId, orgId: isOrg ? targetId : undefined },
           {
             repeat: {
