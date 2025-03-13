@@ -251,11 +251,11 @@ IMPORTANT: Respond with raw JSON only, no markdown formatting. The response shou
       })
 
       // When categorization ends, schedule ingestion via the queue
-      if (isOrg) {
-        await schedulePineconeIngestion({ orgId: targetId })
-      } else {
-        await schedulePineconeIngestion({ userId: targetId })
-      }
+      // if (isOrg) {
+      //   await schedulePineconeIngestion({ orgId: targetId })
+      // } else {
+      //   await schedulePineconeIngestion({ userId: targetId })
+      // }
 
       return {
         success: true,
@@ -276,7 +276,13 @@ IMPORTANT: Respond with raw JSON only, no markdown formatting. The response shou
       throw error
     }
   },
-  { connection: redis }
+  {
+    connection: redis,
+    maxStalledCount: 3,
+    stalledInterval: 30000,
+    lockDuration: 600000, // 10 minutes
+    concurrency: 1,
+  }
 )
 
 // Attach event listeners to the Worker
@@ -285,9 +291,36 @@ categorizationWorker.on("completed", (job) => {
   logger.info("Categorization job completed", { jobId: job.id })
 })
 
-categorizationWorker.on("failed", (job, err) => {
+categorizationWorker.on("failed", async (job, err) => {
   if (!job) return
-  logger.error("Categorization job failed", { jobId: job.id, error: err })
+
+  logger.error("Categorization job failed", {
+    jobId: job.id,
+    error: err,
+    attempts: job.attemptsMade,
+  })
+
+  // If max attempts reached, update preferences
+  if (job.attemptsMade >= job.opts.attempts!) {
+    try {
+      const { targetId, isOrg } = job.data
+      await prisma.preferences.update({
+        where: isOrg ? { orgId: targetId } : { userId: targetId },
+        data: { triggerCategorization: false },
+      })
+
+      logger.info("Disabled categorization after max retries", {
+        targetId,
+        isOrg,
+        jobId: job.id,
+      })
+    } catch (error) {
+      logger.error("Failed to update preferences after job failure", {
+        error,
+        jobId: job.id,
+      })
+    }
+  }
 })
 
 interface CategorizationJobData {
@@ -345,8 +378,7 @@ export const startCategorization = async (targetId: string, isOrg: boolean) => {
         delay: 60000,
       },
       repeat: {
-        every: 5 * 60 * 1000,
-        limit: 288,
+        every: 10 * 60 * 1000,
       },
       removeOnComplete: true,
       removeOnFail: false,
@@ -391,79 +423,19 @@ export const startCategorization = async (targetId: string, isOrg: boolean) => {
  */
 export const stopCategorization = async (targetId: string, isOrg: boolean) => {
   const jobKey = getJobKey(targetId, isOrg)
+  let dbUpdated = false
 
   try {
-    // Remove job schedulers first
-    const schedulers = await categorizationQueue.getJobSchedulers()
-    const targetSchedulers = schedulers.filter(
-      (scheduler) =>
-        scheduler.name === "categorization-job" &&
-        scheduler.id &&
-        scheduler.id.includes(jobKey)
-    )
+    // Start a transaction for database operations
+    const dbOperations = prisma.$transaction(async (tx) => {
+      // First update preferences to prevent new jobs from starting
+      await tx.preferences.updateMany({
+        where: isOrg ? { orgId: targetId } : { userId: targetId },
+        data: { triggerCategorization: false },
+      })
 
-    // Track removal results
-    const results = {
-      repeatableRemoved: 0,
-      activeJobsStopped: 0,
-      failedRemovals: 0,
-    }
-
-    // Remove job schedulers
-    for (const scheduler of targetSchedulers) {
-      try {
-        if (scheduler.key) {
-          await categorizationQueue.removeJobScheduler(scheduler.key)
-          results.repeatableRemoved++
-        }
-      } catch (error) {
-        logger.error("Failed to remove job scheduler", {
-          error,
-          jobKey,
-          key: scheduler.key,
-        })
-        results.failedRemovals++
-      }
-    }
-
-    // Handle active, waiting, and delayed jobs
-    const states: JobType[] = ["active", "waiting", "delayed"]
-    const allJobs = await Promise.all(
-      states.map((state) => categorizationQueue.getJobs([state]))
-    )
-
-    // Process all jobs for this target
-    for (const jobs of allJobs.flat()) {
-      const jobData = jobs.data as CategorizationJobData
-      if (jobData.jobKey === jobKey) {
-        try {
-          const state = await jobs.getState()
-          if (state === "active") {
-            await jobs.moveToFailed(
-              {
-                message: "Categorization stopped by user",
-              },
-              true
-            )
-          } else {
-            await jobs.remove()
-          }
-          results.activeJobsStopped++
-        } catch (error) {
-          logger.error("Failed to stop job", {
-            error,
-            jobId: jobs.id,
-            jobKey,
-          })
-          results.failedRemovals++
-        }
-      }
-    }
-
-    // Reset processing state in database
-    await prisma.$transaction([
       // Reset processing flags
-      prisma.redditPost.updateMany({
+      await tx.redditPost.updateMany({
         where: {
           ...(isOrg ? { orgId: targetId } : { userId: targetId }),
           needsProcessing: true,
@@ -472,18 +444,75 @@ export const stopCategorization = async (targetId: string, isOrg: boolean) => {
           processingPriority: 0,
           needsProcessing: true,
         },
-      }),
-      // Update user/org preferences if needed
-      prisma.preferences.updateMany({
-        where: {
-          ...(isOrg ? { orgId: targetId } : { userId: targetId }),
-        },
-        data: {
-          triggerCategorization: false,
-        },
-      }),
-    ])
+      })
+      return true
+    })
 
+    // Get all repeatable jobs
+    const repeatableJobs = await categorizationQueue.getRepeatableJobs()
+    const targetRepeatableJobs = repeatableJobs.filter(
+      (job) => job.id && job.id.includes(jobKey)
+    )
+
+    // Track removal results
+    const results = {
+      repeatableRemoved: 0,
+      activeJobsStopped: 0,
+      failedRemovals: 0,
+      errors: [] as string[],
+    }
+
+    // Remove repeatable jobs
+    for (const job of targetRepeatableJobs) {
+      try {
+        if (job.key) {
+          await categorizationQueue.removeRepeatableByKey(job.key)
+          results.repeatableRemoved++
+        }
+      } catch (error) {
+        const errorMessage =
+          error instanceof Error ? error.message : "Unknown error"
+        results.errors.push(
+          `Failed to remove repeatable job ${job.key}: ${errorMessage}`
+        )
+        results.failedRemovals++
+      }
+    }
+
+    // Handle existing jobs in various states
+    const states: JobType[] = ["active", "waiting", "delayed"]
+    const allJobs = await Promise.all(
+      states.map((state) => categorizationQueue.getJobs([state]))
+    )
+
+    for (const jobs of allJobs.flat()) {
+      const jobData = jobs.data as CategorizationJobData
+      if (jobData.jobKey === jobKey) {
+        try {
+          const state = await jobs.getState()
+          if (state === "active") {
+            await jobs.moveToFailed(
+              new Error("Categorization stopped by user"),
+              true
+            )
+          } else {
+            await jobs.remove()
+          }
+          results.activeJobsStopped++
+        } catch (error) {
+          const errorMessage =
+            error instanceof Error ? error.message : "Unknown error"
+          results.errors.push(`Failed to stop job ${jobs.id}: ${errorMessage}`)
+          results.failedRemovals++
+        }
+      }
+    }
+
+    // Wait for database transaction to complete
+    await dbOperations
+    dbUpdated = true
+
+    // Log results
     logger.info("Categorization stopped", {
       jobKey,
       targetId,
@@ -491,9 +520,19 @@ export const stopCategorization = async (targetId: string, isOrg: boolean) => {
       results,
     })
 
+    if (results.failedRemovals > 0) {
+      logger.warn("Some jobs failed to stop", {
+        jobKey,
+        targetId,
+        isOrg,
+        errors: results.errors,
+      })
+    }
+
     return {
-      success: true,
+      success: results.failedRemovals === 0,
       results,
+      errors: results.errors,
     }
   } catch (error) {
     logger.error("Error stopping categorization", {
@@ -501,11 +540,24 @@ export const stopCategorization = async (targetId: string, isOrg: boolean) => {
       jobKey,
       targetId,
       isOrg,
+      dbUpdated,
     })
-    throw new Error(
-      `Failed to stop categorization: ${
-        error instanceof Error ? error.message : "Unknown error"
-      }`
-    )
+
+    // If database was not updated, throw error to trigger rollback
+    if (!dbUpdated) {
+      throw new Error(
+        `Failed to stop categorization: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`
+      )
+    }
+
+    // If database was updated but queue operations failed, return partial success
+    return {
+      success: false,
+      partial: true,
+      dbUpdated,
+      error: error instanceof Error ? error.message : "Unknown error",
+    }
   }
 }
