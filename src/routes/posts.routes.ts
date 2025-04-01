@@ -40,6 +40,9 @@ const QuerySchema = z.object({
   orgId: z.string().optional(),
   search: z.string().optional(),
   hideNoise: z.string().optional(),
+  startDate: z.string().optional(),
+  endDate: z.string().optional(),
+  sentimentCategory: z.string().optional(),
 })
 
 // GET /api/posts
@@ -63,7 +66,7 @@ router.get("/", async (req: Request, res) => {
       ? new Date().getTime() - params.window * 60 * 60 * 1000
       : undefined
 
-      console.log(params.hideNoise)
+    console.log(params.hideNoise)
 
     // Build where clause
     const where: any = {
@@ -76,9 +79,22 @@ router.get("/", async (req: Request, res) => {
         params.feedbackCategory
           ? { feedbackCategory: params.feedbackCategory }
           : undefined,
-        currentWindowStart
-          ? { createdUtc: { gte: Math.floor(currentWindowStart / 1000) } }
+        params.sentimentCategory
+          ? { sentimentCategory: params.sentimentCategory }
           : undefined,
+        // Handle both date range and time window
+        {
+          createdUtc: {
+            ...(params.startDate
+              ? { gte: Math.floor(new Date(params.startDate).getTime() / 1000) }
+              : currentWindowStart
+              ? { gte: Math.floor(currentWindowStart / 1000) }
+              : {}),
+            ...(params.endDate
+              ? { lte: Math.floor(new Date(params.endDate).getTime() / 1000) }
+              : {}),
+          },
+        },
         params.search
           ? {
               OR: [
@@ -135,6 +151,72 @@ router.get("/", async (req: Request, res) => {
       "Failed to fetch posts",
       500,
       "FETCH_POSTS_ERROR",
+      error instanceof Error ? error.message : String(error)
+    )
+  }
+})
+
+const GetSinglePostParamSchema = z.object({
+  id: z.string(),
+})
+const GetSinglePostQuerySchema = z.object({
+  userId: z.string().optional(),
+  orgId: z.string().optional(),
+})
+const GetSinglePostSchema = GetSinglePostParamSchema.merge(
+  GetSinglePostQuerySchema
+)
+
+// GET /api/posts/:id
+router.get("/:id", async (req, res) => {
+  try {
+    const result = GetSinglePostSchema.safeParse({
+      id: req.params.id,
+      userId: req.query.userId,
+      orgId: req.query.orgId,
+    })
+    console.log(result.data)
+
+    if (!result.success) {
+      return ResponseUtils.error(
+        res,
+        result.error.errors[0].message,
+        400,
+        "VALIDATION_ERROR"
+      )
+    }
+
+    const params = result.data
+
+    // Get post from prisma using post id and user/org id
+    const post = await prisma.redditPost.findFirst({
+      where: {
+        id: params.id,
+        userId: params.userId || undefined,
+        orgId: params.orgId || undefined,
+      },
+      include: {
+        comments: {
+          include: {
+            replies: true,
+          },
+          orderBy: { score: "desc" },
+        },
+      },
+    })
+
+    if (!post) {
+      return ResponseUtils.error(res, "Post not found", 404, "POST_NOT_FOUND")
+    }
+
+    return ResponseUtils.success(res, serializePost(post))
+  } catch (error) {
+    console.error("Error fetching post:", error)
+    return ResponseUtils.error(
+      res,
+      "Failed to fetch post",
+      500,
+      "FETCH_POST_ERROR",
       error instanceof Error ? error.message : String(error)
     )
   }

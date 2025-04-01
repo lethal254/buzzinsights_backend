@@ -47,6 +47,9 @@ const MetricsQuerySchema = z.object({
   orgId: z.string().optional(),
   timeWindow: z.coerce.number().default(24),
   product: z.string().optional(),
+  dateFrom: z.string().optional(),
+  dateTo: z.string().optional(),
+  sentimentCategory: z.string().optional(),
 })
 
 /**
@@ -287,19 +290,28 @@ router.get("/new", async (req, res) => {
     )
   }
 
-  const { userId, orgId, timeWindow, product } = result.data
+  const {
+    userId,
+    orgId,
+    timeWindow,
+    product,
+    dateFrom,
+    dateTo,
+    sentimentCategory,
+  } = result.data
 
-  if (!userId && !orgId) {
-    return ResponseUtils.error(
-      res,
-      "Either userId or orgId is required",
-      400,
-      "VALIDATION_ERROR"
-    )
-  }
+  // Calculate window dates based on custom date range or default timeWindow
+  const currentWindowStart = dateFrom
+    ? new Date(dateFrom).getTime()
+    : new Date().getTime() - timeWindow * 60 * 60 * 1000
 
-  const currentWindowStart = new Date().getTime() - timeWindow * 60 * 60 * 1000
-  const previousWindowStart = currentWindowStart - timeWindow * 60 * 60 * 1000
+  const previousWindowStart = dateFrom
+    ? new Date(dateFrom).getTime() - timeWindow * 60 * 60 * 1000
+    : currentWindowStart - timeWindow * 60 * 60 * 1000
+
+  const currentWindowEnd = dateTo
+    ? new Date(dateTo).getTime()
+    : new Date().getTime()
 
   const formatDateTime = (date: Date) => {
     return date.toLocaleString("en-GB", {
@@ -323,8 +335,10 @@ router.get("/new", async (req, res) => {
     ...(orgId ? { orgId } : { userId }),
     createdUtc: {
       gte: BigInt(Math.floor(currentWindowStart / 1000)),
+      ...(dateTo && { lt: BigInt(Math.floor(currentWindowEnd / 1000)) }),
     },
     ...(product ? { product } : {}),
+    ...(sentimentCategory ? { sentimentCategory } : {}),
   }
   const currentWindowPostsFromDb = await prisma.redditPost.findMany({
     where: currentWindowWhere,
@@ -343,6 +357,7 @@ router.get("/new", async (req, res) => {
       lt: BigInt(Math.floor(currentWindowStart / 1000)),
     },
     ...(product ? { product } : {}),
+    ...(sentimentCategory ? { sentimentCategory } : {}),
   }
   const previousWindowPostsFromDb = await prisma.redditPost.findMany({
     where: previousWindowWhere,
