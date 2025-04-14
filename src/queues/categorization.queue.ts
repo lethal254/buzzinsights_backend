@@ -24,109 +24,111 @@ export const categorizationQueue = new Queue("categorization-queue", {
 })
 
 // Create a Worker to process jobs from the categorization queue
-const categorizationWorker = new Worker(
-  "categorization-queue",
-  async (job) => {
-    try {
-      logger.info("Starting categorization job", { jobId: job.id })
-      const { targetId, isOrg } = job.data
 
-      // Get categories for the user/org
-      const [feedbackCategories, productCategories] = await Promise.all([
-        prisma.feedbackCategory.findMany({
-          where: isOrg ? { orgId: targetId } : { userId: targetId },
-          select: {
-            name: true,
-            description: true,
-            keywords: true,
-          },
-        }),
-        prisma.productCategory.findMany({
-          where: isOrg ? { orgId: targetId } : { userId: targetId },
-          select: {
-            id: true,
-            name: true,
-            keywords: true,
-            versions: true,
-          },
-        }),
-      ])
+if (process.env.ENABLE_QUEUE_WORKERS === "true") {
+  const categorizationWorker = new Worker(
+    "categorization-queue",
+    async (job) => {
+      try {
+        logger.info("Starting categorization job", { jobId: job.id })
+        const { targetId, isOrg } = job.data
 
-      // Check if categories are defined
-      if (feedbackCategories.length === 0 && productCategories.length === 0) {
-        logger.warn("No categories defined", {
-          targetId,
-          isOrg,
-          jobId: job.id,
-        })
-        // Mark all feedback as noise since no categories are defined
-        const updatedCount = await prisma.redditPost.updateMany({
+        // Get categories for the user/org
+        const [feedbackCategories, productCategories] = await Promise.all([
+          prisma.feedbackCategory.findMany({
+            where: isOrg ? { orgId: targetId } : { userId: targetId },
+            select: {
+              name: true,
+              description: true,
+              keywords: true,
+            },
+          }),
+          prisma.productCategory.findMany({
+            where: isOrg ? { orgId: targetId } : { userId: targetId },
+            select: {
+              id: true,
+              name: true,
+              keywords: true,
+              versions: true,
+            },
+          }),
+        ])
+
+        // Check if categories are defined
+        if (feedbackCategories.length === 0 && productCategories.length === 0) {
+          logger.warn("No categories defined", {
+            targetId,
+            isOrg,
+            jobId: job.id,
+          })
+          // Mark all feedback as noise since no categories are defined
+          const updatedCount = await prisma.redditPost.updateMany({
+            where: {
+              ...(isOrg ? { orgId: targetId } : { userId: targetId }),
+              needsProcessing: true,
+            },
+            data: {
+              category: "Noise",
+              product: "Noise",
+              needsProcessing: false,
+            },
+          })
+          logger.info(
+            `Marked ${updatedCount.count} posts as noise due to no categories defined`
+          )
+          return {
+            success: true,
+            status: "no_categories",
+            message: "No categories defined, all feedback marked as noise",
+          }
+        }
+
+        // Get unprocessed Reddit posts
+        const unprocessedPosts = await prisma.redditPost.findMany({
           where: {
             ...(isOrg ? { orgId: targetId } : { userId: targetId }),
             needsProcessing: true,
           },
-          data: {
-            category: "Noise",
-            product: "Noise",
-            needsProcessing: false,
+          include: {
+            comments: true,
           },
+          orderBy: [{ processingPriority: "asc" }, { createdUtc: "asc" }],
         })
+
+        if (unprocessedPosts.length === 0) {
+          logger.info("No unprocessed posts found", {
+            targetId,
+            isOrg,
+            jobId: job.id,
+          })
+          return {
+            success: true,
+            status: "no_posts",
+            message: "No unprocessed posts found",
+          }
+        }
+
         logger.info(
-          `Marked ${updatedCount.count} posts as noise due to no categories defined`
+          `Starting categorization of ${unprocessedPosts.length} posts`,
+          {
+            targetId,
+            isOrg,
+            jobId: job.id,
+            feedbackCategoriesCount: feedbackCategories.length,
+            productCategoriesCount: productCategories.length,
+          }
         )
-        return {
-          success: true,
-          status: "no_categories",
-          message: "No categories defined, all feedback marked as noise",
-        }
-      }
 
-      // Get unprocessed Reddit posts
-      const unprocessedPosts = await prisma.redditPost.findMany({
-        where: {
-          ...(isOrg ? { orgId: targetId } : { userId: targetId }),
-          needsProcessing: true,
-        },
-        include: {
-          comments: true,
-        },
-        orderBy: [{ processingPriority: "asc" }, { createdUtc: "asc" }],
-      })
+        // Process posts in batches
+        const BATCH_SIZE = 10
+        let processedCount = 0
+        let errorCount = 0
 
-      if (unprocessedPosts.length === 0) {
-        logger.info("No unprocessed posts found", {
-          targetId,
-          isOrg,
-          jobId: job.id,
-        })
-        return {
-          success: true,
-          status: "no_posts",
-          message: "No unprocessed posts found",
-        }
-      }
+        for (let i = 0; i < unprocessedPosts.length; i += BATCH_SIZE) {
+          const batch = unprocessedPosts.slice(i, i + BATCH_SIZE)
 
-      logger.info(
-        `Starting categorization of ${unprocessedPosts.length} posts`,
-        {
-          targetId,
-          isOrg,
-          jobId: job.id,
-          feedbackCategoriesCount: feedbackCategories.length,
-          productCategoriesCount: productCategories.length,
-        }
-      )
-
-      // Process posts in batches
-      const BATCH_SIZE = 10
-      let processedCount = 0
-      let errorCount = 0
-
-      for (let i = 0; i < unprocessedPosts.length; i += BATCH_SIZE) {
-        const batch = unprocessedPosts.slice(i, i + BATCH_SIZE)
-
-        try {
-          const prompt = `
+          try {
+            const prompt = `
 Analyze the following Reddit posts and their comments:
 ${JSON.stringify(
   batch.map((post) => ({
@@ -176,152 +178,153 @@ IMPORTANT: Respond with raw JSON only, no markdown formatting. The response shou
   }]
 }
 `
-          const result = await model.invoke(prompt)
-          const responseText = result.content.toString()
+            const result = await model.invoke(prompt)
+            const responseText = result.content.toString()
 
-          // Clean up markdown formatting if present and parse JSON
-          const jsonStr = responseText.replace(/```json\n|\n```/g, "").trim()
-          const analysis = JSON.parse(jsonStr)
+            // Clean up markdown formatting if present and parse JSON
+            const jsonStr = responseText.replace(/```json\n|\n```/g, "").trim()
+            const analysis = JSON.parse(jsonStr)
 
-          // Update Reddit posts with categorization results
-          await prisma.$transaction(
-            analysis.results.map((item: any) =>
-              prisma.redditPost.update({
-                where: { id: item.id },
-                data: {
-                  product: item.product,
-                  category: item.category,
-                  sameIssuesCount: item.sameIssuesCount,
-                  sameDeviceCount: item.sameDeviceCount,
-                  solutionsCount: item.solutionsCount,
-                  updateIssueMention: item.updateIssueMention,
-                  updateResolvedMention: item.updateResolvedMention,
-                  needsProcessing: false,
-                  sentimentScore: item.sentimentScore,
-                  sentimentCategory: item.sentimentCategory,
-                },
-              })
+            // Update Reddit posts with categorization results
+            await prisma.$transaction(
+              analysis.results.map((item: any) =>
+                prisma.redditPost.update({
+                  where: { id: item.id },
+                  data: {
+                    product: item.product,
+                    category: item.category,
+                    sameIssuesCount: item.sameIssuesCount,
+                    sameDeviceCount: item.sameDeviceCount,
+                    solutionsCount: item.solutionsCount,
+                    updateIssueMention: item.updateIssueMention,
+                    updateResolvedMention: item.updateResolvedMention,
+                    needsProcessing: false,
+                    sentimentScore: item.sentimentScore,
+                    sentimentCategory: item.sentimentCategory,
+                  },
+                })
+              )
             )
-          )
 
-          processedCount += batch.length
-          logger.info(`Processed batch of ${batch.length} posts`, {
-            jobId: job.id,
-            processedCount,
-            totalPosts: unprocessedPosts.length,
-          })
-        } catch (error) {
-          errorCount++
-          logger.error("Error processing batch", {
-            error,
-            jobId: job.id,
-            batchStart: i,
-            batchSize: batch.length,
-          })
+            processedCount += batch.length
+            logger.info(`Processed batch of ${batch.length} posts`, {
+              jobId: job.id,
+              processedCount,
+              totalPosts: unprocessedPosts.length,
+            })
+          } catch (error) {
+            errorCount++
+            logger.error("Error processing batch", {
+              error,
+              jobId: job.id,
+              batchStart: i,
+              batchSize: batch.length,
+            })
 
-          // Mark failed batch as needing reprocessing
-          await prisma.redditPost.updateMany({
-            where: {
-              id: { in: batch.map((post) => post.id) },
-            },
-            data: {
-              processingPriority: {
-                increment: 1,
+            // Mark failed batch as needing reprocessing
+            await prisma.redditPost.updateMany({
+              where: {
+                id: { in: batch.map((post) => post.id) },
               },
-            },
-          })
+              data: {
+                processingPriority: {
+                  increment: 1,
+                },
+              },
+            })
 
-          // If too many errors, stop processing
-          if (errorCount >= 3) {
-            throw new Error(
-              `Too many batch processing errors (${errorCount}), stopping job`
-            )
+            // If too many errors, stop processing
+            if (errorCount >= 3) {
+              throw new Error(
+                `Too many batch processing errors (${errorCount}), stopping job`
+              )
+            }
           }
+
+          // Rate limiting between batches
+          await new Promise((resolve) => setTimeout(resolve, 5000))
         }
 
-        // Rate limiting between batches
-        await new Promise((resolve) => setTimeout(resolve, 5000))
-      }
-
-      logger.info("Categorization job completed", {
-        jobId: job.id,
-        processedCount,
-        errorCount,
-        totalPosts: unprocessedPosts.length,
-      })
-
-      // When categorization ends, schedule ingestion via the queue
-      // if (isOrg) {
-      //   await schedulePineconeIngestion({ orgId: targetId })
-      // } else {
-      //   await schedulePineconeIngestion({ userId: targetId })
-      // }
-
-      return {
-        success: true,
-        status: "completed",
-        stats: {
+        logger.info("Categorization job completed", {
+          jobId: job.id,
           processedCount,
           errorCount,
           totalPosts: unprocessedPosts.length,
-        },
+        })
+
+        // When categorization ends, schedule ingestion via the queue
+        // if (isOrg) {
+        //   await schedulePineconeIngestion({ orgId: targetId })
+        // } else {
+        //   await schedulePineconeIngestion({ userId: targetId })
+        // }
+
+        return {
+          success: true,
+          status: "completed",
+          stats: {
+            processedCount,
+            errorCount,
+            totalPosts: unprocessedPosts.length,
+          },
+        }
+      } catch (error) {
+        logger.error("Categorization job failed", {
+          error,
+          jobId: job?.id,
+          targetId: job?.data?.targetId,
+          isOrg: job?.data?.isOrg,
+        })
+        throw error
       }
-    } catch (error) {
-      logger.error("Categorization job failed", {
-        error,
-        jobId: job?.id,
-        targetId: job?.data?.targetId,
-        isOrg: job?.data?.isOrg,
-      })
-      throw error
+    },
+    {
+      connection: redis,
+      maxStalledCount: 3,
+      stalledInterval: 30000,
+      lockDuration: 600000, // 10 minutes
+      concurrency: 1,
     }
-  },
-  {
-    connection: redis,
-    maxStalledCount: 3,
-    stalledInterval: 30000,
-    lockDuration: 600000, // 10 minutes
-    concurrency: 1,
-  }
-)
+  )
 
-// Attach event listeners to the Worker
-categorizationWorker.on("completed", (job) => {
-  if (!job) return
-  logger.info("Categorization job completed", { jobId: job.id })
-})
-
-categorizationWorker.on("failed", async (job, err) => {
-  if (!job) return
-
-  logger.error("Categorization job failed", {
-    jobId: job.id,
-    error: err,
-    attempts: job.attemptsMade,
+  // Attach event listeners to the Worker
+  categorizationWorker.on("completed", (job) => {
+    if (!job) return
+    logger.info("Categorization job completed", { jobId: job.id })
   })
 
-  // If max attempts reached, update preferences
-  if (job.attemptsMade >= job.opts.attempts!) {
-    try {
-      const { targetId, isOrg } = job.data
-      await prisma.preferences.update({
-        where: isOrg ? { orgId: targetId } : { userId: targetId },
-        data: { triggerCategorization: false },
-      })
+  categorizationWorker.on("failed", async (job, err) => {
+    if (!job) return
 
-      logger.info("Disabled categorization after max retries", {
-        targetId,
-        isOrg,
-        jobId: job.id,
-      })
-    } catch (error) {
-      logger.error("Failed to update preferences after job failure", {
-        error,
-        jobId: job.id,
-      })
+    logger.error("Categorization job failed", {
+      jobId: job.id,
+      error: err,
+      attempts: job.attemptsMade,
+    })
+
+    // If max attempts reached, update preferences
+    if (job.attemptsMade >= job.opts.attempts!) {
+      try {
+        const { targetId, isOrg } = job.data
+        await prisma.preferences.update({
+          where: isOrg ? { orgId: targetId } : { userId: targetId },
+          data: { triggerCategorization: false },
+        })
+
+        logger.info("Disabled categorization after max retries", {
+          targetId,
+          isOrg,
+          jobId: job.id,
+        })
+      } catch (error) {
+        logger.error("Failed to update preferences after job failure", {
+          error,
+          jobId: job.id,
+        })
+      }
     }
-  }
-})
+  })
+}
 
 interface CategorizationJobData {
   targetId: string

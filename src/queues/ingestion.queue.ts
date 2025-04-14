@@ -54,83 +54,86 @@ export const ingestionQueue = new Queue("ingestion-queue", {
 })
 
 // Create a Worker to process jobs from the ingestionQueue
-const ingestionWorker = new Worker(
-  "ingestion-queue",
-  async (job) => {
-    if (!job || !job.data) {
-      console.error("Invalid job received:", job)
+
+if (process.env.ENABLE_QUEUE_WORKERS === "true") {
+  const ingestionWorker = new Worker(
+    "ingestion-queue",
+    async (job) => {
+      if (!job || !job.data) {
+        console.error("Invalid job received:", job)
+        return
+      }
+
+      const { userId, orgId, subReddits } = job.data
+
+      try {
+        console.log(`🔄 Starting ingestion for user: ${userId}, org: ${orgId}`)
+        console.log(
+          `📊 Processing subreddits: ${subReddits
+            .map((subreddit: SubReddit) => subreddit.name)
+            .join(", ")}`
+        )
+
+        // Fetch posts from all subreddits
+        const allPosts = await getPostsFromSubReddits(subReddits)
+
+        // Process each batch of posts
+        for (const posts of allPosts) {
+          for (const post of posts) {
+            await saveAndProcessPost(post, userId, orgId)
+          }
+        }
+
+        console.log(`✅ Ingestion completed for user: ${userId}, org: ${orgId}`)
+        return { success: true }
+      } catch (error) {
+        console.error("Error processing ingestion job:", error)
+        throw error
+      }
+    },
+    { connection: redis }
+  )
+
+  // Handle job completion events on the worker
+  ingestionWorker.on("completed", (job, result) => {
+    const { userId, orgId } = job.data
+    console.log(`✅ Job completed for user: ${userId}, org: ${orgId}`)
+  })
+
+  // Handle job failure events on the worker
+  ingestionWorker.on("failed", async (job, error) => {
+    if (!job?.data) {
+      console.error("Failed job with no data:", error)
       return
     }
 
-    const { userId, orgId, subReddits } = job.data
-
-    try {
-      console.log(`🔄 Starting ingestion for user: ${userId}, org: ${orgId}`)
-      console.log(
-        `📊 Processing subreddits: ${subReddits
-          .map((subreddit: SubReddit) => subreddit.name)
-          .join(", ")}`
-      )
-
-      // Fetch posts from all subreddits
-      const allPosts = await getPostsFromSubReddits(subReddits)
-
-      // Process each batch of posts
-      for (const posts of allPosts) {
-        for (const post of posts) {
-          await saveAndProcessPost(post, userId, orgId)
-        }
-      }
-
-      console.log(`✅ Ingestion completed for user: ${userId}, org: ${orgId}`)
-      return { success: true }
-    } catch (error) {
-      console.error("Error processing ingestion job:", error)
-      throw error
-    }
-  },
-  { connection: redis }
-)
-
-// Handle job completion events on the worker
-ingestionWorker.on("completed", (job, result) => {
-  const { userId, orgId } = job.data
-  console.log(`✅ Job completed for user: ${userId}, org: ${orgId}`)
-})
-
-// Handle job failure events on the worker
-ingestionWorker.on("failed", async (job, error) => {
-  if (!job?.data) {
-    console.error("Failed job with no data:", error)
-    return
-  }
-
-  const { userId, orgId } = job.data
-  console.error(
-    `🚨 Job failed for user: ${userId}, org: ${orgId}. Error: ${error}`
-  )
-
-  // Update ingestionActive to false on failure
-  try {
-    await prisma.preferences.updateMany({
-      where: {
-        userId,
-        orgId: orgId || null,
-      },
-      data: {
-        ingestionActive: false,
-      },
-    })
-    console.log(
-      `⚠️ ingestionActive set to false for user: ${userId}, org: ${orgId}`
-    )
-  } catch (updateError) {
+    const { userId, orgId } = job.data
     console.error(
-      "❌ Failed to update ingestion status to false after job failure:",
-      updateError
+      `🚨 Job failed for user: ${userId}, org: ${orgId}. Error: ${error}`
     )
-  }
-})
+
+    // Update ingestionActive to false on failure
+    try {
+      await prisma.preferences.updateMany({
+        where: {
+          userId,
+          orgId: orgId || null,
+        },
+        data: {
+          ingestionActive: false,
+        },
+      })
+      console.log(
+        `⚠️ ingestionActive set to false for user: ${userId}, org: ${orgId}`
+      )
+    } catch (updateError) {
+      console.error(
+        "❌ Failed to update ingestion status to false after job failure:",
+        updateError
+      )
+    }
+  })
+}
 
 // Utility function to check if a URL is an image
 const isImageUrl = (url: string): boolean => {

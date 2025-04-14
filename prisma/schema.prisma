@@ -9,41 +9,37 @@ datasource db {
 }
 
 model SubReddit {
-  id       Int      @id @default(autoincrement())
-  userId   String?
-  orgId    String?
-  name     String
-  keywords String[] @default([])
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  isActive Boolean  @default(true)
+  id           Int       @id @default(autoincrement())
+  userId       String?
+  orgId        String?
+  name         String
+  createdAt    DateTime  @default(now())
+  isActive     Boolean   @default(true)
+  keywords     String[]  @default([])
   lastIngested DateTime?
+  updatedAt    DateTime  @updatedAt
 
   @@unique([userId, name])
   @@unique([orgId, name])
 }
 
 model Preferences {
-  id                         Int       @id @default(autoincrement())
-  userId                     String?    @unique(map: "Preferences_userId_unique")
-  orgId                      String?
-  ingestionSchedule          String?
-  ingestionActive            Boolean   @default(false)
-  triggerCategorization      Boolean   @default(false)
-  emails                     String[] @default([])
-  issueThreshold             Int       @default(0)
-  timeWindow                 Int       @default(24)
-  enabled                    Boolean   @default(true)
-  lastNotified               DateTime?
-  volumeThresholdMultiplier  Float     @default(1.5)
-  sentimentThreshold         Float     @default(0)
-  commentGrowthThreshold     Float     @default(2.0)
-  createdAt                  DateTime  @default(now())
-  updatedAt                  DateTime  @default(now()) @updatedAt
-
-  @@unique([userId])
-  @@unique([orgId])
+  id                        Int       @id @default(autoincrement())
+  userId                    String?   @unique(map: "Preferences_userId_unique")
+  orgId                     String?   @unique
+  ingestionSchedule         String?
+  ingestionActive           Boolean   @default(false)
+  commentGrowthThreshold    Float     @default(2.0)
+  createdAt                 DateTime  @default(now())
+  emails                    String[]  @default([])
+  enabled                   Boolean   @default(true)
+  issueThreshold            Int       @default(0)
+  lastNotified              DateTime?
+  sentimentThreshold        Float     @default(0)
+  timeWindow                Int       @default(24)
+  triggerCategorization     Boolean   @default(false)
+  updatedAt                 DateTime  @default(now()) @updatedAt
+  volumeThresholdMultiplier Float     @default(1.5)
 }
 
 model RedditPost {
@@ -57,8 +53,6 @@ model RedditPost {
   lastUpdated           BigInt
   needsProcessing       Boolean         @default(true)
   processingPriority    Int             @default(0)
-  sentimentScore        Float?
-  sentimentCategory     String?
   category              String?
   product               String?
   sameIssuesCount       Int?            @default(0)
@@ -68,12 +62,14 @@ model RedditPost {
   updateResolvedMention Int?            @default(0)
   authorProfilePhoto    String?
   imageUrl              String?
-  permalink            String?
   orgId                 String?
   thumbnail             String?
   userId                String?
+  labels                String[]        @default([])
+  permalink             String?
+  sentimentCategory     String?
+  sentimentScore        Float?
   comments              RedditComment[]
-  labels                String[]  @default([])
 
   @@index([userId])
   @@index([orgId])
@@ -88,10 +84,10 @@ model RedditComment {
   createdUtc      BigInt
   score           Int
   lastUpdated     BigInt
+  labels          String[]        @default([])
   parentComment   RedditComment?  @relation("CommentReplies", fields: [parentCommentId], references: [id])
   replies         RedditComment[] @relation("CommentReplies")
   post            RedditPost      @relation(fields: [postId], references: [id])
-  labels              String[]  @default([])
 
   @@index([postId])
 }
@@ -129,7 +125,7 @@ model NotificationHistory {
   id           Int      @id @default(autoincrement())
   userId       String?
   orgId        String?
-  postIds      String[] // Related post IDs
+  postIds      String[]
   category     String
   product      String?
   issueCount   Int
@@ -137,7 +133,7 @@ model NotificationHistory {
   emailsSentTo String[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  
+
   @@index([userId])
   @@index([orgId])
   @@index([sentAt])
@@ -151,18 +147,46 @@ model WindowMetrics {
   totalPosts            Int
   totalComments         Int
   totalUpvotes          Int
-  topTrendingPosts      Json     // JSON array of top trending posts with upvotes and comments
-  categoryTrends        Json     // JSON object of category trends
-  sentimentAnalysis     Json     // JSON object for sentiment analysis results
-  sameIssuesCount       Int      // Total count of posts with the same issues
-  sameDeviceCount       Int      // Total count of posts with the same device mentions
-  solutionsCount        Int      // Total count of solutions provided
-  updateIssueMention    Int      // Count of issue mentions after updates
-  updateResolvedMention Int      // Count of resolution mentions after updates
+  topTrendingPosts      Json
+  categoryTrends        Json
+  sentimentAnalysis     Json
+  sameIssuesCount       Int
+  sameDeviceCount       Int
+  solutionsCount        Int
+  updateIssueMention    Int
+  updateResolvedMention Int
   createdAt             DateTime @default(now())
   updatedAt             DateTime @default(now()) @updatedAt
 
   @@index([userId])
   @@index([orgId])
   @@index([timestamp])
+}
+
+model Chat {
+  id        String    @id
+  title     String
+  userId    String?
+  orgId     String?
+  createdAt DateTime  @default(now())
+  Message   Message[]
+
+  @@index([orgId])
+  @@index([userId])
+}
+
+model Message {
+  id        String   @id
+  chatId    String
+  content   String
+  role      Role     @default(user)
+  createdAt DateTime @default(now())
+  Chat      Chat     @relation(fields: [chatId], references: [id])
+
+  @@index([chatId])
+}
+
+enum Role {
+  user
+  assistant
 }

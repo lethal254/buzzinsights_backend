@@ -64,20 +64,21 @@ export const emailQueue = new Queue<EmailJob>("email", {
   },
 })
 
-// Create a Worker to process email jobs
-const emailWorker = new Worker<EmailJob>(
-  "email",
-  async (job) => {
-    const { to, subject, content, timestamp } = job.data
-    logger.info("Processing email job", { jobId: job.id, to, subject })
-    try {
-      // Send email with enhanced HTML template
-      const info = await transporter.sendMail({
-        from: process.env.SMTP_FROM || process.env.SMTP_USER,
-        to: to.join(", "),
-        subject,
-        text: content,
-        html: `
+if (process.env.ENABLE_QUEUE_WORKERS === "true") {
+  // Create a Worker to process email jobs
+  const emailWorker = new Worker<EmailJob>(
+    "email",
+    async (job) => {
+      const { to, subject, content, timestamp } = job.data
+      logger.info("Processing email job", { jobId: job.id, to, subject })
+      try {
+        // Send email with enhanced HTML template
+        const info = await transporter.sendMail({
+          from: process.env.SMTP_FROM || process.env.SMTP_USER,
+          to: to.join(", "),
+          subject,
+          text: content,
+          html: `
           <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; background-color: #f9f9f9;">
             <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
               <h2 style="color: #2c3e50; margin-top: 0;">Social Eye Services Alert</h2>
@@ -104,34 +105,35 @@ const emailWorker = new Worker<EmailJob>(
             </div>
           </div>
         `,
-      })
+        })
 
-      logger.info("Email sent successfully", {
-        jobId: job.id,
-        messageId: info.messageId,
-        response: info.response,
-      })
+        logger.info("Email sent successfully", {
+          jobId: job.id,
+          messageId: info.messageId,
+          response: info.response,
+        })
 
-      return info
-    } catch (error) {
-      logger.error("Error sending email", {
-        jobId: job.id,
-        error: error instanceof Error ? error.message : "Unknown error",
-        to,
-        subject,
-      })
-      throw error
-    }
-  },
-  { connection: redis }
-)
+        return info
+      } catch (error) {
+        logger.error("Error sending email", {
+          jobId: job.id,
+          error: error instanceof Error ? error.message : "Unknown error",
+          to,
+          subject,
+        })
+        throw error
+      }
+    },
+    { connection: redis }
+  )
 
-// Handle failed jobs
-emailWorker.on("failed", (job, error) => {
-  console.error("Email job failed:", job?.id, error)
-})
+  // Handle failed jobs
+  emailWorker.on("failed", (job, error) => {
+    console.error("Email job failed:", job?.id, error)
+  })
 
-// Handle completed jobs
-emailWorker.on("completed", (job) => {
-  console.log("Email sent successfully:", job.id)
-})
+  // Handle completed jobs
+  emailWorker.on("completed", (job) => {
+    console.log("Email sent successfully:", job.id)
+  })
+}

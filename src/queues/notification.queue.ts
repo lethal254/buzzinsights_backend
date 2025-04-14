@@ -30,98 +30,99 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASSWORD,
   },
 })
+if (process.env.ENABLE_QUEUE_WORKERS === "true") {
+  // Create a Worker to process notification jobs
+  const notificationWorker = new Worker(
+    "notifications",
+    async (job) => {
+      const { userId, orgId } = job.data as NotificationData
 
-// Create a Worker to process notification jobs
-const notificationWorker = new Worker(
-  "notifications",
-  async (job) => {
-    const { userId, orgId } = job.data as NotificationData
+      // Get preferences for this job
+      const preferences = await prisma.preferences.findFirst({
+        where: orgId ? { orgId } : { userId },
+      })
 
-    // Get preferences for this job
-    const preferences = await prisma.preferences.findFirst({
-      where: orgId ? { orgId } : { userId },
-    })
+      // Skip if no preferences or emails
+      if (
+        !preferences ||
+        !preferences.enabled ||
+        preferences.emails.length === 0
+      ) {
+        console.log(
+          `Skipping notification check for ${
+            orgId || userId
+          } - no active configuration`
+        )
+        return
+      }
 
-    // Skip if no preferences or emails
-    if (
-      !preferences ||
-      !preferences.enabled ||
-      preferences.emails.length === 0
-    ) {
-      console.log(
-        `Skipping notification check for ${
-          orgId || userId
-        } - no active configuration`
-      )
-      return
-    }
+      const currentTime = new Date()
+      const lastNotified = preferences.lastNotified || new Date(0)
+      const timeWindowMs = preferences.timeWindow * 60 * 60 * 1000
 
-    const currentTime = new Date()
-    const lastNotified = preferences.lastNotified || new Date(0)
-    const timeWindowMs = preferences.timeWindow * 60 * 60 * 1000
+      // Check if enough time has passed since last notification
+      if (currentTime.getTime() - lastNotified.getTime() < timeWindowMs) {
+        return
+      }
 
-    // Check if enough time has passed since last notification
-    if (currentTime.getTime() - lastNotified.getTime() < timeWindowMs) {
-      return
-    }
+      const windowStart = new Date(currentTime.getTime() - timeWindowMs)
 
-    const windowStart = new Date(currentTime.getTime() - timeWindowMs)
-
-    // Get posts within time window
-    const posts = await prisma.redditPost.findMany({
-      where: {
-        ...(preferences.userId
-          ? { userId: preferences.userId }
-          : { orgId: preferences.orgId }),
-        createdUtc: {
-          gte: BigInt(Math.floor(windowStart.getTime() / 1000)),
+      // Get posts within time window
+      const posts = await prisma.redditPost.findMany({
+        where: {
+          ...(preferences.userId
+            ? { userId: preferences.userId }
+            : { orgId: preferences.orgId }),
+          createdUtc: {
+            gte: BigInt(Math.floor(windowStart.getTime() / 1000)),
+          },
         },
-      },
-      include: {
-        comments: true,
-      },
-      orderBy: {
-        numComments: "desc",
-      },
-    })
+        include: {
+          comments: true,
+        },
+        orderBy: {
+          numComments: "desc",
+        },
+      })
 
-    // Check thresholds
-    const shouldNotify = checkThresholds(posts, preferences)
-    if (!shouldNotify) {
-      return
-    }
+      // Check thresholds
+      const shouldNotify = checkThresholds(posts, preferences)
+      if (!shouldNotify) {
+        return
+      }
 
-    // Send email notification
-    await sendNotificationEmail(posts, preferences)
+      // Send email notification
+      await sendNotificationEmail(posts, preferences)
 
-    // Update notification history
-    await prisma.notificationHistory.create({
-      data: {
-        userId: preferences.userId,
-        orgId: preferences.orgId,
-        postIds: posts.map((p) => p.id),
-        category: "all",
-        issueCount: posts.length,
-        emailsSentTo: preferences.emails,
-      },
-    })
+      // Update notification history
+      await prisma.notificationHistory.create({
+        data: {
+          userId: preferences.userId,
+          orgId: preferences.orgId,
+          postIds: posts.map((p) => p.id),
+          category: "all",
+          issueCount: posts.length,
+          emailsSentTo: preferences.emails,
+        },
+      })
 
-    // Update last notified timestamp
-    await prisma.preferences.update({
-      where: { id: preferences.id },
-      data: { lastNotified: currentTime },
-    })
-  },
-  { connection: redis }
-)
+      // Update last notified timestamp
+      await prisma.preferences.update({
+        where: { id: preferences.id },
+        data: { lastNotified: currentTime },
+      })
+    },
+    { connection: redis }
+  )
 
-// Attach event listeners to the worker
-notificationWorker.on("failed", (job, error) => {
-  console.error("Notification job failed:", job?.id, error)
-})
-notificationWorker.on("completed", (job) => {
-  console.log("Notification job completed:", job.id)
-})
+  // Attach event listeners to the worker
+  notificationWorker.on("failed", (job, error) => {
+    console.error("Notification job failed:", job?.id, error)
+  })
+  notificationWorker.on("completed", (job) => {
+    console.log("Notification job completed:", job.id)
+  })
+}
 
 // Schedule the recurring job to check notifications every hour
 const NOTIFICATION_CHECK_INTERVAL = 60 * 60 * 1000 // 1 hour in milliseconds
