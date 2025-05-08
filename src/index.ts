@@ -149,4 +149,6 @@ const server = app
     }
   })
 
+server.setTimeout(300000); // 5 minutes
+
 export default app
