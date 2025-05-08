@@ -7,6 +7,9 @@ import {
   CalculateEngagementScore,
   GetSentimentDistribution,
 } from "../utils/metrics"
+import { RedditPost } from "@prisma/client"
+import * as sw from "stopword"
+import analyzeFeedback from "../utils/wordFrequency"
 
 const router = Router()
 
@@ -45,7 +48,7 @@ interface MetricResponse {
 const MetricsQuerySchema = z.object({
   userId: z.string().optional(),
   orgId: z.string().optional(),
-  timeWindow: z.coerce.number().default(24),
+  timeWindow: z.union([z.coerce.number(), z.string()]).default(24),
   product: z.string().optional(),
   dateFrom: z.string().optional(),
   dateTo: z.string().optional(),
@@ -166,6 +169,27 @@ router.get("/", async (req: Request, res) => {
       })),
     })
 
+    const getPreviousWindowStart = (currentTime: number, timeWindow: string | number): number => {
+      if (typeof timeWindow === 'number') {
+        return currentTime - timeWindow * 60 * 60 * 1000;
+      }
+      const now = new Date(currentTime);
+      switch (timeWindow) {
+        case 'last_3_months':
+          return new Date(now.getFullYear(), now.getMonth() - 3, now.getDate()).getTime();
+        case 'last_6_months':
+          return new Date(now.getFullYear(), now.getMonth() - 6, now.getDate()).getTime();
+        case 'last_year':
+          return new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()).getTime();
+        case 'ytd':
+          return new Date(now.getFullYear(), 0, 1).getTime();
+        case 'all_time':
+          return new Date(now.getFullYear() - 10, 0, 1).getTime();
+        default:
+          return currentTime - 24 * 60 * 60 * 1000; // Default to 24 hours
+      }
+    };
+
     const response: MetricResponse = {
       topCategories: previousTrends
         .map((trend) => {
@@ -228,7 +252,7 @@ router.get("/", async (req: Request, res) => {
             : 0,
         currentWindowStartDate: latestMetrics.timestamp.toISOString(),
         previousWindowStartDate: new Date(
-          latestMetrics.timestamp.getTime() - params.timeWindow * 60 * 60 * 1000
+          getPreviousWindowStart(latestMetrics.timestamp.getTime(), params.timeWindow)
         ).toISOString(),
       },
       topPosts: [...currentPosts]
@@ -279,6 +303,77 @@ router.get("/time-window", async (req, res) => {
   }
 })
 
+// Helper function to group posts by time period and then by category
+function groupPostsByTimeAndCategory(posts: any[], startDate: Date, endDate: Date) {
+  if (!posts.length) return {};
+
+  console.log(`Grouping ${posts.length} posts from ${startDate.toISOString()} to ${endDate.toISOString()}`);
+
+  // Count total occurrences per category
+  const categoryTotals: Record<string, number> = {};
+  posts.forEach(post => {
+    const cat = post.category || 'Unknown';
+    categoryTotals[cat] = (categoryTotals[cat] || 0) + 1;
+  });
+
+  console.log("Category totals:", categoryTotals);
+
+  // Get all unique categories, sorted by total count descending
+  const allCategories = Object.keys(categoryTotals).sort((a, b) => categoryTotals[b] - categoryTotals[a]);
+
+  // Build a list of all days in the range
+  const days: string[] = [];
+  let d = new Date(startDate);
+  d.setHours(0, 0, 0, 0);
+  const end = new Date(endDate);
+  end.setHours(23, 59, 59, 999); // Ensure end of day is included
+  while (d <= end) {
+    days.push(d.toISOString().slice(0, 10));
+    d.setDate(d.getDate() + 1);
+  }
+
+  console.log(`Generated ${days.length} days in the range`);
+
+  // Initialize result with all days and all categories set to 0
+  const result: Record<string, Record<string, number>> = {};
+  for (const day of days) {
+    result[day] = {};
+    for (const cat of allCategories) {
+      result[day][cat] = 0;
+    }
+  }
+
+  // Fill in actual counts
+  posts.forEach(post => {
+    const date = new Date(Number(post.createdUtc) * 1000);
+    const day = date.toISOString().slice(0, 10);
+    const category = post.category || 'Unknown';
+    if (result[day] && category in result[day]) {
+      result[day][category] += 1;
+    }
+  });
+
+  // Check if we have any non-zero values
+  let hasData = false;
+  for (const day in result) {
+    for (const cat in result[day]) {
+      if (result[day][cat] > 0) {
+        hasData = true;
+        break;
+      }
+    }
+    if (hasData) break;
+  }
+
+  console.log(`Category trends grid has ${Object.keys(result).length} days, ${allCategories.length} categories, hasData: ${hasData}`);
+  
+  return result;
+}
+
+/**
+ * Get Community Metrics
+ * Endpoint: GET /metrics/new
+ */
 router.get("/new", async (req, res) => {
   const result = MetricsQuerySchema.safeParse(req.query)
   if (!result.success) {
@@ -303,11 +398,49 @@ router.get("/new", async (req, res) => {
   // Calculate window dates based on custom date range or default timeWindow
   const currentWindowStart = dateFrom
     ? new Date(dateFrom).getTime()
-    : new Date().getTime() - timeWindow * 60 * 60 * 1000
+    : (() => {
+        const now = new Date();
+        if (typeof timeWindow === 'number') {
+          return now.getTime() - timeWindow * 60 * 60 * 1000;
+        }
+        switch (timeWindow) {
+          case 'last_3_months':
+            return new Date(now.getFullYear(), now.getMonth() - 3, now.getDate()).getTime();
+          case 'last_6_months':
+            return new Date(now.getFullYear(), now.getMonth() - 6, now.getDate()).getTime();
+          case 'last_year':
+            return new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()).getTime();
+          case 'ytd':
+            return new Date(now.getFullYear(), 0, 1).getTime();
+          case 'all_time':
+            return new Date(now.getFullYear() - 10, 0, 1).getTime(); // Default to 10 years ago
+          default:
+            return now.getTime() - 24 * 60 * 60 * 1000; // Fallback to 24 hours
+        }
+      })();
 
   const previousWindowStart = dateFrom
-    ? new Date(dateFrom).getTime() - timeWindow * 60 * 60 * 1000
-    : currentWindowStart - timeWindow * 60 * 60 * 1000
+    ? new Date(dateFrom).getTime() - (typeof timeWindow === 'number' ? timeWindow : 24) * 60 * 60 * 1000
+    : (() => {
+        const now = new Date();
+        if (typeof timeWindow === 'number') {
+          return now.getTime() - timeWindow * 60 * 60 * 1000;
+        }
+        switch (timeWindow) {
+          case 'last_3_months':
+            return new Date(now.getFullYear(), now.getMonth() - 6, now.getDate()).getTime();
+          case 'last_6_months':
+            return new Date(now.getFullYear(), now.getMonth() - 12, now.getDate()).getTime();
+          case 'last_year':
+            return new Date(now.getFullYear() - 2, now.getMonth(), now.getDate()).getTime();
+          case 'ytd':
+            return new Date(now.getFullYear() - 1, 0, 1).getTime();
+          case 'all_time':
+            return new Date(now.getFullYear() - 20, 0, 1).getTime(); // Default to 20 years ago
+          default:
+            return now.getTime() - 24 * 60 * 60 * 1000; // Fallback to 24 hours
+        }
+      })();
 
   const currentWindowEnd = dateTo
     ? new Date(dateTo).getTime()
@@ -461,7 +594,40 @@ router.get("/new", async (req, res) => {
       sentimentCategory: post.sentimentCategory,
     }))
 
-  return ResponseUtils.success(res, {
+  /**
+   * Enhanced word frequency analyzer for identifying user pain points in feedback
+   *
+   * Features:
+   * - Identifies meaningful phrases/bigrams, not just single words
+   * - Categorizes words by sentiment and importance
+   * - Filters technical noise and common language patterns
+   * - Adaptable to different domains through customization options
+   */
+
+  const postsForFeedback = currentWindowPostsFromDb.map((post) => ({
+    ...post,
+    comments: post.comments.map((comment) => comment.content),
+  }))
+  const feedbackAnalysis = analyzeFeedback(postsForFeedback, {
+    minFrequency: 2,
+  })
+
+  // Calculate category trends over time
+  const startDate = new Date(currentWindowStart);
+  const endDate = new Date(currentWindowEnd);
+  
+  console.log("API Debug - Date range:", {
+    currentWindowStart,
+    currentWindowEnd,
+    startDateIso: startDate.toISOString(),
+    endDateIso: endDate.toISOString(),
+    totalPosts: currentWindowPostsFromDb.length
+  });
+  
+  const categoryTrends = groupPostsByTimeAndCategory(currentWindowPostsFromDb, startDate, endDate);
+
+  // Prepare the response
+  const response = {
     currentWindow: {
       startTime: String(currentWindowStart),
       readableStartTime: currentWindowStartReadable,
@@ -471,21 +637,28 @@ router.get("/new", async (req, res) => {
       topCategories: Array.from(top5CategoriesInCurrentWindowWithTop5Posts)
         .filter(([category]) => category !== "Noise")
         .sort((a, b) => b[1].count - a[1].count)
-        .map(([category, data]) => ({
-          category,
-          count: data.count,
-          topIssues: data.posts.sort((a, b) => b.commentCount - a.commentCount),
-        })),
+        .map(([category, data]) => {
+          const previousData = top5CategoriesInPreviousWindowWithTop5Posts.get(category) || { count: 0 };
+          const percentageChange = previousData.count === 0 ? 100 : ((data.count - previousData.count) / previousData.count) * 100;
+          return {
+            category,
+            count: data.count,
+            previousCount: previousData.count,
+            percentageChange,
+            percentageOfTotal: (data.count / currentWindowPostsCount) * 100,
+            topIssues: data.posts.sort((a, b) => b.commentCount - a.commentCount),
+          };
+        }),
       topPosts: top10MostEngagingPostsInCurrentWindow,
+      feedbackAnalysis: feedbackAnalysis,
+      categoryTrends: categoryTrends
     },
     previousWindow: {
       startTime: String(previousWindowStart),
       readableStartTime: previousWindowStartReadable,
       postCount: previousWindowPostsCount,
       engagementScore: CalculateEngagementScore(previousWindowPostsFromDb),
-      sentimentDistribution: GetSentimentDistribution(
-        previousWindowPostsFromDb
-      ),
+      sentimentDistribution: GetSentimentDistribution(previousWindowPostsFromDb),
       topCategories: Array.from(top5CategoriesInPreviousWindowWithTop5Posts)
         .filter(([category]) => category !== "Noise")
         .sort((a, b) => b[1].count - a[1].count)
@@ -496,7 +669,9 @@ router.get("/new", async (req, res) => {
         })),
       topPosts: top10MostEngagingPostsInPreviousWindow,
     },
-  })
+  };
+
+  ResponseUtils.success(res, response);
 })
 
 export default router
