@@ -395,52 +395,15 @@ router.get("/new", async (req, res) => {
     sentimentCategory,
   } = result.data
 
-  // Calculate window dates based on custom date range or default timeWindow
+  // For current window
   const currentWindowStart = dateFrom
     ? new Date(dateFrom).getTime()
-    : (() => {
-        const now = new Date();
-        if (typeof timeWindow === 'number') {
-          return now.getTime() - timeWindow * 60 * 60 * 1000;
-        }
-        switch (timeWindow) {
-          case 'last_3_months':
-            return new Date(now.getFullYear(), now.getMonth() - 3, now.getDate()).getTime();
-          case 'last_6_months':
-            return new Date(now.getFullYear(), now.getMonth() - 6, now.getDate()).getTime();
-          case 'last_year':
-            return new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()).getTime();
-          case 'ytd':
-            return new Date(now.getFullYear(), 0, 1).getTime();
-          case 'all_time':
-            return new Date(now.getFullYear() - 10, 0, 1).getTime(); // Default to 10 years ago
-          default:
-            return now.getTime() - 24 * 60 * 60 * 1000; // Fallback to 24 hours
-        }
-      })();
+    : new Date().getTime() - (timeWindow as number) * 60 * 60 * 1000;
 
+  // For previous window - should be double the timeWindow
   const previousWindowStart = dateFrom
-    ? new Date(dateFrom).getTime() - (typeof timeWindow === 'number' ? timeWindow : 24) * 60 * 60 * 1000
-    : (() => {
-        const now = new Date();
-        if (typeof timeWindow === 'number') {
-          return now.getTime() - timeWindow * 60 * 60 * 1000;
-        }
-        switch (timeWindow) {
-          case 'last_3_months':
-            return new Date(now.getFullYear(), now.getMonth() - 6, now.getDate()).getTime();
-          case 'last_6_months':
-            return new Date(now.getFullYear(), now.getMonth() - 12, now.getDate()).getTime();
-          case 'last_year':
-            return new Date(now.getFullYear() - 2, now.getMonth(), now.getDate()).getTime();
-          case 'ytd':
-            return new Date(now.getFullYear() - 1, 0, 1).getTime();
-          case 'all_time':
-            return new Date(now.getFullYear() - 20, 0, 1).getTime(); // Default to 20 years ago
-          default:
-            return now.getTime() - 24 * 60 * 60 * 1000; // Fallback to 24 hours
-        }
-      })();
+    ? new Date(dateFrom).getTime() - (timeWindow as number) * 2 * 60 * 60 * 1000
+    : new Date().getTime() - (timeWindow as number) * 2 * 60 * 60 * 1000;
 
   const currentWindowEnd = dateTo
     ? new Date(dateTo).getTime()
@@ -604,13 +567,6 @@ router.get("/new", async (req, res) => {
    * - Adaptable to different domains through customization options
    */
 
-  const postsForFeedback = currentWindowPostsFromDb.map((post) => ({
-    ...post,
-    comments: post.comments.map((comment) => comment.content),
-  }))
-  const feedbackAnalysis = analyzeFeedback(postsForFeedback, {
-    minFrequency: 2,
-  })
 
   // Calculate category trends over time
   const startDate = new Date(currentWindowStart);
@@ -650,7 +606,6 @@ router.get("/new", async (req, res) => {
           };
         }),
       topPosts: top10MostEngagingPostsInCurrentWindow,
-      feedbackAnalysis: feedbackAnalysis,
       categoryTrends: categoryTrends
     },
     previousWindow: {
@@ -670,6 +625,8 @@ router.get("/new", async (req, res) => {
       topPosts: top10MostEngagingPostsInPreviousWindow,
     },
   };
+
+  console.log(response, "response")
 
   ResponseUtils.success(res, response);
 })
