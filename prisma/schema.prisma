@@ -70,6 +70,7 @@ model RedditPost {
   sentimentCategory     String?
   sentimentScore        Float?
   comments              RedditComment[]
+  buckets    FeedbackBucket[] 
 
   @@index([userId])
   @@index([orgId])
@@ -184,6 +185,24 @@ model Message {
   Chat      Chat     @relation(fields: [chatId], references: [id])
 
   @@index([chatId])
+}
+
+model FeedbackBucket {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  userId      String?
+  orgId       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  isActive    Boolean   @default(true)
+  priority    Int       @default(0)
+  posts       RedditPost[]
+
+  @@unique([userId, name])
+  @@unique([orgId, name])
+  @@index([userId])
+  @@index([orgId])
 }
 
 enum Role {

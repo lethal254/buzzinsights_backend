@@ -24,6 +24,7 @@ import preferencesRoutes from "./routes/preferences.routes"
 import postsRoutes from "./routes/posts.routes"
 import aiinsightsRoutes from "./routes/aiinsights.routes"
 import pineconeRoutes from "./routes/pineconeIngestion.route"
+import bucketsRoutes from "./routes/bucket.route"
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -103,6 +104,7 @@ app.use("/preferences", preferencesRoutes)
 app.use("/posts", postsRoutes)
 app.use("/ai", aiinsightsRoutes)
 app.use("/pinecone", pineconeRoutes)
+app.use("/buckets", bucketsRoutes)
 
 // Root endpoint
 app.get("/", (req: Request, res: Response) => {

@@ -1,9 +1,17 @@
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('user', 'assistant');
+
 -- CreateTable
 CREATE TABLE "SubReddit" (
     "id" SERIAL NOT NULL,
-    "userId" TEXT NOT NULL,
+    "userId" TEXT,
     "orgId" TEXT,
     "name" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "isActive" BOOLEAN NOT NULL DEFAULT true,
+    "keywords" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "lastIngested" TIMESTAMP(3),
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "SubReddit_pkey" PRIMARY KEY ("id")
 );
@@ -11,10 +19,21 @@ CREATE TABLE "SubReddit" (
 -- CreateTable
 CREATE TABLE "Preferences" (
     "id" SERIAL NOT NULL,
-    "userId" TEXT NOT NULL,
+    "userId" TEXT,
     "orgId" TEXT,
     "ingestionSchedule" TEXT,
     "ingestionActive" BOOLEAN NOT NULL DEFAULT false,
+    "commentGrowthThreshold" DOUBLE PRECISION NOT NULL DEFAULT 2.0,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "emails" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "enabled" BOOLEAN NOT NULL DEFAULT true,
+    "issueThreshold" INTEGER NOT NULL DEFAULT 0,
+    "lastNotified" TIMESTAMP(3),
+    "sentimentThreshold" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "timeWindow" INTEGER NOT NULL DEFAULT 24,
+    "triggerCategorization" BOOLEAN NOT NULL DEFAULT false,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "volumeThresholdMultiplier" DOUBLE PRECISION NOT NULL DEFAULT 1.5,
 
     CONSTRAINT "Preferences_pkey" PRIMARY KEY ("id")
 );
@@ -31,7 +50,6 @@ CREATE TABLE "RedditPost" (
     "lastUpdated" BIGINT NOT NULL,
     "needsProcessing" BOOLEAN NOT NULL DEFAULT true,
     "processingPriority" INTEGER NOT NULL DEFAULT 0,
-    "sentiment" DOUBLE PRECISION,
     "category" TEXT,
     "product" TEXT,
     "sameIssuesCount" INTEGER DEFAULT 0,
@@ -43,8 +61,11 @@ CREATE TABLE "RedditPost" (
     "imageUrl" TEXT,
     "orgId" TEXT,
     "thumbnail" TEXT,
-    "userId" TEXT NOT NULL,
+    "userId" TEXT,
     "labels" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "permalink" TEXT,
+    "sentimentCategory" TEXT,
+    "sentimentScore" DOUBLE PRECISION,
 
     CONSTRAINT "RedditPost_pkey" PRIMARY KEY ("id")
 );
@@ -67,7 +88,7 @@ CREATE TABLE "RedditComment" (
 -- CreateTable
 CREATE TABLE "FeedbackCategory" (
     "id" SERIAL NOT NULL,
-    "userId" TEXT NOT NULL,
+    "userId" TEXT,
     "orgId" TEXT,
     "name" TEXT NOT NULL,
     "description" TEXT,
@@ -81,7 +102,7 @@ CREATE TABLE "FeedbackCategory" (
 -- CreateTable
 CREATE TABLE "ProductCategory" (
     "id" SERIAL NOT NULL,
-    "userId" TEXT NOT NULL,
+    "userId" TEXT,
     "orgId" TEXT,
     "name" TEXT NOT NULL,
     "description" TEXT,
@@ -91,37 +112,6 @@ CREATE TABLE "ProductCategory" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "ProductCategory_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "CategorizationSettings" (
-    "id" SERIAL NOT NULL,
-    "userId" TEXT NOT NULL,
-    "orgId" TEXT,
-    "triggerCategorization" BOOLEAN NOT NULL DEFAULT false,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "CategorizationSettings_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "NotificationSettings" (
-    "id" SERIAL NOT NULL,
-    "userId" TEXT,
-    "orgId" TEXT,
-    "emails" TEXT[],
-    "issueThreshold" INTEGER NOT NULL,
-    "timeWindow" INTEGER NOT NULL,
-    "enabled" BOOLEAN NOT NULL DEFAULT true,
-    "lastNotified" TIMESTAMP(3),
-    "volumeThresholdMultiplier" DOUBLE PRECISION NOT NULL DEFAULT 1.5,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "sentimentThreshold" DOUBLE PRECISION NOT NULL DEFAULT 0,
-    "commentGrowthThreshold" DOUBLE PRECISION NOT NULL DEFAULT 2.0,
-
-    CONSTRAINT "NotificationSettings_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -135,32 +125,55 @@ CREATE TABLE "NotificationHistory" (
     "issueCount" INTEGER NOT NULL,
     "sentAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "emailsSentTo" TEXT[],
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "NotificationHistory_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "PostMetrics" (
+CREATE TABLE "WindowMetrics" (
     "id" SERIAL NOT NULL,
-    "postId" TEXT NOT NULL,
-    "score" INTEGER NOT NULL,
-    "numComments" INTEGER NOT NULL,
-    "sameIssuesCount" INTEGER NOT NULL,
-    "sentiment" DOUBLE PRECISION NOT NULL,
+    "userId" TEXT,
+    "orgId" TEXT,
     "timestamp" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "totalPosts" INTEGER NOT NULL,
+    "totalComments" INTEGER NOT NULL,
+    "totalUpvotes" INTEGER NOT NULL,
+    "topTrendingPosts" JSONB NOT NULL,
+    "categoryTrends" JSONB NOT NULL,
+    "sentimentAnalysis" JSONB NOT NULL,
+    "sameIssuesCount" INTEGER NOT NULL,
+    "sameDeviceCount" INTEGER NOT NULL,
+    "solutionsCount" INTEGER NOT NULL,
+    "updateIssueMention" INTEGER NOT NULL,
+    "updateResolvedMention" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "PostMetrics_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "WindowMetrics_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "CommentMetrics" (
-    "id" SERIAL NOT NULL,
-    "commentId" TEXT NOT NULL,
-    "score" INTEGER NOT NULL,
-    "sentiment" DOUBLE PRECISION NOT NULL,
-    "timestamp" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE "Chat" (
+    "id" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "userId" TEXT,
+    "orgId" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "CommentMetrics_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Chat_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Message" (
+    "id" TEXT NOT NULL,
+    "chatId" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "role" "Role" NOT NULL DEFAULT 'user',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Message_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -170,7 +183,10 @@ CREATE UNIQUE INDEX "SubReddit_userId_name_key" ON "SubReddit"("userId", "name")
 CREATE UNIQUE INDEX "SubReddit_orgId_name_key" ON "SubReddit"("orgId", "name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Preferences_userId_key" ON "Preferences"("userId");
+CREATE UNIQUE INDEX "Preferences_userId_unique" ON "Preferences"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Preferences_orgId_key" ON "Preferences"("orgId");
 
 -- CreateIndex
 CREATE INDEX "RedditPost_userId_idx" ON "RedditPost"("userId");
@@ -194,18 +210,6 @@ CREATE UNIQUE INDEX "ProductCategory_userId_name_key" ON "ProductCategory"("user
 CREATE UNIQUE INDEX "ProductCategory_orgId_name_key" ON "ProductCategory"("orgId", "name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "CategorizationSettings_userId_key" ON "CategorizationSettings"("userId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "CategorizationSettings_orgId_key" ON "CategorizationSettings"("orgId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "NotificationSettings_userId_key" ON "NotificationSettings"("userId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "NotificationSettings_orgId_key" ON "NotificationSettings"("orgId");
-
--- CreateIndex
 CREATE INDEX "NotificationHistory_userId_idx" ON "NotificationHistory"("userId");
 
 -- CreateIndex
@@ -215,10 +219,22 @@ CREATE INDEX "NotificationHistory_orgId_idx" ON "NotificationHistory"("orgId");
 CREATE INDEX "NotificationHistory_sentAt_idx" ON "NotificationHistory"("sentAt");
 
 -- CreateIndex
-CREATE INDEX "PostMetrics_postId_timestamp_idx" ON "PostMetrics"("postId", "timestamp");
+CREATE INDEX "WindowMetrics_userId_idx" ON "WindowMetrics"("userId");
 
 -- CreateIndex
-CREATE INDEX "CommentMetrics_commentId_timestamp_idx" ON "CommentMetrics"("commentId", "timestamp");
+CREATE INDEX "WindowMetrics_orgId_idx" ON "WindowMetrics"("orgId");
+
+-- CreateIndex
+CREATE INDEX "WindowMetrics_timestamp_idx" ON "WindowMetrics"("timestamp");
+
+-- CreateIndex
+CREATE INDEX "Chat_orgId_idx" ON "Chat"("orgId");
+
+-- CreateIndex
+CREATE INDEX "Chat_userId_idx" ON "Chat"("userId");
+
+-- CreateIndex
+CREATE INDEX "Message_chatId_idx" ON "Message"("chatId");
 
 -- AddForeignKey
 ALTER TABLE "RedditComment" ADD CONSTRAINT "RedditComment_parentCommentId_fkey" FOREIGN KEY ("parentCommentId") REFERENCES "RedditComment"("id") ON DELETE SET NULL ON UPDATE CASCADE;
@@ -227,7 +243,4 @@ ALTER TABLE "RedditComment" ADD CONSTRAINT "RedditComment_parentCommentId_fkey" 
 ALTER TABLE "RedditComment" ADD CONSTRAINT "RedditComment_postId_fkey" FOREIGN KEY ("postId") REFERENCES "RedditPost"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "PostMetrics" ADD CONSTRAINT "PostMetrics_postId_fkey" FOREIGN KEY ("postId") REFERENCES "RedditPost"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "CommentMetrics" ADD CONSTRAINT "CommentMetrics_commentId_fkey" FOREIGN KEY ("commentId") REFERENCES "RedditComment"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Message" ADD CONSTRAINT "Message_chatId_fkey" FOREIGN KEY ("chatId") REFERENCES "Chat"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
