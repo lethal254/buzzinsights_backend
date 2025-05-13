@@ -10102,3 +10102,5 @@
 {"errorCount":0,"jobId":"repeat:f3765dc5f8d64957e86491a41a399359:1743522600000","level":"info","message":"Categorization job completed","processedCount":21,"timestamp":"2025-04-01T15:50:58.211Z","totalPosts":21}
 {"jobId":"repeat:f3765dc5f8d64957e86491a41a399359:1743522600000","level":"info","message":"Categorization job completed","timestamp":"2025-04-01T15:50:58.440Z"}
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741680900000","level":"info","message":"Starting categorization job","timestamp":"2025-04-14T09:39:28.044Z"}
+{"level":"warn","message":"Master kill-all categorization jobs initiated","timestamp":"2025-05-13T07:18:15.105Z"}
+{"errors":[],"jobsStopped":3,"level":"warn","message":"Master kill-all completed","repeatableRemoved":3,"timestamp":"2025-05-13T07:18:21.483Z"}

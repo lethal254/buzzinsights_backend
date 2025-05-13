@@ -326,4 +326,80 @@ router.get("/status", async (req, res) => {
   }
 })
 
+/**
+ * Master Kill - Stop all ingestion jobs and update preferences
+ * POST /master/kill-all
+ */
+router.get("/master/kill-all", async (req, res) => {
+  try {
+    // Get all repeatable jobs
+    const repeatableJobs = await ingestionQueue.getRepeatableJobs()
+
+    // Remove all repeatable jobs
+    for (const job of repeatableJobs) {
+      if (job.key) {
+        try {
+          await ingestionQueue.removeJobScheduler(job.key)
+        } catch (error) {
+          console.warn(`Failed to remove job scheduler ${job.key}:`, error)
+          try {
+            await ingestionQueue.removeRepeatableByKey(job.key)
+          } catch (fallbackError) {
+            console.error(
+              `Failed to remove repeatable job ${job.key} with fallback:`,
+              fallbackError
+            )
+          }
+        }
+      }
+    }
+
+    // Remove any remaining active/waiting/delayed jobs
+    const activeJobs = await ingestionQueue.getActive()
+    const waitingJobs = await ingestionQueue.getWaiting()
+    const delayedJobs = await ingestionQueue.getDelayed()
+
+    const allJobs = [...activeJobs, ...waitingJobs, ...delayedJobs]
+    let removedCount = 0
+
+    for (const job of allJobs) {
+      try {
+        if (await job.isActive()) {
+          await job.moveToFailed({ message: "Ingestion stopped by master kill" })
+        } else if (!job.opts.repeat) {
+          await job.remove()
+        }
+        removedCount++
+      } catch (error) {
+        console.warn(`Failed to handle job ${job.id}:`, error)
+      }
+    }
+
+    // Update all preferences to disable ingestion
+    await prisma.preferences.updateMany({
+      where: {
+        ingestionActive: true,
+      },
+      data: {
+        ingestionActive: false,
+        updatedAt: new Date(),
+      },
+    })
+
+    ResponseUtils.success(res, {
+      message: "All ingestion jobs stopped successfully",
+      removedJobs: removedCount,
+    })
+  } catch (error) {
+    console.error("Master kill ingestion error:", error)
+    ResponseUtils.error(
+      res,
+      "Failed to stop all ingestion jobs",
+      500,
+      "INGESTION_ERROR",
+      error instanceof Error ? error.message : undefined
+    )
+  }
+})
+
 export default router
