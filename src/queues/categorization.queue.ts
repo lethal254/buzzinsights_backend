@@ -1,11 +1,10 @@
 import { Queue, Worker, JobsOptions, JobType } from "bullmq"
 import { redis } from "../config/redis"
-import { GoogleGenerativeAI } from "@google/generative-ai"
 import { createLogger, transports, format } from "winston"
 import prisma from "../utils/prismaClient"
-import { ingestData } from "../utils/ingestion.utils"
-import { schedulePineconeIngestion } from "../queues/pineconeIngestion.queue"
 import { chatModel } from "../utils/aiConfig"
+import { emailQueue } from "./email.queue"
+import { formatDistanceToNow } from "date-fns"
 
 const logger = createLogger({
   level: "info",
@@ -34,7 +33,7 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
         const { targetId, isOrg } = job.data
 
         // Get categories for the user/org
-        const [feedbackCategories, productCategories] = await Promise.all([
+        const [feedbackCategories, productCategories, buckets] = await Promise.all([
           prisma.feedbackCategory.findMany({
             where: isOrg ? { orgId: targetId } : { userId: targetId },
             select: {
@@ -50,6 +49,20 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
               name: true,
               keywords: true,
               versions: true,
+            },
+          }),
+          prisma.feedbackBucket.findMany({
+            where: isOrg ? { orgId: targetId } : { userId: targetId },
+            select: {
+              id: true,
+              name: true,
+              description: true,
+              posts: {
+                select: {
+                  title: true,
+                  content: true,
+                },
+              },
             },
           }),
         ])
@@ -145,6 +158,9 @@ ${JSON.stringify(feedbackCategories)}
 Available product categories:
 ${JSON.stringify(productCategories)}
 
+Available buckets:
+${JSON.stringify(buckets)}
+
 For each post, provide:
 1. Product category (from the provided list, or "Noise" if none apply)
    - Use product identifiers and versions to accurately match products
@@ -153,7 +169,12 @@ For each post, provide:
 2. Feedback category (from the provided list, or "Noise" if none apply)
    - Use category keywords to determine the best match
    - Mark as "Noise" if no categories match or if post is not feedback-related
-3. Analyze and count:
+3. Bucket suggestions (array of bucket IDs that this post might belong to)
+   - Compare the post content with existing posts in each bucket
+   - Consider semantic similarity, topics, and context
+   - Include a confidence score (0-1) for each suggested bucket
+   - Only suggest buckets with confidence > 0.7
+4. Analyze and count:
    - Number of users mentioning the same issue (sameIssuesCount)
    - Number of users mentioning the same device (sameDeviceCount)
    - Number of users providing solutions (solutionsCount)
@@ -168,6 +189,10 @@ IMPORTANT: Respond with raw JSON only, no markdown formatting. The response shou
     "id": string,
     "product": string,
     "category": string,
+    "bucketSuggestions": [{
+      "bucketId": string,
+      "confidence": number
+    }],
     "sameIssuesCount": number,
     "sameDeviceCount": number,
     "solutionsCount": number,
@@ -201,10 +226,77 @@ IMPORTANT: Respond with raw JSON only, no markdown formatting. The response shou
                     needsProcessing: false,
                     sentimentScore: item.sentimentScore,
                     sentimentCategory: item.sentimentCategory,
+                    // Add bucket suggestions with confidence > 0.7
+                    buckets: {
+                      connect: item.bucketSuggestions
+                        .filter((suggestion: { confidence: number }) => suggestion.confidence > 0.6)
+                        .map((suggestion: { bucketId: string }) => ({
+                          id: suggestion.bucketId,
+                        })),
+                    },
+                    addedToBucketByAI: item.bucketSuggestions.some((suggestion: { confidence: number }) => suggestion.confidence > 0.6),
                   },
                 })
               )
             )
+
+            // Get posts that were added to buckets by AI
+            const aiAddedPosts = await prisma.redditPost.findMany({
+              where: {
+                id: { in: batch.map(post => post.id) },
+                addedToBucketByAI: true
+              },
+              select: {
+                title: true,
+                content: true,
+                author: true,
+                createdUtc: true,
+                permalink: true,
+                buckets: {
+                  select: {
+                    id: true,
+                    name: true,
+                    description: true
+                  }
+                }
+              }
+            })
+
+            // Group posts by bucket for notifications
+            const postsByBucket = aiAddedPosts.reduce((acc, post) => {
+              post.buckets.forEach(bucket => {
+                if (!acc[bucket.id]) {
+                  acc[bucket.id] = {
+                    bucket,
+                    posts: []
+                  }
+                }
+                acc[bucket.id].posts.push(post)
+              })
+              return acc
+            }, {} as Record<string, { bucket: { id: string; name: string; description: string | null }; posts: typeof aiAddedPosts }>)
+
+            // Send notifications for each bucket
+            for (const { bucket, posts } of Object.values(postsByBucket)) {
+              // Get user preferences for notifications
+              const preferences = await prisma.preferences.findFirst({
+                where: isOrg ? { orgId: targetId } : { userId: targetId },
+                select: {
+                  emails: true
+                }
+              })
+
+              if (preferences?.emails && preferences.emails.length > 0) {
+                await sendBucketNotification(
+                  {
+                    name: bucket.name,
+                    description: bucket.description
+                  },
+                  posts,
+                  preferences.emails
+                )
+              }
+            }
 
             processedCount += batch.length
             logger.info(`Processed batch of ${batch.length} posts`, {
@@ -563,4 +655,48 @@ export const stopCategorization = async (targetId: string, isOrg: boolean) => {
       error: error instanceof Error ? error.message : "Unknown error",
     }
   }
+}
+
+// Helper function to send bucket notifications
+async function sendBucketNotification(
+  bucket: { name: string; description?: string | null },
+  posts: { title: string; content: string; author: string; createdUtc: bigint; permalink?: string | null }[],
+  emails: string[]
+) {
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h1 style="color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+        New Posts Added to Bucket: ${bucket.name}
+      </h1>
+      
+      <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <h2 style="color: #2c3e50; margin-top: 0;">Bucket Details</h2>
+        ${bucket.description ? `<p>${bucket.description}</p>` : ''}
+        <p>Posts Added: ${posts.length}</p>
+      </div>
+
+      ${posts.map(post => `
+        <div style="border: 1px solid #eee; padding: 15px; margin: 10px 0; border-radius: 5px;">
+          <h3 style="margin: 0; color: #2c3e50;">${post.title}</h3>
+          <p style="color: #666; font-size: 14px;">
+            Posted by ${post.author} • ${formatDistanceToNow(new Date(Number(post.createdUtc) * 1000), { addSuffix: true })}
+          </p>
+          <p style="margin: 10px 0;">${post.content.slice(0, 150)}...</p>
+          ${post.permalink ? `
+            <a href="https://reddit.com${post.permalink}" 
+              style="background: #0066cc; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px;">
+              View Discussion
+            </a>
+          ` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `
+
+  await emailQueue.add('bucket-notification', {
+    to: emails,
+    subject: `New Posts Added to Bucket: ${bucket.name}`,
+    content: html,
+    timestamp: new Date()
+  })
 }

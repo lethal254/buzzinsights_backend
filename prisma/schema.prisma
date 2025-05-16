@@ -43,7 +43,7 @@ model Preferences {
 }
 
 model RedditPost {
-  id                    String          @id
+  id                    String           @id
   title                 String
   content               String
   author                String
@@ -51,26 +51,27 @@ model RedditPost {
   score                 Int
   numComments           Int
   lastUpdated           BigInt
-  needsProcessing       Boolean         @default(true)
-  processingPriority    Int             @default(0)
+  needsProcessing       Boolean          @default(true)
+  processingPriority    Int              @default(0)
   category              String?
   product               String?
-  sameIssuesCount       Int?            @default(0)
-  sameDeviceCount       Int?            @default(0)
-  solutionsCount        Int?            @default(0)
-  updateIssueMention    Int?            @default(0)
-  updateResolvedMention Int?            @default(0)
+  sameIssuesCount       Int?             @default(0)
+  sameDeviceCount       Int?             @default(0)
+  solutionsCount        Int?             @default(0)
+  updateIssueMention    Int?             @default(0)
+  updateResolvedMention Int?             @default(0)
   authorProfilePhoto    String?
   imageUrl              String?
   orgId                 String?
   thumbnail             String?
   userId                String?
-  labels                String[]        @default([])
+  labels                String[]         @default([])
   permalink             String?
   sentimentCategory     String?
   sentimentScore        Float?
   comments              RedditComment[]
-  buckets    FeedbackBucket[] 
+  buckets               FeedbackBucket[]
+  addedToBucketByAI     Boolean          @default(false)
 
   @@index([userId])
   @@index([orgId])
@@ -188,15 +189,15 @@ model Message {
 }
 
 model FeedbackBucket {
-  id          String    @id @default(uuid())
+  id          String       @id @default(uuid())
   name        String
   description String?
   userId      String?
   orgId       String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  isActive    Boolean   @default(true)
-  priority    Int       @default(0)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  isActive    Boolean      @default(true)
+  priority    Int          @default(0)
   posts       RedditPost[]
 
   @@unique([userId, name])

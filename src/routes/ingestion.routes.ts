@@ -328,22 +328,27 @@ router.get("/status", async (req, res) => {
 
 /**
  * Master Kill - Stop all ingestion jobs and update preferences
- * POST /master/kill-all
+ * GET /master/kill-all
  */
 router.get("/master/kill-all", async (req, res) => {
   try {
+    console.warn("Master kill-all ingestion jobs initiated")
+
     // Get all repeatable jobs
     const repeatableJobs = await ingestionQueue.getRepeatableJobs()
+    let removedCount = 0
 
     // Remove all repeatable jobs
     for (const job of repeatableJobs) {
       if (job.key) {
         try {
           await ingestionQueue.removeJobScheduler(job.key)
+          removedCount++
         } catch (error) {
           console.warn(`Failed to remove job scheduler ${job.key}:`, error)
           try {
             await ingestionQueue.removeRepeatableByKey(job.key)
+            removedCount++
           } catch (fallbackError) {
             console.error(
               `Failed to remove repeatable job ${job.key} with fallback:`,
@@ -354,24 +359,42 @@ router.get("/master/kill-all", async (req, res) => {
       }
     }
 
-    // Remove any remaining active/waiting/delayed jobs
+    // Handle active jobs - try remove first, then obliterate if locked
     const activeJobs = await ingestionQueue.getActive()
-    const waitingJobs = await ingestionQueue.getWaiting()
-    const delayedJobs = await ingestionQueue.getDelayed()
-
-    const allJobs = [...activeJobs, ...waitingJobs, ...delayedJobs]
-    let removedCount = 0
-
-    for (const job of allJobs) {
+    for (const job of activeJobs) {
       try {
-        if (await job.isActive()) {
-          await job.moveToFailed({ message: "Ingestion stopped by master kill" })
-        } else if (!job.opts.repeat) {
-          await job.remove()
-        }
+        await job.remove()
         removedCount++
       } catch (error) {
-        console.warn(`Failed to handle job ${job.id}:`, error)
+        console.warn(`Failed to remove active job ${job.id}, trying obliterate:`, error)
+        try {
+          await ingestionQueue.obliterate({ force: true })
+          removedCount++
+        } catch (obliterateError) {
+          console.error(`Failed to obliterate active job ${job.id}:`, obliterateError)
+        }
+      }
+    }
+
+    // Handle waiting jobs - remove them
+    const waitingJobs = await ingestionQueue.getWaiting()
+    for (const job of waitingJobs) {
+      try {
+        await job.remove()
+        removedCount++
+      } catch (error) {
+        console.warn(`Failed to remove waiting job ${job.id}:`, error)
+      }
+    }
+
+    // Handle delayed jobs - remove them
+    const delayedJobs = await ingestionQueue.getDelayed()
+    for (const job of delayedJobs) {
+      try {
+        await job.remove()
+        removedCount++
+      } catch (error) {
+        console.warn(`Failed to remove delayed job ${job.id}:`, error)
       }
     }
 
@@ -385,6 +408,8 @@ router.get("/master/kill-all", async (req, res) => {
         updatedAt: new Date(),
       },
     })
+
+    console.warn("Master kill-all completed", { removedCount })
 
     ResponseUtils.success(res, {
       message: "All ingestion jobs stopped successfully",

@@ -4,6 +4,8 @@ import prisma from "../utils/prismaClient"
 import { ResponseUtils } from "../utils/response.utils"
 import type { Request } from "express"
 import { Prisma } from "@prisma/client"
+import { emailQueue } from "../queues/email.queue"
+import { formatDistanceToNow } from "date-fns"
 
 const router = Router()
 
@@ -40,6 +42,50 @@ const QuerySchema = z.object({
 }).refine(data => data.userId || data.orgId, {
   message: "Either userId or orgId must be provided"
 })
+
+// Helper function to send bucket notifications
+async function sendBucketNotification(
+  bucket: { name: string; description?: string | null },
+  posts: { title: string; content: string; author: string; createdUtc: bigint; permalink?: string | null }[],
+  emails: string[]
+) {
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h1 style="color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+        New Posts Added to Bucket: ${bucket.name}
+      </h1>
+      
+      <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <h2 style="color: #2c3e50; margin-top: 0;">Bucket Details</h2>
+        ${bucket.description ? `<p>${bucket.description}</p>` : ''}
+        <p>Posts Added: ${posts.length}</p>
+      </div>
+
+      ${posts.map(post => `
+        <div style="border: 1px solid #eee; padding: 15px; margin: 10px 0; border-radius: 5px;">
+          <h3 style="margin: 0; color: #2c3e50;">${post.title}</h3>
+          <p style="color: #666; font-size: 14px;">
+            Posted by ${post.author} • ${formatDistanceToNow(new Date(Number(post.createdUtc) * 1000), { addSuffix: true })}
+          </p>
+          <p style="margin: 10px 0;">${post.content.slice(0, 150)}...</p>
+          ${post.permalink ? `
+            <a href="https://reddit.com${post.permalink}" 
+              style="background: #0066cc; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px;">
+              View Discussion
+            </a>
+          ` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `
+
+  await emailQueue.add('bucket-notification', {
+    to: emails,
+    subject: `New Posts Added to Bucket: ${bucket.name}`,
+    content: html,
+    timestamp: new Date()
+  })
+}
 
 // POST /api/buckets - Create a new bucket
 router.post("/", async (req: Request, res) => {
@@ -365,6 +411,24 @@ router.post("/:id/posts", async (req: Request, res) => {
       )
     }
 
+    // Get the posts being added
+    const posts = await prisma.redditPost.findMany({
+      where: {
+        id: { in: postIds }
+      },
+      select: {
+        title: true,
+        content: true,
+        author: true,
+        createdUtc: true,
+        permalink: true,
+        addedToBucketByAI: true
+      }
+    })
+
+    // Filter posts that were added by AI
+    const aiAddedPosts = posts.filter(post => post.addedToBucketByAI)
+
     const bucket = await prisma.feedbackBucket.update({
       where: { id },
       data: {
@@ -376,6 +440,28 @@ router.post("/:id/posts", async (req: Request, res) => {
         posts: true,
       },
     })
+
+    // Only send notification if there are posts added by AI
+    if (aiAddedPosts.length > 0) {
+      // Get user preferences for notifications
+      const preferences = await prisma.preferences.findFirst({
+        where: isOrg ? { orgId } : { userId },
+        select: {
+          emails: true
+        }
+      })
+
+      if (preferences?.emails && preferences.emails.length > 0) {
+        await sendBucketNotification(
+          {
+            name: bucket.name,
+            description: bucket.description
+          },
+          aiAddedPosts,
+          preferences.emails
+        )
+      }
+    }
 
     return ResponseUtils.success(res, bucket)
   } catch (error) {
