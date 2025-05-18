@@ -283,12 +283,12 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
                     // Add bucket suggestions with confidence > 0.7
                     buckets: {
                       connect: item.bucketSuggestions
-                        .filter((suggestion: { confidence: number }) => suggestion.confidence > 0.6)
+                        .filter((suggestion: { confidence: number }) => suggestion.confidence > 0.7)
                         .map((suggestion: { bucketId: string }) => ({
                           id: suggestion.bucketId,
                         })),
                     },
-                    addedToBucketByAI: item.bucketSuggestions.some((suggestion: { confidence: number }) => suggestion.confidence > 0.6),
+                    addedToBucketByAI: item.bucketSuggestions.some((suggestion: { confidence: number }) => suggestion.confidence > 0.7),
                   },
                 })
               )
