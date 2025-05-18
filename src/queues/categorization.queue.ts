@@ -142,67 +142,87 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
 
           try {
             const prompt = `
-Analyze the following Reddit posts and their comments:
-${JSON.stringify(
-  batch.map((post) => ({
-    id: post.id,
-    title: post.title,
-    content: post.content,
-    comments: post.comments.map((c) => c.content),
-  }))
-)}
-
-Available feedback categories:
-${JSON.stringify(feedbackCategories)}
-
-Available product categories:
-${JSON.stringify(productCategories)}
-
-Available buckets:
-${JSON.stringify(buckets)}
-
-For each post, provide:
-1. Product category (from the provided list, or "Noise" if none apply)
-   - Use product identifiers and versions to accurately match products
-   - Consider both exact matches and variations
-   - If no product categories are available or none match, use "Noise"
-2. Feedback category (from the provided list, or "Noise" if none apply)
-   - Use category keywords to determine the best match
-   - Mark as "Noise" if no categories match or if post is not feedback-related
-3. Bucket suggestions (array of bucket IDs that this post might belong to)
-   - Compare the post content with existing posts in each bucket
-   - Consider semantic similarity, topics, and context
-   - Include a confidence score (0-1) for each suggested bucket
-   - Only suggest buckets with confidence > 0.7
-4. Analyze and count:
-   - Number of users mentioning the same issue (sameIssuesCount)
-   - Number of users mentioning the same device (sameDeviceCount)
-   - Number of users providing solutions (solutionsCount)
-   - Number of mentions about issues after updates (updateIssueMention)
-   - Number of mentions about resolutions after updates (updateResolvedMention)
-   - Determine the sentiment score on a scale from 0 (very negative) to 5 (very positive) based on the combined text (title, content, and comments).
-   - Determine the sentiment category (Negative, Positive or Neutral) based on the combined text (title, content, and comments).
-
-IMPORTANT: Respond with raw JSON only, no markdown formatting. The response should be a valid JSON object with this exact structure:
-{
-  "results": [{
-    "id": string,
-    "product": string,
-    "category": string,
-    "bucketSuggestions": [{
-      "bucketId": string,
-      "confidence": number
-    }],
-    "sameIssuesCount": number,
-    "sameDeviceCount": number,
-    "solutionsCount": number,
-    "updateIssueMention": number,
-    "updateResolvedMention": number,
-    "sentimentScore": number,
-    "sentimentCategory": string
-  }]
-}
-`
+            Analyze the following Reddit posts and their comments:
+            ${JSON.stringify(
+              batch.map((post) => ({
+                id: post.id,
+                title: post.title,
+                content: post.content,
+                comments: post.comments.map((c) => c.content),
+              }))
+            )}
+            
+            Available feedback categories with descriptions:
+            ${JSON.stringify(feedbackCategories)}
+            
+            Available product categories with identifiers and keywords:
+            ${JSON.stringify(productCategories)}
+            
+            Available buckets with examples:
+            ${JSON.stringify(buckets)}
+            
+            For each post, provide:
+            
+            1. Product category analysis:
+               - Select from provided categories or use "Uncertain" if confidence is low
+               - Use "Noise" ONLY if content is clearly unrelated to any products (spam, off-topic)
+               - Include a confidence score (0-1) for your product categorization
+               - Map customer terminology to official product names when possible
+            
+            2. Feedback category analysis:
+               - Select the most appropriate feedback category or "Uncertain" if unclear
+               - Only use "Noise" when content contains no actionable feedback or product references
+               - Include a confidence score (0-1) for your feedback categorization
+               - For mixed feedback types, prioritize bugs > feature requests > general feedback
+            
+            3. Bucket suggestions:
+               - Compare semantic similarity with example posts in each bucket
+               - Include confidence score (0-1) for each suggested bucket
+               - Only suggest buckets with confidence > 0.7
+               - If no buckets meet the threshold, return an empty array
+            
+            4. Content analysis metrics:
+               - sameIssuesCount: Count users describing functionally identical problems
+               - sameDeviceCount: Count mentions of identical hardware/software configurations
+               - solutionsCount: Count distinct solution approaches (not just solution mentions)
+               - updateIssueMention: Count references to problems after specific update versions
+               - updateResolvedMention: Count references to fixes after specific update versions
+            
+            5. Sentiment analysis:
+               - Calculate sentimentScore (0-5) based on emotional tone, not just problem reporting
+               - Technical problem reports should not be automatically negative unless tone is frustrated
+               - Determine sentimentCategory as "Negative" (0-1.66), "Neutral" (1.67-3.33), or "Positive" (3.34-5)
+               - Consider cultural variations in how feedback is expressed
+            
+            IMPORTANT GUIDELINES:
+            - Express uncertainty rather than guessing - use "Uncertain" when confidence is low
+            - Mark content as "Noise" only when clearly unrelated to products/feedback
+            - For posts with missing/incomplete information, analyze based on available text
+            - For extremely long posts, prioritize title, first paragraph, and conclusion
+            
+            Respond with valid JSON only:
+            {
+              "results": [{
+                "id": string,
+                "product": string,
+                "productConfidence": number,
+                "category": string,
+                "categoryConfidence": number,
+                "bucketSuggestions": [{
+                  "bucketId": string,
+                  "confidence": number
+                }],
+                "sameIssuesCount": number,
+                "sameDeviceCount": number,
+                "solutionsCount": number,
+                "updateIssueMention": number,
+                "updateResolvedMention": number,
+                "sentimentScore": number,
+                "sentimentCategory": string,
+                "analysisNotes": string  // Brief notes on any uncertainty or special handling
+              }]
+            }
+            `
             const result = await model.invoke(prompt)
             const responseText = result.content.toString()
 
