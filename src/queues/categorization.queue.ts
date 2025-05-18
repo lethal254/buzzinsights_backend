@@ -158,8 +158,16 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
             Available product categories with identifiers and keywords:
             ${JSON.stringify(productCategories)}
             
-            Available buckets with examples:
-            ${JSON.stringify(buckets)}
+            Available feedback buckets with descriptions and existing posts:
+            ${JSON.stringify(buckets.map(bucket => ({
+              id: bucket.id,
+              name: bucket.name,
+              description: bucket.description,
+              examplePosts: bucket.posts.map(post => ({
+                title: post.title,
+                content: post.content
+              }))
+            })))}
             
             For each post, provide:
             
@@ -176,10 +184,26 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
                - For mixed feedback types, prioritize bugs > feature requests > general feedback
             
             3. Bucket suggestions:
-               - Compare semantic similarity with example posts in each bucket
-               - Include confidence score (0-1) for each suggested bucket
+               - For each bucket, analyze ALL example posts within that bucket to understand the common patterns
+               - Create a "bucket fingerprint" based on:
+                   * Common products/devices mentioned across example posts
+                   * Common issue types and symptoms described
+                   * Shared terminology and specific keywords that appear frequently
+               - Match new posts against these bucket fingerprints rather than single examples
+               - First identify exact keyword matches between the new post and the bucket fingerprint
+               - Prioritize posts that mention BOTH the same issue AND same product/device as found in the bucket fingerprint
+               - Example: If a bucket contains multiple posts about "flicker issues on MacBook Pro 2020", new posts about flickering on that specific device should match strongly
+               - Consider partial matches (same issue, different device OR same device, different issue) as lower confidence
+               - Only match between different products when the issue description has identical keywords
+               - Include a detailed confidence score (0-1) based on:
+                   * 0.9-1.0: Exact issue AND exact product/device match with multiple example posts
+                   * 0.8-0.89: Exact issue with similar product/device OR perfect match with a single example post
+                   * 0.7-0.79: Similar issue with exact product/device
+                   * 0.6-0.69: Similar issue with similar product/device
+                   * <0.6: Only general topic similarity
                - Only suggest buckets with confidence > 0.7
                - If no buckets meet the threshold, return an empty array
+               - For each suggested bucket, provide the matching keywords and reference which example posts were most similar
             
             4. Content analysis metrics:
                - sameIssuesCount: Count users describing functionally identical problems
@@ -199,6 +223,13 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
             - Mark content as "Noise" only when clearly unrelated to products/feedback
             - For posts with missing/incomplete information, analyze based on available text
             - For extremely long posts, prioritize title, first paragraph, and conclusion
+            - NEVER hallucinate buckets - only match with the provided bucket examples
+            - For bucketing:
+                * Learn patterns from ALL example posts within each bucket
+                * Create a weighted keyword frequency analysis for each bucket
+                * Prioritize specific products, versions, and exact issue descriptions
+                * Consider the specificity hierarchy: exact product+issue > same product+similar issue > same issue+different product
+                * When matching across different products, require near-identical issue descriptions
             
             Respond with valid JSON only:
             {
@@ -210,7 +241,10 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
                 "categoryConfidence": number,
                 "bucketSuggestions": [{
                   "bucketId": string,
-                  "confidence": number
+                  "confidence": number,
+                  "matchReason": string,  // Brief explanation of main matching factors
+                  "matchingExamplePosts": [string],  // IDs or indexes of the most similar example posts in the bucket
+                  "matchingKeywords": [string]  // List of specific keywords that matched
                 }],
                 "sameIssuesCount": number,
                 "sameDeviceCount": number,
@@ -219,7 +253,7 @@ if (process.env.ENABLE_QUEUE_WORKERS === "true") {
                 "updateResolvedMention": number,
                 "sentimentScore": number,
                 "sentimentCategory": string,
-                "analysisNotes": string  // Brief notes on any uncertainty or special handling
+                "analysisNotes": string  // Include matched keywords and any uncertainty or special handling
               }]
             }
             `

@@ -10104,3 +10104,5 @@
 {"jobId":"repeat:0e33f1bb2873999aa9b55fa78e5c99c5:1741680900000","level":"info","message":"Starting categorization job","timestamp":"2025-04-14T09:39:28.044Z"}
 {"level":"warn","message":"Master kill-all categorization jobs initiated","timestamp":"2025-05-13T07:18:15.105Z"}
 {"errors":[],"jobsStopped":3,"level":"warn","message":"Master kill-all completed","repeatableRemoved":3,"timestamp":"2025-05-13T07:18:21.483Z"}
+{"level":"warn","message":"Master kill-all categorization jobs initiated","timestamp":"2025-05-18T09:06:16.242Z"}
+{"errors":[],"jobsStopped":3,"level":"warn","message":"Master kill-all completed","repeatableRemoved":3,"timestamp":"2025-05-18T09:06:21.990Z"}
