@@ -1,0 +1,267 @@
+ Image buzzinsights_backend-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 534B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 553B done
+#2 WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 26)
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:18
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 72B done
+#4 DONE 0.0s
+
+#5 [1/7] FROM docker.io/library/node:18
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 5.63kB done
+#6 DONE 0.0s
+
+#7 [4/7] COPY package*.json ./
+#7 CACHED
+
+#8 [2/7] RUN apt-get update && apt-get install -y redis
+#8 CACHED
+
+#9 [3/7] WORKDIR /app
+#9 CACHED
+
+#10 [5/7] RUN npm install
+#10 CACHED
+
+#11 [6/7] COPY . .
+#11 DONE 0.0s
+
+#12 [7/7] RUN npm run build
+#12 0.228 
+#12 0.228 > social_eye_services@1.0.0 build
+#12 0.228 > prisma generate && tsc
+#12 0.228 
+#12 0.990 Prisma schema loaded from prisma/schema.prisma
+#12 1.277 
+#12 1.277 ✔ Generated Prisma Client (v6.12.0) to ./node_modules/@prisma/client in 111ms
+#12 1.277 
+#12 1.277 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+#12 1.277 
+#12 1.277 Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+#12 1.277 
+#12 DONE 4.7s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.2s done
+#13 writing image sha256:bf42dae642ed9f7f01ee0d4a668715cb29bcd74edc029ac2273e7655f30b409a done
+#13 naming to docker.io/library/buzzinsights_backend-app done
+#13 DONE 0.2s
+
+#14 resolving provenance for metadata file
+#14 DONE 0.0s
+ Image buzzinsights_backend-app Built 
+ Network buzzinsights_backend_default Creating 
+ Network buzzinsights_backend_default Created 
+ Container buzzinsights_backend-redis-1 Creating 
+ Container buzzinsights_backend-redis-1 Created 
+ Container buzzinsights_backend-app-1 Creating 
+ Container buzzinsights_backend-app-1 Created 
+Attaching to app-1, redis-1
+ Container buzzinsights_backend-redis-1 Starting 
+ Container buzzinsights_backend-redis-1 Started 
+ Container buzzinsights_backend-app-1 Starting 
+redis-1  | Starting Redis Server
+redis-1  | 1:C 09 Feb 2026 10:52:49.810 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+redis-1  | 1:C 09 Feb 2026 10:52:49.810 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 09 Feb 2026 10:52:49.810 * Redis version=8.4.0, bits=64, commit=00000000, modified=1, pid=1, just started
+redis-1  | 1:C 09 Feb 2026 10:52:49.810 * Configuration loaded
+redis-1  | 1:M 09 Feb 2026 10:52:49.810 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+redis-1  | 1:M 09 Feb 2026 10:52:49.810 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 09 Feb 2026 10:52:49.811 * Running mode=standalone, port=6379.
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> RedisBloom version 8.4.0 (Git=unknown)
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> Registering configuration options: [
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> 	{ bf-error-rate       :      0.01 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> 	{ bf-initial-size     :       100 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> 	{ bf-expansion-factor :         2 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> 	{ cf-bucket-size      :         2 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> 	{ cf-initial-size     :      1024 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> 	{ cf-max-iterations   :        20 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> 	{ cf-expansion-factor :         1 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> 	{ cf-max-expansions   :        32 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * <bf> ]
+redis-1  | 1:M 09 Feb 2026 10:52:49.813 * Module 'bf' loaded from /usr/local/lib/redis/modules//redisbloom.so
+redis-1  | 1:M 09 Feb 2026 10:52:49.817 * <search> Redis version found by RedisSearch : 8.4.0 - oss
+redis-1  | 1:M 09 Feb 2026 10:52:49.817 * <search> RediSearch version 8.4.2 (Git=9e2b676)
+redis-1  | 1:M 09 Feb 2026 10:52:49.817 * <search> Low level api version 1 initialized successfully
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * <search> gc: ON, prefix min length: 2, min word length to stem: 4, prefix max expansions: 200, query timeout (ms): 500, timeout policy: return, oom policy: return, cursor read size: 1000, cursor max idle (ms): 300000, max doctable size: 1000000, max number of search results:  1000000, default scorer: BM25STD, 
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * <search> Initialized thread pools!
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * <search> Disabled workers threadpool of size 0
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * <search> Subscribe to config changes
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * <search> Subscribe to cluster slot migration events
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * <search> Enabled role change notification
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * <search> Cluster configuration: AUTO partitions, type: 0, coordinator timeout: 0ms
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * <search> Register write commands
+redis-1  | 1:M 09 Feb 2026 10:52:49.818 * Module 'search' loaded from /usr/local/lib/redis/modules//redisearch.so
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> RedisTimeSeries version 80400, git_sha=3520a1568ad69076d60885c70711fbdc9b448749
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> Redis version found by RedisTimeSeries : 8.4.0 - oss
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> Registering configuration options: [
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> 	{ ts-compaction-policy   :              }
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> 	{ ts-num-threads         :            3 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> 	{ ts-retention-policy    :            0 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> 	{ ts-duplicate-policy    :        block }
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> 	{ ts-chunk-size-bytes    :         4096 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> 	{ ts-encoding            :   compressed }
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> 	{ ts-ignore-max-time-diff:            0 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> 	{ ts-ignore-max-val-diff :     0.000000 }
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> ]
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> Detected redis oss
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> Subscribe to ASM events
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * <timeseries> Enabled diskless replication
+redis-1  | 1:M 09 Feb 2026 10:52:49.819 * Module 'timeseries' loaded from /usr/local/lib/redis/modules//redistimeseries.so
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Created new data type 'ReJSON-RL'
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> version: 80400 git sha: unknown branch: unknown
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Exported RedisJSON_V1 API
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Exported RedisJSON_V2 API
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Exported RedisJSON_V3 API
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Exported RedisJSON_V4 API
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Exported RedisJSON_V5 API
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Exported RedisJSON_V6 API
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Enabled diskless replication
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <ReJSON> Initialized shared string cache, thread safe: true.
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * Module 'ReJSON' loaded from /usr/local/lib/redis/modules//rejson.so
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * <search> Acquired RedisJSON_V6 API
+redis-1  | 1:M 09 Feb 2026 10:52:49.821 * Server initialized
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * <search> Loading event starts
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * <search> Changing workers threadpool size from 0 to 4
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * <search> Enabled workers threadpool of size 4
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * Reading RDB base file on AOF loading...
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * Loading RDB produced by version 8.4.0
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * RDB age 854 seconds
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * RDB memory usage when created 1.02 Mb
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * RDB is base AOF
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * DB loaded from base file appendonly.aof.1.base.rdb: 0.001 seconds
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * <search> Changing workers threadpool size from 4 to 0
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * <search> Disabled workers threadpool of size 4
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * <search> Loading event ends
+redis-1  | 1:M 09 Feb 2026 10:52:49.822 * DB loaded from append only file: 0.001 seconds
+redis-1  | 1:M 09 Feb 2026 10:52:49.824 * Opening AOF incr file appendonly.aof.1.incr.aof on server start
+redis-1  | 1:M 09 Feb 2026 10:52:49.824 * Ready to accept connections tcp
+ Container buzzinsights_backend-app-1 Started 
+app-1    | 
+app-1    | > social_eye_services@1.0.0 start
+app-1    | > node dist/index.js
+app-1    | 
+app-1    | node:internal/modules/cjs/loader:1143
+app-1    |   throw err;
+app-1    |   ^
+app-1    | 
+app-1    | Error: Cannot find module '/app/dist/index.js'
+app-1    |     at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+app-1    |     at Module._load (node:internal/modules/cjs/loader:981:27)
+app-1    |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+app-1    |     at node:internal/main/run_main_module:28:49 {
+app-1    |   code: 'MODULE_NOT_FOUND',
+app-1    |   requireStack: []
+app-1    | }
+app-1    | 
+app-1    | Node.js v18.20.8
+[Kapp-1 exited with code 1
+condescending_banzai  | total 2644
+condescending_banzai  | drwxr-xr-x 1 root root    4096 Feb  9 10:59 .
+condescending_banzai  | drwxr-xr-x 1 root root    4096 Feb  9 10:59 ..
+condescending_banzai  | -rw-rw-r-- 1 root root      32 Feb  9 10:31 .dockerignore
+condescending_banzai  | drwxrwxr-x 8 root root    4096 Feb  9 10:57 .git
+condescending_banzai  | drwxrwxr-x 3 root root    4096 Feb  9 10:31 .github
+condescending_banzai  | -rw-rw-r-- 1 root root      24 Feb  9 10:31 .gitignore
+condescending_banzai  | -rw-rw-r-- 1 root root     514 Feb  9 10:31 Dockerfile
+condescending_banzai  | -rw-rw-r-- 1 root root   10382 Feb  9 10:52 build.log
+condescending_banzai  | -rw-rw-r-- 1 root root    2144 Feb  9 10:31 categorization-test.log
+condescending_banzai  | -rw-rw-r-- 1 root root 2058997 Feb  9 10:31 categorization.log
+condescending_banzai  | drwxr-xr-x 9 root root    4096 Feb  9 10:59 dist
+condescending_banzai  | -rw-rw-r-- 1 root root     369 Feb  9 10:31 docker-compose.yml
+condescending_banzai  | -rw-rw-r-- 1 root root    5643 Feb  9 10:31 email-test.log
+condescending_banzai  | -rw-rw-r-- 1 root root  161564 Feb  9 10:31 email.log
+condescending_banzai  | drwxr-xr-x 1 root root    4096 Feb  9 10:59 node_modules
+condescending_banzai  | -rw-rw-r-- 1 root root    7877 Feb  9 10:31 notification.log
+condescending_banzai  | -rw-rw-r-- 1 root root  177030 Feb  9 10:31 package-lock.json
+condescending_banzai  | -rw-rw-r-- 1 root root    1553 Feb  9 10:31 package.json
+condescending_banzai  | -rw-rw-r-- 1 root root  198473 Feb  9 10:31 pinecone-ingestion-queue.log
+condescending_banzai  | drwxrwxr-x 3 root root    4096 Feb  9 10:31 prisma
+condescending_banzai  | drwxrwxr-x 9 root root    4096 Feb  9 10:31 src
+condescending_banzai  | -rw-rw-r-- 1 root root    1363 Feb  9 10:31 test.js
+condescending_banzai  | -rw-rw-r-- 1 root root     304 Feb  9 10:31 tsconfig.json
+[Kcondescending_banzai exited with code 0
+interesting_gould     | total 48
+interesting_gould     | drwxr-xr-x 9 root root 4096 Feb  9 10:59 .
+interesting_gould     | drwxr-xr-x 1 root root 4096 Feb  9 10:59 ..
+interesting_gould     | drwxr-xr-x 2 root root 4096 Feb  9 10:59 config
+interesting_gould     | -rw-r--r-- 1 root root 6771 Feb  9 10:59 index.js
+interesting_gould     | drwxr-xr-x 2 root root 4096 Feb  9 10:59 middlewares
+interesting_gould     | drwxr-xr-x 2 root root 4096 Feb  9 10:59 queues
+interesting_gould     | drwxr-xr-x 2 root root 4096 Feb  9 10:59 routes
+interesting_gould     | drwxr-xr-x 2 root root 4096 Feb  9 10:59 schemas
+interesting_gould     | drwxr-xr-x 2 root root 4096 Feb  9 10:59 types
+interesting_gould     | drwxr-xr-x 2 root root 4096 Feb  9 10:59 utils
+[Kinteresting_gould exited with code 0
+objective_goldstine   | /app/dist/queues/email.queue.js:30
+objective_goldstine   |     throw new Error("SMTP_USER or SMTP_PASSWORD environment variables are not set");
+objective_goldstine   |     ^
+objective_goldstine   | 
+objective_goldstine   | Error: SMTP_USER or SMTP_PASSWORD environment variables are not set
+objective_goldstine   |     at Object.<anonymous> (/app/dist/queues/email.queue.js:30:11)
+objective_goldstine   |     at Module._compile (node:internal/modules/cjs/loader:1364:14)
+objective_goldstine   |     at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+objective_goldstine   |     at Module.load (node:internal/modules/cjs/loader:1203:32)
+objective_goldstine   |     at Module._load (node:internal/modules/cjs/loader:1019:12)
+objective_goldstine   |     at Module.require (node:internal/modules/cjs/loader:1231:19)
+objective_goldstine   |     at require (node:internal/modules/helpers:177:18)
+objective_goldstine   |     at Object.<anonymous> (/app/dist/index.js:19:23)
+objective_goldstine   |     at Module._compile (node:internal/modules/cjs/loader:1364:14)
+objective_goldstine   |     at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+objective_goldstine   | 
+objective_goldstine   | Node.js v18.20.8
+[Kobjective_goldstine exited with code 1
+[Kapp-1 has been recreated
+app-1                 | 
+app-1                 | > social_eye_services@1.0.0 start
+app-1                 | > node dist/index.js
+app-1                 | 
+app-1                 | ⚡️[server]: Server is running at http://localhost:4000
+app-1                 | 🔄 Bull Board available at http://localhost:4000/admin/queues
+app-1                 | IMPORTANT! Eviction policy is volatile-lru. It should be "noeviction"
+app-1                 | It is highly recommended to use a minimum Redis version of 6.2.0
+app-1                 |              Current: 6.0.14
+app-1                 | IMPORTANT! Eviction policy is volatile-lru. It should be "noeviction"
+app-1                 | It is highly recommended to use a minimum Redis version of 6.2.0
+app-1                 |              Current: 6.0.14
+app-1                 | IMPORTANT! Eviction policy is volatile-lru. It should be "noeviction"
+app-1                 | It is highly recommended to use a minimum Redis version of 6.2.0
+app-1                 |              Current: 6.0.14
+app-1                 | IMPORTANT! Eviction policy is volatile-lru. It should be "noeviction"
+app-1                 | It is highly recommended to use a minimum Redis version of 6.2.0
+app-1                 |              Current: 6.0.14
+app-1                 | IMPORTANT! Eviction policy is volatile-lru. It should be "noeviction"
+app-1                 | It is highly recommended to use a minimum Redis version of 6.2.0
+app-1                 |              Current: 6.0.14
+app-1                 | IMPORTANT! Eviction policy is volatile-lru. It should be "noeviction"
+app-1                 | It is highly recommended to use a minimum Redis version of 6.2.0
+app-1                 |              Current: 6.0.14
+app-1                 | IMPORTANT! Eviction policy is volatile-lru. It should be "noeviction"
+app-1                 | It is highly recommended to use a minimum Redis version of 6.2.0
+app-1                 |              Current: 6.0.14
+app-1                 | IMPORTANT! Eviction policy is volatile-lru. It should be "noeviction"
+app-1                 | It is highly recommended to use a minimum Redis version of 6.2.0
+app-1                 |              Current: 6.0.14
+app-1                 | {"level":"info","message":"Email server is ready to send messages","timestamp":"2026-02-09T11:01:31.863Z"}
+[Kapp-1 exited with code 137
+redis-1               | 1:signal-handler (1770635032) Received SIGTERM scheduling shutdown...
+redis-1               | 1:M 09 Feb 2026 11:03:52.379 * User requested shutdown...
+redis-1               | 1:M 09 Feb 2026 11:03:52.381 * Calling fsync() on the AOF file.
+redis-1               | 1:M 09 Feb 2026 11:03:52.381 * Saving the final RDB snapshot before exiting.
+redis-1               | 1:M 09 Feb 2026 11:03:52.384 * BGSAVE done, 0 keys saved, 0 keys skipped, 88 bytes written.
+redis-1               | 1:M 09 Feb 2026 11:03:52.386 * DB saved on disk
+redis-1               | 1:M 09 Feb 2026 11:03:52.388 # Redis is now ready to exit, bye bye...
+[Kredis-1 exited with code 0

@@ -63,12 +63,28 @@ router.get('/', async (req, res) => {
     const where = isOrg ? { orgId } : { userId };
 
 
-    const preferences = await prisma.preferences.findFirst({
+    let preferences = await prisma.preferences.findFirst({
       where
     });
-    if(!preferences) {
-     ResponseUtils.success(res, {})
-      return
+
+    // If no preferences exist, return defaults
+    if (!preferences) {
+      const defaultPreferences = {
+        userId: userId || null,
+        orgId: orgId || null,
+        ingestionSchedule: null,
+        ingestionActive: false,
+        triggerCategorization: false,
+        emails: [],
+        issueThreshold: 0,
+        timeWindow: 24,
+        enabled: true,
+        volumeThresholdMultiplier: 1.5,
+        sentimentThreshold: 0,
+        commentGrowthThreshold: 2.0
+      };
+      ResponseUtils.success(res, defaultPreferences);
+      return;
     }
 
     ResponseUtils.success(res, preferences);
