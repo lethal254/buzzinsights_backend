@@ -109,3 +109,23 @@ BuzzInsights should hold the raw post. Listening-vendor APIs are the wrong layer
 5. For news, blogs, and forums, accept a feed only when the contract lets BuzzInsights show the text to its own customers. A crawl-and-resell feed does not meet that bar.
 
 The one API in the product is the internal connector contract. There is no compliant upstream API that returns raw posts from every network.
+
+## How to file for Reddit commercial use
+
+Commercial use is a contract request, not a self-serve toggle. Reddit’s current commercial form is the enterprise request linked from the Responsible Builder Policy (edited 5 October 2026) and from the commercial section of Developer Platform & Accessing Reddit Data (edited 28 May 2026):
+
+https://support.reddithelp.com/hc/en-us/requests/new?ticket_form_id=14868593862164&tf_42139884615700=api_request_type_enterprise_clone
+
+That URL is the `contact us here` / `our contact form` href in those articles. The query parameter selects the enterprise request. The same form id with `api_request_type_developer_clone` is the non-commercial developer ticket. `api_request_type_researcher_clone` is Reddit for Researchers. The Ads API and Devvit are different products.
+
+Who files: someone with authority to bind the company. Data API Terms §1.2 (last revised 20 July 2026) says the person accepting the terms warrants they can bind their employer. Terms: https://redditinc.com/policies/data-api-terms
+
+What the request has to establish, from those pages:
+
+- The product is commercial. Reddit’s examples include subscription services, data access for fees, and publishing Reddit content on a monetized site. BuzzInsights is a paid B2B listener that would store raw public posts and comments in its own database.
+- Approval is required before any Data API access. The Responsible Builder Policy says the team replies if the proposal fits. A separate agreement is required. Fees, if any, are at Reddit’s discretion. The 2023 per-thousand figure is not the current published rate.
+- No model training on Reddit content without explicit consent. No inferring sensitive user traits or re-identifying users. No ads in the same app that displays Reddit content.
+- Retention is part of the approved use case. The Data API Terms require deleting content that is not required for that use case, and deleting stored content if access ends.
+- One request for this use case. The policy forbids masking the purpose and forbids multiple requests for the same use case.
+
+Do not file the non-commercial signup, the researcher ticket, Devvit, or the Ads API for this product. Do not start commercial collection from `reddit.com/prefs/apps` or from the prototype’s username/password client while the contract is pending.
