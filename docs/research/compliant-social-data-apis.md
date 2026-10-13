@@ -8,6 +8,24 @@ A second compliant pattern is one official API per platform, hidden behind BuzzI
 
 Scraping aggregators that advertise one key across dozens of networks are a different category. They are not treated here as a compliant source.
 
+## If BuzzInsights is the listening product
+
+Meltwater, Brandwatch, Talkwalker, YouScan, and Brand24 are listening products. Their APIs exist so a customer can read that vendor’s index. The contracts strip or withhold raw posts so the customer does not become a competing listener. That is the wrong supplier when BuzzInsights is the system of record.
+
+Raw posts, stored and shown in BuzzInsights, come from the platform that owns them, under a license that allows a paid product to keep the post.
+
+| Source | Raw post in your own database | What the license actually allows |
+| --- | --- | --- |
+| Reddit | Yes, from the official Data API, after a written commercial agreement. | Public developer terms forbid use in a monetized product without that agreement. [Developer Terms](https://redditinc.com/policies/developer-terms), [Data API Terms](https://redditinc.com/policies/data-api-terms). |
+| X | Yes, from the X API held in BuzzInsights’ own developer account. Post lookup returns the post for display in your application. | You pay per read. Live rates are on the X developer console. A listening vendor’s export is only an id; it is not this license. |
+| YouTube | Yes, titles, descriptions, and comments from the Data API, with a refresh rule. | You may sell your own application. You may not sell or sublicense YouTube API data. Comment and title text still follow the 30-day refresh and deletion rule. Metrics can be kept longer when the analytics terms are accepted. [Developer policies](https://developers.google.com/youtube/terms/developer-policies), [storage rules](https://developers.google.com/youtube/terms/derived-metrics-policy). |
+| News, blogs, forums | Only from a publisher or a feed whose contract lets you show the text inside your product. | Webz.io’s public terms forbid handing the data to clients, and they do not license the raw page text for use. [Webz terms](https://webz.io/tos/). |
+| Facebook, Instagram | Only posts from accounts, pages, or hashtags a customer connects through Meta’s APIs. | No commercial firehose of public posts. |
+| LinkedIn | No general raw listening feed. | The Marketing API is for approved apps, and it forbids storing data except where the docs allow. [Marketing API terms](https://www.linkedin.com/legal/l/marketing-api-terms). |
+| TikTok | No organic raw firehose for a paid listener. | The Commercial Content API is an ads-transparency library, starting with EU ads, not organic posts. [Commercial Content API](https://developers.tiktok.com/products/commercial-content-api). |
+
+There is still no single upstream API that returns raw posts from all of these networks. The one API is BuzzInsights’ own connector contract. Each row above is a separate license.
+
 Researched 13 October 2026 from vendor and platform primary docs.
 
 ## What “compliant” means for this product
@@ -82,10 +100,12 @@ Services that sell one key over dozens of networks by collecting pages outside e
 
 ## Practical recommendation
 
-1. Keep Reddit on the official API, and get Reddit’s written commercial terms before a paying pilot. The current prototype is not covered by the public developer terms if the product is monetized.
-2. For a multi-platform pilot, buy one listening API rather than five scrapers. Ask each vendor, in writing, for the field list per source: full text, snippet, id only, or aggregate only. Meltwater, Brandwatch, and Brand24 are the three with the clearest public docs for that question. YouScan is a fourth if Reddit-through-API is not required, because YouScan’s API excludes Reddit.
-3. Add YouTube as a direct official connector. A vendor is not required for that source, and the proposal already ranks it as the next official API.
-4. Plan the data model for partial documents. A mention may have a url, a sentiment score, and no body. The dashboard should show the source link when the text cannot be stored.
-5. Budget a second X app only if the pilot needs X post text. The listening API’s id is the compliant pointer. Rehydration is a separate meter.
+BuzzInsights should hold the raw post. Listening-vendor APIs are the wrong layer for that.
 
-No vendor price was collected here. Public rate cards for these contracts are sales quotes. The next research step is a short questionnaire to Meltwater, Brandwatch, and Brand24: sources included, fields returned per source, retention rights, monthly document cap, and whether a customer may show the text inside its own SaaS UI.
+1. Keep Reddit on the official Data API, and get a written commercial agreement before a paying pilot. The public developer terms do not cover a monetized product.
+2. Add YouTube as a direct Data API connector, and design storage around the 30-day refresh rule for titles, descriptions, and comments.
+3. Add X only through BuzzInsights’ own X developer account, with a volume cap. That account receives the post object. A listening vendor’s id is not a substitute.
+4. Treat Facebook, Instagram, LinkedIn, and TikTok as unavailable for raw public listening until each platform offers a license that allows storing the post in your product. Owned or customer-connected accounts are a separate, narrower product.
+5. For news, blogs, and forums, accept a feed only when the contract lets BuzzInsights show the text to its own customers. A crawl-and-resell feed does not meet that bar.
+
+The one API in the product is the internal connector contract. There is no compliant upstream API that returns raw posts from every network.
